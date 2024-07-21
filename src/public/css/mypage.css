@@ -1,0 +1,353 @@
+.container{
+    width: 100%;
+    height:80vh;
+    display: flex;
+    flex-direction: column;
+    /* display: grid; */
+
+}
+
+.heading {
+    width: 100%;
+    flex: 0 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+
+}
+.space{
+    width: 42%;
+}
+.likes-whose {
+    width: 54%;
+    font-size: 24px;
+    margin:auto 0;
+    text-align:left;
+    /* padding-left:15%; */
+
+}
+
+.content{
+    display: flex;
+    flex: 2 0 auto;
+    justify-content: space-between;
+}
+
+.reservation{
+    width: 42%;
+}
+
+
+.reservation__title-ttl{
+    font-size: 24px;
+}
+
+.reservation__content{
+    padding:20px;
+    height: 280px;
+    /* height: 30vh; */
+    background: #007BFF;
+    margin: auto 0;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.reservation__items{
+    display:flex;
+    justify-content:space-between;
+    padding: 8px;
+}
+
+.reservation-time{
+
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* color: #ffffff; */
+    /* text-decoration: n */
+    /* cursor: pointer; */
+}
+
+.reservation-edit{
+    cursor: pointer;
+    /* color: #ffffff; */
+    display: flex;
+        align-items: center;
+    text-decoration: none;
+    width: 24px;
+        height: 24px;
+    
+}
+
+.reservation-time i {
+    font-size: 24px;
+    color: #ffffff;
+    /* text-align: center; */
+    margin: 0 auto;
+    /* display: flex;
+        align-items: center; */
+    
+}
+
+.reservation-number{
+    margin: auto 32px 0;
+    font-size: 16px;
+}
+
+.delete__button{
+    display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+.delete__button-btn{
+    /* display: block; */
+    background-color: #007BFF;
+    color: white;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    cursor:pointer;
+    margin:  auto 0;
+    
+        
+}
+
+.delete__button-btn i {
+    font-size: 16px;
+    margin: auto 0;
+}
+
+
+
+.reservation__detail{
+    display: flex;
+    align-items: center;
+    height:80%;
+}
+
+.reservation__table{
+    width: 100%;
+
+}
+
+.reservation__row{
+    width:90%;
+    display: flex;
+}
+
+.reservation__head{
+    display: block;
+    width: 40%;
+    text-align:left;
+    padding:8px;
+}
+
+.reservation__desc{
+    display: block;
+    width: 60%;
+    padding: 8px;
+}
+
+
+@media (max-width: 768px) {
+
+    .reservation__items {
+            display: flex;
+            justify-content: space-between;
+            align-items:center;
+            padding: 8px;
+            padding: 0 auto;
+
+        }
+    .reservation-number{
+        font-size: 10px;
+    /* margin-left: auto 10px auto 0; */
+    margin: auto 10px;
+    /* margin: 0 auto; */
+    }
+
+    .reservation__row{
+        display:flex;
+        flex-direction:column;
+        margin: 0 auto;
+        padding:0 10%;
+        font-size:12px;
+    }
+
+    .reservation__head {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 0px;
+        margin:0;
+    }
+
+    .reservation__desc {
+        display: block;
+        width: 100%;
+        text-align: right;
+        padding: 0px;
+        margin: 0;
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+.likes{
+    width: 54%;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.likes__title-ttl{
+    font-size: 24px;
+}
+
+.likes__inner {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+.likes__card {
+    height: 280px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: 46%;
+    margin: 6px;
+    margin:0 auto 20px 0;
+}
+
+.likes__card-image{
+    width: 100%;
+    height: 140px;
+    overflow:hidden;
+
+}
+.likes__card-image img {
+    width: 100%;
+    object-fit:cover;
+}
+
+.likes__card-content {
+    padding:  20px;
+
+}
+
+.likes__restaurant-name {
+    font-size: 16px;
+    margin: 0;
+}
+
+.likes__restaurant-area-genre {
+    color: #666;
+    font-size: 12px;
+    margin:0;
+}
+
+.likes__card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+}
+
+.likes__details-button {
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    width:90px;
+    font-size:12px;
+    text-align:center;
+}
+
+.likes__details-button:hover {
+    background-color: #0056b3;
+}
+
+.like-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: rgb(222, 222, 222);
+}
+
+.like-button .fa-heart {
+    transition: color 0.1s;
+}
+
+.like-button .fa-heart.liked {
+    color: #ff0000;
+}
+
+@media (max-width: 768px) {
+
+    .likes-whose{
+        width: 50%;
+        display:flex;
+        flex-direction:column;
+    }
+    .likes{
+        flex-direction: column;
+    }
+
+    .likes {
+        width: 50%;
+    }
+
+    .likes__card {
+        width: 100%;
+        /* 1列にするために幅を100%に設定 */
+    }
+
+        .likes__details-button {
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            width: 50%;
+            height:40px;
+            /* width: 100px; */
+            font-size: 12px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* ju: center; */
+            /* margin: 0 auto; */
+        }
+
+}

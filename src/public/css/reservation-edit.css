@@ -1,0 +1,89 @@
+.container{
+    width:100%;
+}
+.reservation-form {
+    width: 47.5%;
+    background-color: #007BFF;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+.reservation__inner {
+    padding: 20px;
+    height: 72vh;
+}
+
+.reservation__heading-ttl {
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.reservation__content {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 8px;
+    width: 90%;
+}
+
+.input-date input {
+    width: 40%;
+    height: 24px;
+    border-radius: 3px;
+    border: none;
+}
+
+.input-time select {
+    width: 100%;
+    height: 24px;
+    border-radius: 3px;
+    border: none;
+}
+
+.input-number select {
+    width: 100%;
+    height: 24px;
+    border-radius: 3px;
+    border: none;
+}
+
+
+.confirm__table {
+    width: 90%;
+    background-color: #ffffff;
+    border-radius: 3px;
+    margin: 16px 0;
+    font-size: 12px;
+
+}
+
+.confirm__row {
+    display: flex;
+    justify-content: left;
+    padding: 4px;
+}
+
+.confirm__title {
+    width: 20%;
+    display: block;
+    text-align: left;
+    margin-left: 8px;
+
+}
+
+.confirm__detail {
+    display: block;
+}
+
+.reservation-submit {
+    width: 100%;
+    border: none;
+    color: #ffffff;
+    background: rgb(51, 43, 213);
+    height: 60px;
+    height: 8vh;
+}

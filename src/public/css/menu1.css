@@ -1,0 +1,46 @@
+.container{
+    width: 100%;
+    /* background: orange; */
+}
+
+.inner{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+.button-home,
+.button-mypage{
+    display: block;
+    text-decoration: none;
+    color:#007BFF;
+    text-align: center;
+    padding:8px;
+    font-size: 26px;
+
+}
+
+.menu1__logout{
+    display: block;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    /* background: transparent; */
+}
+
+.button-logout{
+    display: block;
+    border: none;
+    color: #007BFF;
+    font-size: 26px;
+    background: transparent;
+
+}
+
