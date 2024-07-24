@@ -1,13 +1,12 @@
 .container{
-    width: 100%;
-    /* background:orange; */
+    width: 90%;
+    margin: 0 auto;
     display: flex;
     justify-content:space-between;
 }
 
 .restaurant__inner{
     width: 47.5%;
-    /* background: orange; */
     height:80vh;
 }
 
@@ -31,7 +30,6 @@
     text-decoration: none;
     margin: auto 0;
     color: grey;
-    
 }
 
 .restaurant-name{
@@ -58,31 +56,16 @@
 
 .restaurant-genre{
     font-size: 12px;
-
 }
 
 .restaurant-description{
     font-size:12px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .reservation-form {
-    /* display:flex; */
     width: 47.5%;
     background-color: #007BFF;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* padding: 20px; */
     border-radius: 3px;
 }
 
@@ -128,30 +111,25 @@
     border: none;
 }
 
-
 .confirm__table{
     width: 90%;
     background-color: #ffffff;
     border-radius: 3px;
     margin:16px 0;
-    /* padding:20px; */
     font-size:12px;
-
 }
 
 .confirm__row{
     display: flex;
-        justify-content: left;
+    justify-content: left;
     padding: 4px;
 }
 
 .confirm__title{
     width:20%;
-    /* background-color: grey; */
     display: block;
     text-align:left;
     margin-left:8px;
-
 }
 
 .confirm__detail{
@@ -167,6 +145,8 @@
     height: 8vh;
 }
 
+
+/* ーーーーーーーーーーレスポンシブデザインーーーーーーーーーー */
 
 @media (max-width: 768px) {
 

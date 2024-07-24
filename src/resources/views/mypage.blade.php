@@ -24,7 +24,7 @@
             <div class="reservation__content">
                 <div class="reservation__items">
                     <div class="reservation-time" >
-                        <a class="reservation-edit" href="{{ route('reservation-edit', ['id' => $reservation->id]) }}">
+                        <a class="reservation-edit" href="{{ route('edit', ['id' => $reservation->id]) }}">
                         <i class="fa-solid fa-clock"></i>
                         </a>
                         <p class="reservation-number">予約{{ $index + 1 }}</p>

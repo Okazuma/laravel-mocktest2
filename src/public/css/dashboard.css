@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    width: 100vw;
+}
+
+.header{
+    width: 100%;
+    background:#007BFF;
+    color:#ffffff;
+    padding:20px;
+    margin: 0 auto;
+}
+
+.header__inner{
+    width: 90%;
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+}
+
+.header__inner-title{
+    font-size: 30px;
+}

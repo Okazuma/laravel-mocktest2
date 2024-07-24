@@ -1,0 +1,22 @@
+.container {
+    width: 100vw;
+    height: 60vh;
+    margin: 0 auto;
+    background: yellowgreen;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.success-text{
+    font-size: 24px;
+}
+
+.back-btn{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    margin: 4px;
+}

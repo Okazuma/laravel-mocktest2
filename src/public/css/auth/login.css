@@ -50,12 +50,14 @@
 .form__input {
     width: 90%;
     border-bottom: 1px solid grey;
+    height: 100%;
 }
 
 .form__input input {
     width: 100%;
     border: none;
     outline: none;
+    height: 100%;
 }
 
 .icon {
@@ -77,6 +79,7 @@
 }
 
 
+/* ーーーーーーーーーーレスポンシブデザインーーーーーーーーーー */
 @media (max-width: 768px){
     .card {
         width: 60%;
@@ -114,6 +117,6 @@
         width: 100%;
         border: none;
         outline: none;
+        height: 100%;
     }
-
 }

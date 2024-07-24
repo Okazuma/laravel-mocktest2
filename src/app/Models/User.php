@@ -21,6 +21,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'role_id',
+        'image_path',
     ];
 
     /**
@@ -52,4 +54,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Reservation::class);
     }
     
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function managedRestaurant()
+    {
+    return $this->belongsToMany(Restaurant::class,'restaurant_user','user_id','restaurant_id');
+    }
+
 }

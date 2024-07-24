@@ -1,6 +1,6 @@
 .container{
-    width: 100%;
-    /* background: orange; */
+    width: 90%;
+    margin: 0 auto;
 }
 
 .inner{
@@ -10,10 +10,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
 }
-
-
 
 .button-home,
 .button-mypage{
@@ -23,7 +20,6 @@
     text-align: center;
     padding:8px;
     font-size: 26px;
-
 }
 
 .menu1__logout{
@@ -32,7 +28,6 @@
     display: flex;
     justify-content: center;
     padding: 10px;
-    /* background: transparent; */
 }
 
 .button-logout{
@@ -41,6 +36,5 @@
     color: #007BFF;
     font-size: 26px;
     background: transparent;
-
 }
 

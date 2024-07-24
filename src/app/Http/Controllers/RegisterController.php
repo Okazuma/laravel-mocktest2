@@ -8,34 +8,39 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Log;
+use App\Models\Role;
 
 class RegisterController extends Controller
 {
-    //会員登録ページの表示ーーーーー
-
+    //会員登録ページの表示ーーーーーーーーーー
     public function showRegisterForm()
     {
         return view('auth.register');
     }
 
 
-    //会員登録の処理ーーーーー
-
+    //会員登録の処理ーーーーーーーーーー
     public function register(RegisterRequest $request)
     {
+        $userRole = Role::where('name','user')->first();
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role_id' => $userRole->id,
         ]);
         event(new Registered($user));  //登録時に認証メールを送信
         session(['email' => $user->email]);  //登録するメールアドレスを保持
-
         return view('auth.verify-email');
     }
 
 
-    // 会員登録後の認証要求ページの表示ーーーーー
+    public function thanks()
+    {
+        return view('auth.thanks');
+    }
+
+    // 会員登録後の認証要求ページの表示ーーーーーーーーーー
 
     // public function show()
     // {

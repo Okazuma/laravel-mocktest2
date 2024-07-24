@@ -1,11 +1,12 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
+    width: 100vw;
+}
+
+.header__container{
     width: 90vw;
     margin: 0 auto;
-}
-.header__container{
     display: flex;
     justify-content: space-between;
 }
@@ -21,8 +22,6 @@ body {
     padding-left: 10px;
 }
 
-
-
 .burger-icon {
     width: 40px;
     height: 40px;
@@ -36,7 +35,6 @@ body {
     padding: 8px;
     margin: auto 0;
 }
-
 
 .burger-icon span {
     display: block;
@@ -64,39 +62,30 @@ body {
 
 
 
-
-
-/* メニューが開かれた時のバツ印デザイン */
+/* ーーーーーメニューが開かれた時のバツ印デザインーーーーー */
 .close-icon span:nth-child(1) {
     transform: rotate(45deg) translate(6px, 5px);
-    /* バツ印の角度と位置を調整 */
     width: 24px;
-    /* メニューが開かれた時のラインの長さ */
 }
 
 .close-icon span:nth-child(2) {
     opacity: 0;
-    /* 中央のラインを非表示に */
 }
 
 .close-icon span:nth-child(3) {
     transform: rotate(-45deg) translate(5.5px, -5px);
-    /* バツ印の角度と位置を調整 */
     width: 24px;
-    /* メニューが開かれた時のラインの長さ */
 }
 
 .header__search {
-    /* display: flex; */
-    /* justify-content: space-between; */
     margin: auto 0;
 }
 
 
 @media (max-width: 768px) {
     .header__container {
-            display: flex;
-            justify-content: space-between;
-            width:100%;
-        }
+        display: flex;
+        justify-content: space-between;
+        width:90%;
+    }
 }

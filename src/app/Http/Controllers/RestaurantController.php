@@ -9,18 +9,15 @@ use Auth;
 class RestaurantController extends Controller
 {
     // 飲食店一覧ページの表示ーーーーーーーーーー
-
     public function index()
     {
         $restaurants = Restaurant::all();
-
         return view('index',compact('restaurants'));
     }
 
 
 
     // menu1ページの表示ーーーーーーーーーー
-
     public function menu1()
     {
         return view('menu1');
@@ -29,7 +26,6 @@ class RestaurantController extends Controller
 
 
     // menu2ページの表示ーーーーーーーーーー
-
     public function menu2()
     {
         return view('menu2');
@@ -38,7 +34,6 @@ class RestaurantController extends Controller
 
 
     // 検索フォームの処理ーーーーーーーーーー
-
     public function search(Request $request)
     {
         $query = Restaurant::query();
@@ -63,7 +58,6 @@ class RestaurantController extends Controller
 
 
     // 飲食店一覧ページの表示ーーーーーーーーーー
-
     public function detail(Request $request)
     {
         $shop_id = $request->route('shop_id');
@@ -73,10 +67,7 @@ class RestaurantController extends Controller
 
 
 
-
-
     // いいね機能の処理ーーーーーーーーーー
-
     public function like(Restaurant $restaurant)
     {
         $user = Auth::user();
@@ -89,6 +80,5 @@ class RestaurantController extends Controller
         }
         return response()->json(['success' => true, 'liked' => $liked]);
     }
-
 
 }
