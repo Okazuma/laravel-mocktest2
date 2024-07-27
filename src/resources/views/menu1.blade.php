@@ -20,6 +20,12 @@
             <div class="menu1__button">
                 <a class="button-mypage" href="/mypage">Mypage</a>
             </div>
+
+            @can('view-dashboard')
+            <div class="menu1__button">
+                <a class="button-dashboard" href="{{ route('dashboard') }}">Dashboard</a>
+            </div>
+            @endcan
         </form>
     </div>
 </div>

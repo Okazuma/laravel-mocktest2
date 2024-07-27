@@ -83,6 +83,8 @@
 .reservation-number{
     margin: auto 32px 0;
     font-size: 16px;
+    text-decoration: none;
+    color: #ffffff;
 }
 
 .delete__button{

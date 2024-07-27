@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use App\Models\Role;
 use App\Models\Restaurant;
 use App\Http\Requests\AdminRequest;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     // 管理者ページの表示ーーーーーーーーーー
     public function showAdminEdit()
     {
@@ -24,18 +30,17 @@ class AdminController extends Controller
     // 店舗代表者作成の処理ーーーーーーーーーー
     public function storeRestaurantManager(AdminRequest $request)
     {
-        $restaurantManagerRole = Role::where('name','restaurant_manager')->first();
+        $storeManagerRole = Role::where('name','store_manager')->first();  //ロールを取得
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role_id' => $restaurantManagerRole->id,
         ]);
+        $user -> assignRole('store_manager');  //ロールを付与
 
-        $user->managedRestaurant()->attach($request->restaurant_id);
-
-        return redirect()->route('admin.admin-success');
+        // return redirect()->route('admin.admin-success');
+        return redirect()->route('admin.admin-edit')->with('message','managerを作成しました');
     }
 
 //     public function storeRestaurantManager(AdminRequest $request)

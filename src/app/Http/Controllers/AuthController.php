@@ -21,13 +21,34 @@ class AuthController extends Controller
 
     // ログイン処理ーーーーー
 
+    // public function login(LoginRequest $request)
+    // {
+    //     $credentials = $request->only('email', 'password');
+
+    //     if (Auth::attempt($credentials)) {
+    //         $user = Auth::user();
+
+    //         if($user->hasRole('admin')){
+    //             return redirect()->intended('/admin/edit');//  認証済みなら'/admin/edit'へ
+    //         }elseif($user->hasRole('store_manager')){
+    //             return redirect()->intended('/management/home');
+    //         }else{
+    //             return redirect()->intended('/');//  認証済みなら'/'へ
+    //     }
+    //     } else {
+    //         return redirect('/login');
+    //     }
+    // }
+
+
     public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/'); //  認証済みなら'/'へ遷移する
-        } else {
+            $user = Auth::user();
+                return redirect()->intended('/');//  認証済みなら'/'へ
+        }else{
             return redirect('/login');
         }
     }

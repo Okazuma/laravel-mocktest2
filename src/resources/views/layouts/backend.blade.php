@@ -8,15 +8,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Rese</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/backend.css') }}">
     @yield('css')
 </head>
 
 <body>
     <header class="header">
-        <div class="header__inner">
             <h1 class="header__inner-title">Rese:Dashboard</h1>
-        </div>
     </header>
 
     <main>

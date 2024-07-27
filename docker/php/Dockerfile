@@ -1,4 +1,4 @@
-FROM php:7.4.9-fpm
+FROM php:8.0-fpm
 
 COPY php.ini /usr/local/etc/php/
 
@@ -16,5 +16,7 @@ RUN apt-get update \
     libmagickwand-dev imagemagick \
     && pecl install imagick \
     && docker-php-ext-enable imagick
+
+RUN docker-php-ext-install gd pdo pdo_mysql
 
 WORKDIR /var/www

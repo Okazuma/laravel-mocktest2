@@ -12,13 +12,9 @@ body {
     margin: 0 auto;
 }
 
-.header__inner{
-    width: 90%;
-    margin: 0 auto;
-    display:flex;
-    justify-content: center;
-}
-
 .header__inner-title{
     font-size: 30px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
 }

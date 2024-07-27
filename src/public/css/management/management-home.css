@@ -1,16 +1,37 @@
 .container {
-    width: 100vw;
-    height: 60vh;
+    width: 90%;
     margin: 0 auto;
-    background: yellowgreen;
-    display: flex;
+    /* background: lightgrey; */
+    /* display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: column; */
 }
 
-.management-title {
+.inner{
+    width: 80%;
+    margin: 24px auto;
+    /* background: lightgrey; */
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
     font-size: 24px;
+    padding: 4px;
+}
+
+.items{
+    margin: 24px auto;
+    height:30vh;
+    width: 100%;
+    /* background: lightgrey; */
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        /* color: #007BFF; */
 }
 
 .edit-btn {
@@ -19,7 +40,10 @@
     text-decoration: none;
     color: black;
     /* padding: 4px; */
-    margin:4px;
+    margin:24px;
+        color: #007BFF;
+    /* padding: */
+    font-size: 24px;
 }
 
 .reservation-btn {
@@ -29,4 +53,17 @@
     color: black;
     /* padding: 4px; */
     margin: 4px;
+        color: #007BFF;
+    font-size: 24px;
+}
+
+.back-btn{
+    display: block;
+    text-align: center;
+    /* margin: 0 auto; */
+}
+.button-logout{
+    display: block;
+    margin: 0 auto;
+
 }

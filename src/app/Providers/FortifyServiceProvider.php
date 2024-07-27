@@ -45,7 +45,13 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::verifyEmailView(function () {
-            return view('thanks');
+            return view('auth.thanks');
+        });
+
+        Fortify::authenticateUsing(function (Request $request) {
+            // カスタム認証処理を使用
+            $controller = new AuthController();
+            return $controller->login($request);
         });
     }
 

@@ -1,0 +1,83 @@
+.container{
+    width: 90%;
+    margin: 0 auto;
+    /* background: lightgrey; */
+}
+
+.reservations{
+    width: 80%;
+    margin: 24px auto;
+    /* background: lightgrey; */
+
+}
+
+.reservations__title{
+    /* background-color: #007BFF; */
+    /* color: #ffffff; */
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 24px;
+    padding: 4px;
+}
+
+.reservations__table{
+    margin: 24px auto;
+    width: 100%;
+    background: lightgrey;
+}
+
+.reservations__head {
+    background-color: #007BFF;
+        color: #ffffff;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid grey;
+
+}
+
+
+.reservations__row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid grey;
+
+}
+
+.reservations__row:last-child {
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+.reservations__name{
+    width: 20%;
+    border-left: 1px solid grey;
+    text-align: center;
+}
+
+.reservations__date{
+    width: 20%;
+    border-left: 1px solid grey;
+    text-align: center;
+}
+
+.reservations__time{
+    width: 20%;
+    border-left: 1px solid grey;
+    text-align: center;
+}
+
+.reservations__people{
+    width: 10%;
+    border-left: 1px solid grey;
+    text-align: center;
+}
+
+.reservations__user-name{
+    width: 30%;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    text-align:center;
+}

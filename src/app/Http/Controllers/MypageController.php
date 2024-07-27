@@ -37,9 +37,8 @@ class MypageController extends Controller
     {
         $reservation = Reservation::find($id);
         $restaurant = optional($reservation->restaurant);
-        $qrCode = QrCode::format('png')->size(300)->generate(route('edit', $id));
-        $base64QrCode = 'data:image/png;base64,' . base64_encode($qrCode);
-        return view('edit',compact('reservation','restaurant', 'base64QrCode'));
+        
+        return view('edit',compact('reservation','restaurant'));
     }
 
 
@@ -50,6 +49,15 @@ class MypageController extends Controller
         $reservation = $request->only('date','time','no_people');
         Reservation::find($request->id)->update($reservation);
         return redirect()->route('reservation-update');
+    }
+
+    public function showQRCode($id)
+    {
+        $reservation = Reservation::find($id);
+        $restaurant = optional($reservation->restaurant);
+        $qrCode = QrCode::format('png')->size(300)->generate(route('edit', $id));
+        $base64QrCode = 'data:image/png;base64,' . base64_encode($qrCode);
+        return view('qrcode',compact('reservation','restaurant', 'base64QrCode'));
     }
 
 }

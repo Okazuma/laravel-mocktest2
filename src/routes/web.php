@@ -9,6 +9,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagementController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\VerifyEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -74,24 +75,22 @@ Route::get('/done',[ReservationController::class,'done'])->name('done');
 
 // ーーーーーーーーーーマイページーーーーーーーーーー
 
-// マイページの表示ルート
 Route::middleware(['auth'])->group(function () {
+    // マイページの表示ルート
     Route::get('/mypage', [MypageController::class, 'mypage'])->name('mypage');
-    Route::get('/mypage/reservations', [MypageController::class, 'myReservations'])->name('mypage.reservations');
+
+    // マイページで予約情報を削除するルート
+    Route::delete('/delete/{id}',[MypageController::class,'destroy']);
+
+    // マイページで予約情報の詳細を表示するルート
+    Route::get('/reservation-edit/{id}',[MypageController::class,'edit'])->name('edit');
+
+    // QRコードを表示するルート
+    Route::get('/qrcode/{id}', [MypageController::class, 'showQRCode'])->name('show.qrcode');
+
+    // マイページから予約情報の詳細を表示して予約情報を更新するルート
+    Route::post('/mypage',[MypageController::class,'update'])->name('reservation-update');
 });
-
-// マイページに予約情報を表示するルート
-Route::get('/mypage/reservations', [MypageController::class, 'myReservations'])->name('mypage.reservations');
-
-// マイページで予約情報を削除するルート
-Route::delete('/delete/{id}',[MypageController::class,'destroy']);
-
-// マイページで予約情報の詳細を表示するルート
-Route::get('/reservation-edit/{id}',[MypageController::class,'edit'])->name('edit');
-
-// マイページから予約情報の詳細を表示して予約情報を更新するルート
-Route::post('/mypage',[MypageController::class,'update'])->name('reservation-update');
-
 
 
 
@@ -105,6 +104,7 @@ Route::get('/register',[RegisterController::class,'showRegisterForm']);
 // 会員登録処理のルート
 Route::post('/register', [RegisterController::class, 'register']);
 
+// 認証成功ページ表示のルート
 Route::get('/thanks', [RegisterController::class, 'thanks']);
 
 
@@ -141,7 +141,7 @@ Route::get('/email/verify', function () {
 Route::get('/email/verify/{id}/{hash}', function (Request $request, $id, $hash) {
     $user = User::findOrFail($id);
     $user->markEmailAsVerified();
-        return view('thanks');
+        return view('auth.thanks');
 })->middleware(['signed'])->name('verification.verify');
 
 
@@ -169,16 +169,23 @@ Route::post('/email/verify/resend', function (Request $request) {
 
 
 
+// ーーーーー管理用ダッシュボードを表示するルートーーーーー
+
+Route::get('/dashboard',[DashboardController::class,'showDashboard'])->name('dashboard');
+
+
 // ーーーーーーーーーー管理者関連ーーーーーーーーーー
 
-// 管理者ページ表示のルート
-Route::get('/admin/edit',[AdminController::class,'showAdminEdit'])->name('admin.admin-edit');
+Route::middleware(['admin'])->group(function(){
+    // 管理者ページ表示のルート
+    Route::get('/admin/edit',[AdminController::class,'showAdminEdit'])->name('admin.admin-edit');
+    // 飲食店代表者を作成するルート
+    // Route::post('/admin/success',[AdminController::class,'storeRestaurantManager'])->name('admin.admin-success');
 
-// 飲食店代表者を作成するルート
-Route::post('/admin/success',[AdminController::class,'storeRestaurantManager'])->name('admin.admin-success');
-
-// 飲食店代表者の作成完了ページ表示のルート
-Route::get('/admin/success', [AdminController::class, 'adminSuccess'])->name('admin.admin-success');
+    Route::post('/admin/edit',[AdminController::class,'storeRestaurantManager'])->name('admin.admin-edit');
+    // 飲食店代表者の作成完了ページ表示のルート
+    Route::get('/admin/success', [AdminController::class, 'adminSuccess'])->name('admin.admin-success');
+});
 
 
 
@@ -187,13 +194,24 @@ Route::get('/admin/success', [AdminController::class, 'adminSuccess'])->name('ad
 
 // ーーーーーーーーーー店舗代表者用関連ーーーーーーーーーー
 
+Route::middleware(['store_manager'])->group(function(){
+    Route::get('/management/home',[ManagementController::class,'showManagementHome']);
 
-Route::get('/management/home',[ManagementController::class,'showManagementHome']);
+    Route::get('/management/edit',[ManagementController::class,'showManagementEdit'])->name('management.edit');
 
-Route::get('/management/edit',[ManagementController::class,'showManagementEdit']);
+    Route::post('/management/edit',[ManagementController::class,'storeRestaurant'])->name('management-edit');
 
-Route::post('/management/success',[ManagementController::class,'storeRestaurant'])->name('management.success');
+    // Route::get('/management/success',[ManagementController::class,'showManagementSuccess']);
 
-Route::get('/management/success',[ManagementController::class,'showManagementSuccess']);
+    Route::get('/management/update/{id}',[ManagementController::class,'showManagementUpdate'])->name('management.restaurants');
 
-Route::get('/management/reservations',[ManagementController::class,'showManagementReservations']);
+    Route::get('/management/reservations',[ManagementController::class,'showManagementReservations']);
+
+// 店舗の編集ルート
+Route::patch('/management/edit/{id}', [ManagementController::class, 'updateRestaurant'])->name('management.update');
+
+});
+
+
+
+

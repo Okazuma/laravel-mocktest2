@@ -8,7 +8,7 @@
 
 
 <div class="container">
-    <img src="{{ $base64QrCode }}" alt="QR Code">
+    
     <form class="reservation-form" action="{{route('reservation-update')}}" method="post">
     @csrf
     <div class="reservation__inner">

@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.backend')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/management/management-success.css') }}">

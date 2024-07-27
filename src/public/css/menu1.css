@@ -13,7 +13,8 @@
 }
 
 .button-home,
-.button-mypage{
+.button-mypage,
+.button-dashboard{
     display: block;
     text-decoration: none;
     color:#007BFF;

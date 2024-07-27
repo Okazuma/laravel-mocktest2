@@ -27,7 +27,7 @@
                         <a class="reservation-edit" href="{{ route('edit', ['id' => $reservation->id]) }}">
                         <i class="fa-solid fa-clock"></i>
                         </a>
-                        <p class="reservation-number">予約{{ $index + 1 }}</p>
+                        <a class="reservation-number" href="{{ route('show.qrcode', $reservation->id) }}">予約{{ $index + 1 }}</a>
                     </div>
                     <form class="delete__button" action="/delete/{{ $reservation->id }}" method="post">
                     @method('delete')
