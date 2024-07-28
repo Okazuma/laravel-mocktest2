@@ -27,4 +27,9 @@ class Restaurant extends Model
     {
         return $this->belongsToMany(User::class,'restaurant_user','restaurant_id','user_id');
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

@@ -51,6 +51,8 @@ class MypageController extends Controller
         return redirect()->route('reservation-update');
     }
 
+    
+
     public function showQRCode($id)
     {
         $reservation = Reservation::find($id);

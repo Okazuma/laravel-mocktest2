@@ -19,4 +19,24 @@ RUN apt-get update \
 
 RUN docker-php-ext-install gd pdo pdo_mysql
 
+
+
 WORKDIR /var/www
+
+
+
+# Cron のインストール
+RUN apt-get update && apt-get install -y cron
+
+# スケジュール設定ファイルを追加
+COPY crontab /etc/cron.d/cronjob
+
+# スケジュール設定ファイルのパーミッションを変更
+RUN chmod 0644 /etc/cron.d/cronjob
+
+# Cron サービスの起動スクリプトを追加
+COPY cron-start.sh /usr/local/bin/cron-start.sh
+RUN chmod +x /usr/local/bin/cron-start.sh
+
+# エントリーポイントの設定
+CMD ["/usr/local/bin/cron-start.sh"]

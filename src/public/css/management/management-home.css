@@ -39,11 +39,9 @@
     text-align: center;
     text-decoration: none;
     color: black;
-    /* padding: 4px; */
-    margin:24px;
-        color: #007BFF;
-    /* padding: */
+    color: #007BFF;
     font-size: 24px;
+    margin: 16px;
 }
 
 .reservation-btn {
@@ -51,16 +49,23 @@
     text-align: center;
     text-decoration: none;
     color: black;
-    /* padding: 4px; */
-    margin: 4px;
-        color: #007BFF;
+    color: #007BFF;
     font-size: 24px;
+    margin: 16px;
+}
+.mail-btn{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    color: #007BFF;
+    font-size: 24px;
+    margin: 16px;
 }
 
 .back-btn{
     display: block;
     text-align: center;
-    /* margin: 0 auto; */
 }
 .button-logout{
     display: block;

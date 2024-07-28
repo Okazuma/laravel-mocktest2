@@ -10,6 +10,7 @@ use App\Http\Controllers\MypageController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\VerifyEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -191,7 +192,6 @@ Route::middleware(['admin'])->group(function(){
 
 
 
-
 // ーーーーーーーーーー店舗代表者用関連ーーーーーーーーーー
 
 Route::middleware(['store_manager'])->group(function(){
@@ -201,17 +201,31 @@ Route::middleware(['store_manager'])->group(function(){
 
     Route::post('/management/edit',[ManagementController::class,'storeRestaurant'])->name('management-edit');
 
-    // Route::get('/management/success',[ManagementController::class,'showManagementSuccess']);
 
     Route::get('/management/update/{id}',[ManagementController::class,'showManagementUpdate'])->name('management.restaurants');
 
     Route::get('/management/reservations',[ManagementController::class,'showManagementReservations']);
 
-// 店舗の編集ルート
-Route::patch('/management/edit/{id}', [ManagementController::class, 'updateRestaurant'])->name('management.update');
+    // 店舗の編集ルート
+    Route::patch('/management/edit/{id}', [ManagementController::class, 'updateRestaurant'])->name('management.update');
 
 });
 
 
 
+// お知らせメール送信のルート
+Route::get('/management/send-email', [ManagementController::class, 'showEmailForm'])->name('management.email.form');
+Route::post('/management/send-email', [ManagementController::class, 'sendEmail'])->name('management.email.send');
 
+
+
+
+
+
+
+
+// ーーーーーレビュー関連ーーーーー
+
+Route::get('/reviews',[ReviewController::class,'reviews']);
+
+Route::post('/reviews',[ReviewController::class,'storeReview']);

@@ -1,0 +1,52 @@
+.container{
+    width: 90%;
+    margin: 0 auto;
+    background: lightgrey;
+}
+
+.email__form{
+    width: 70%;
+    margin: 0 auto;
+    background: orange;
+}
+
+.form__item{
+    margin: 32px auto;
+    background: blue;
+
+}
+
+.form__title{
+    display: block;
+    text-align: center;
+}
+
+.form-input{
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.form-text{
+display: block;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.form-select{
+display: block;
+    margin: 0 auto;
+    width: 30%;
+}
+
+.submit-btn{
+    display: block;
+    margin: 32px auto;
+
+}
+
+.back-btn{
+    display: block;
+    text-align: center;
+    /* margin: 32px auto; */
+}
