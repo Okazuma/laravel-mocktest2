@@ -10,12 +10,14 @@ use App\Http\Controllers\MypageController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\VerifyEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Support\Facades\Log;
 use App\models\User;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +28,33 @@ use App\models\User;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+// ーーーーーーーーーー会員登録処理ーーーーーーーーーー
+
+// 会員登録ページ表示のルート
+Route::get('/register',[RegisterController::class,'showRegisterForm']);
+
+// 会員登録処理のルート
+Route::post('/register', [RegisterController::class, 'register']);
+
+// 認証成功ページ表示のルート
+Route::get('/thanks', [RegisterController::class, 'thanks']);
+
+
+
+// ーーーーーーーーーー認証機能処理ーーーーーーーーーー
+
+// ログインページ表示のルート
+Route::get('/login',[AuthController::class,'showLoginForm'])->name('login');
+
+// ログイン処理のルート
+Route::post('/login',[AuthController::class,'login']);
+
+// ログアウト処理のルート
+Route::post('/', [AuthController::class, 'logout'])->name('logout');
+
+
 
 // ーーーーーーーーーー飲食店一覧ーーーーーーーーーー
 
@@ -40,19 +69,13 @@ Route::post('/restaurants/{restaurant}/like', [RestaurantController::class, 'lik
 
 
 
-
-
-
 // ーーーーーーーーーーMenu画面ーーーーーーーーーー
 
-// menu1ページ表示のルート
-Route::get('/menu1',[RestaurantController::class,'menu1'])->name('restaurants.menu1');
+// ログインユーザーメニュー表示のルート
+Route::get('/user/menu',[RestaurantController::class,'menuUser'])->name('user-menu');
 
-// menu2ページ表示のルート
-Route::get('/menu2',[RestaurantController::class,'menu2'])->name('restaurants.menu2');
-
-
-
+// ゲストユーザーメニュー表示のルート
+Route::get('/guest/menu',[RestaurantController::class,'menuGuest'])->name('guest-menu');
 
 
 
@@ -71,20 +94,17 @@ Route::get('/done',[ReservationController::class,'done'])->name('done');
 
 
 
-
-
-
 // ーーーーーーーーーーマイページーーーーーーーーーー
 
 Route::middleware(['auth'])->group(function () {
     // マイページの表示ルート
     Route::get('/mypage', [MypageController::class, 'mypage'])->name('mypage');
 
-    // マイページで予約情報を削除するルート
+    // 予約情報を削除するルート
     Route::delete('/delete/{id}',[MypageController::class,'destroy']);
 
-    // マイページで予約情報の詳細を表示するルート
-    Route::get('/reservation-edit/{id}',[MypageController::class,'edit'])->name('edit');
+    // 予約情報の更新ページ表示のルート
+    Route::get('/mypage-edit/{id}',[MypageController::class,'edit'])->name('edit');
 
     // QRコードを表示するルート
     Route::get('/qrcode/{id}', [MypageController::class, 'showQRCode'])->name('show.qrcode');
@@ -95,42 +115,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-
-
-// ーーーーーーーーーー会員登録処理ーーーーーーーーーー
-
-// 会員登録ページ表示のルート
-Route::get('/register',[RegisterController::class,'showRegisterForm']);
-
-// 会員登録処理のルート
-Route::post('/register', [RegisterController::class, 'register']);
-
-// 認証成功ページ表示のルート
-Route::get('/thanks', [RegisterController::class, 'thanks']);
-
-
-
-
-
-
-
-// ーーーーーーーーーー認証機能処理ーーーーーーーーーー
-
-// ログインページ表示のルート
-Route::get('/login',[AuthController::class,'showLoginForm'])->name('login');
-
-// ログイン処理のルート
-Route::post('/login',[AuthController::class,'login']);
-
-// ログアウト処理のルート
-Route::post('/', [AuthController::class, 'logout'])->name('logout');
-
-
-
-
-
-
-// ーーーーーーーーーーメール認証機能ーーーーーーーーーー
+// ーーーーーーーーーーメール認証ーーーーーーーーーー
 
 // メール認証通知ページを表示するルート
 Route::get('/email/verify', function () {
@@ -146,21 +131,16 @@ Route::get('/email/verify/{id}/{hash}', function (Request $request, $id, $hash) 
 })->middleware(['signed'])->name('verification.verify');
 
 
-
 // 認証メールを再送信するルート
 Route::post('/email/verify/resend', function (Request $request) {
-    // セッションからユーザーのメールアドレスを取得
     $email = session('email');
-    // メールアドレスでユーザーを検索
     $user = User::where('email', $email)->first();
     if (!$user) {
         return redirect()->route('login')->withErrors(['message' => 'ユーザーが見つかりません。']);
     }
-    // ユーザーがすでにメール認証されているか確認
     if ($user->hasVerifiedEmail()) {
         return redirect()->route('login')->withErrors(['message' => 'このメールアドレスは既に認証されています。']);
     }
-    // 認証メールの再送信
     $user->sendEmailVerificationNotification();
     return redirect()->route('verification.notice')->with('message', '認証リンクを再送しました。');
 })->name('verification.resend');
@@ -170,9 +150,10 @@ Route::post('/email/verify/resend', function (Request $request) {
 
 
 
-// ーーーーー管理用ダッシュボードを表示するルートーーーーー
+// ーーーーー管理用ダッシュボード表示ーーーーー
 
 Route::get('/dashboard',[DashboardController::class,'showDashboard'])->name('dashboard');
+
 
 
 // ーーーーーーーーーー管理者関連ーーーーーーーーーー
@@ -180,52 +161,72 @@ Route::get('/dashboard',[DashboardController::class,'showDashboard'])->name('das
 Route::middleware(['admin'])->group(function(){
     // 管理者ページ表示のルート
     Route::get('/admin/edit',[AdminController::class,'showAdminEdit'])->name('admin.admin-edit');
-    // 飲食店代表者を作成するルート
-    // Route::post('/admin/success',[AdminController::class,'storeRestaurantManager'])->name('admin.admin-success');
 
+    // 飲食店代表者を作成するルート
     Route::post('/admin/edit',[AdminController::class,'storeRestaurantManager'])->name('admin.admin-edit');
-    // 飲食店代表者の作成完了ページ表示のルート
-    Route::get('/admin/success', [AdminController::class, 'adminSuccess'])->name('admin.admin-success');
 });
 
 
 
-
-
-// ーーーーーーーーーー店舗代表者用関連ーーーーーーーーーー
+// ーーーーーーーーーー店舗代表者関連ーーーーーーーーーー
 
 Route::middleware(['store_manager'])->group(function(){
+    // 店舗代表者ページ表示のルート
     Route::get('/management/home',[ManagementController::class,'showManagementHome']);
 
+    // 店舗情報の管理ページ表示のルート
     Route::get('/management/edit',[ManagementController::class,'showManagementEdit'])->name('management.edit');
 
+    // 店舗情報の作成処理ルート
     Route::post('/management/edit',[ManagementController::class,'storeRestaurant'])->name('management-edit');
 
-
+    // 店舗情報の更新ページ表示のルート
     Route::get('/management/update/{id}',[ManagementController::class,'showManagementUpdate'])->name('management.restaurants');
 
-    Route::get('/management/reservations',[ManagementController::class,'showManagementReservations']);
-
-    // 店舗の編集ルート
-    Route::patch('/management/edit/{id}', [ManagementController::class, 'updateRestaurant'])->name('management.update');
-
+    // 店舗情報の更新処理ルート
+    Route::patch('/management/update/{id}', [ManagementController::class, 'updateRestaurant'])->name('management.update');
 });
+    // 予約情報ページ表示のルート
+    Route::get('/management/reservations',[ManagementController::class,'showManagementReservations'])->name('management.reservations');
 
+    // お知らせメール送信ページを表示するルート
+    Route::get('/management/send-email', [ManagementController::class, 'showEmailForm'])->name('management.email.form');
 
-
-// お知らせメール送信のルート
-Route::get('/management/send-email', [ManagementController::class, 'showEmailForm'])->name('management.email.form');
-Route::post('/management/send-email', [ManagementController::class, 'sendEmail'])->name('management.email.send');
-
-
-
-
+    // お知らせメールを送信するルート
+    Route::post('/management/send-email', [ManagementController::class, 'sendEmail'])->name('management.email.send');
 
 
 
 
-// ーーーーーレビュー関連ーーーーー
+// ーーーーーーーーーーレビュー画面ーーーーーーーーーー
 
+// レビューページを表示するルート
 Route::get('/reviews',[ReviewController::class,'reviews']);
 
+// レビューを記録するルート
 Route::post('/reviews',[ReviewController::class,'storeReview']);
+
+
+
+
+
+// ーーーーーーーーーーStripe決済ーーーーーーーーーー
+
+// 支払いページ表示のルート
+Route::get('/checkout', function () {
+    return view('payment.payment-checkout'); // ビュー名を更新
+});
+
+// 支払い成功ページ表示のルート
+Route::get('/payment/success',function(){
+    return view('payment.payment-success');
+})->name('payment.success');
+
+// 支払いキャンセルページ表示のルート
+Route::get('payment/cancel',function(){
+    return view('payment.payment-cancel');
+})->name('payment.cancel');
+
+// 支払い処理を行うルート
+Route::post('/create-checkout-session', [PaymentController::class, 'createCheckoutSession']);
+

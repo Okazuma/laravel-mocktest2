@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Reservation;
+use App\Services\QrCodeService;
 
 class ReservationReminder extends Mailable
 {
@@ -18,10 +19,11 @@ class ReservationReminder extends Mailable
      *
      * @return void
      */
-    public function __construct(Reservation $reservation)
+    public function __construct($reservation,QrCodeService $qrCodeService)
     {
         //
         $this->reservation = $reservation;
+        $this->qrCodeService = $qrCodeService;
     }
 
     /**
@@ -29,9 +31,21 @@ class ReservationReminder extends Mailable
      *
      * @return $this
      */
+
     public function build()
     {
+        $data = route('management.reservations');
+        $qrCode = $this->qrCodeService->generateQrCode($data);
+        $paymentUrl = url('/checkout');
+
         return $this->view('email.email-reminder')
-                    ->with(['reservation' => $this->reservation]);
+                    ->with([
+                        'reservation' => $this->reservation,
+                        'paymentUrl' => $paymentUrl,
+                    ])
+                    ->attachData(base64_decode(substr($qrCode, strpos($qrCode, ',') + 1)), 'qrcode.png', [
+                        'mime' => 'image/png',
+                        'as' => 'qrcode.png',
+                    ]);
     }
 }

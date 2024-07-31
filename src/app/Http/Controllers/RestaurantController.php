@@ -18,17 +18,17 @@ class RestaurantController extends Controller
 
 
     // menu1ページの表示ーーーーーーーーーー
-    public function menu1()
+    public function menuUser()
     {
-        return view('menu1');
+        return view('user-menu');
     }
 
 
 
     // menu2ページの表示ーーーーーーーーーー
-    public function menu2()
+    public function menuGuest()
     {
-        return view('menu2');
+        return view('guest-menu');
     }
 
 

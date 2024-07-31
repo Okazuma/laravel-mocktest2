@@ -12,14 +12,16 @@ class Review extends Model
     protected $fillable = [
         'user_id',
         'restaurant_id',
-        'review',
+        'rating',
         'comment',
     ];
+
 
     public function restaurant()
     {
         return $this->belongsTo(Restaurant::class);
     }
+
 
     public function user ()
     {

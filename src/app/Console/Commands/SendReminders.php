@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReservationReminder;
 use App\Models\Reservation;
+use App\Services\QrCodeService;
 
 class SendReminders extends Command
 {
@@ -42,14 +43,14 @@ class SendReminders extends Command
     {
         $today = now()->format('Y-m-d');
         $reservations = Reservation::whereDate('date',$today)->with('user')->get();
+        $qrCodeService = app(QrCodeService::class);
 
         foreach ($reservations as $reservation) {
-        // ユーザーが存在し、メールアドレスが設定されているかを確認
-        if ($reservation->user && $reservation->user->email) {
-            Mail::to($reservation->user->email)->send(new ReservationReminder($reservation));
-        }
-    }
 
-    $this->info('Reservation reminders sent successfully.');
+        if ($reservation->user && $reservation->user->email) {
+            Mail::to($reservation->user->email)->send(new ReservationReminder($reservation, $qrCodeService));
+            }
+        }
+        $this->info('Reservation reminders sent successfully.');
     }
 }

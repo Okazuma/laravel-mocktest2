@@ -2,15 +2,12 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="..." crossorigin="anonymous" />
-
 @endsection
 
 @section('content')
 
 <div class="container">
     <div class="restaurant__inner">
-        
         <div class="restaurant__heading">
             <div class="back-button">
                 <a class="back-button-back" href="{{route('restaurants.index')}}"><</a>
@@ -21,15 +18,14 @@
         <div class="restaurant__image">
             <img src="{{ asset($restaurant->image_path) }}" class="restaurant__image-img" alt="{{ $restaurant->name }}">
         </div>
-        
+
         <div class="restaurant__detail">
             <p class="restaurant-area">#{{ $restaurant->area }}</p>
             <p class="restaurant-genre">#{{ $restaurant->genre }}</p>
         </div>
 
         <p class="restaurant-description">{{ $restaurant->description }}</p>
-            <!-- その他の詳細情報をここに表示 -->
-        
+
     </div>
 
 

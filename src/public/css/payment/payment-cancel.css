@@ -1,0 +1,59 @@
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.inner {
+    width: 60%;
+    margin: 0 auto;
+    background: lightgrey;
+    border: 1px solid grey;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.cancel__title {
+    background-color: #007BFF;
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 24px;
+    padding: 4px;
+}
+
+.cancel__text {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.cancel__items {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    margin: 24px auto;
+
+}
+
+.checkout__button{
+    text-decoration: none;
+    color: #ffffff;
+    width: 100px;
+    background: #007BFF;
+    margin: auto 0;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.back__button {
+    text-decoration: none;
+    color: #ffffff;
+    width: 100px;
+    background: #007BFF;
+    margin: auto 0;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 14px;
+}

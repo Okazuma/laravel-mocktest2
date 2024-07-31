@@ -8,34 +8,43 @@
 
 @section('content')
 
-    <div>
-        @if (session('message'))
-        <p>{{ session('message') }}</p>
-        @endif
-    </div>
+<div class="session__alert">
+    @if(session('message'))
+        <div class="session__alert--success">
+        {{ session('message') }}
+        </div>
+    @endif
+</div>
+
 <div class="container">
+
+<p class="email__title">お知らせメール</p>
+
     <form class="email__form" action="{{ route('management.email.send') }}" method="post">
         @csrf
+        <p class="management__title">メール作成</p>
         <div class="form__item">
             <label class="form__title" for="subject">件名:</label>
-            <input class="form-input" type="text" id="subject" name="subject" required>
+            <input class="form__input" type="text" id="subject" name="subject" required>
         </div>
         <div class="form__item">
             <label class="form__title" for="content">内容:</label>
-            <textarea class="form-text" id="content" name="content" rows="5" required></textarea>
+            <textarea class="form__text" id="content" name="content" rows="5" required></textarea>
         </div>
         <div class="form__item">
             <label class="form__title" for="users">ユーザー:</label>
-            <select class="form-select" id="users" name="users[]" multiple required>
+            <select class="form__select" id="users" name="users[]" multiple required>
                 @foreach(App\Models\User::all() as $user)
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                 @endforeach
             </select>
         </div>
-        <button class="submit-btn" type="submit">送信</button>
+        <button class="submit__button" type="submit">送信</button>
     </form>
 
-    <a class="back-btn" href="/management/home">Back</a>
+    <div class="back__button">
+        <a class="back__button-btn" href="/management/home">Back</a>
+    </div>
 
 </div>
 @endsection

@@ -19,13 +19,13 @@
       <div class="header__inner">
 
       @auth
-        <a id="menu-button" class="burger-icon {{ request()->is('menu1') ? 'close-icon' : '' }}" href="{{ route('restaurants.menu1') }}">
+        <a id="menu-button" class="burger-icon {{ request()->is('user/menu') ? 'close-icon' : '' }}" href="{{ route('user-menu') }}">
           <span></span>
           <span></span>
           <span></span>
         </a>
       @else
-        <a id="menu-button" class="burger-icon {{ request()->is('menu2') ? 'close-icon' : '' }}" href="{{ route('restaurants.menu2') }}">
+        <a id="menu-button" class="burger-icon {{ request()->is('guest/menu') ? 'close-icon' : '' }}" href="{{ route('guest-menu') }}">
           <span></span>
           <span></span>
           <span></span>
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentPath = window.location.pathname;
 
     // メニュー画面にいる場合は戻るボタンにする
-    if (currentPath.includes('menu1') || currentPath.includes('menu2')) {
+    if (currentPath.includes('user/menu') || currentPath.includes('guest/menu')) {
         menuButton.addEventListener('click', function(event) {
             event.preventDefault(); // デフォルトのクリック動作をキャンセル
             window.history.back(); // ブラウザの履歴を一つ戻る（前のページに戻る）

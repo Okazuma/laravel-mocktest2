@@ -1,26 +1,33 @@
 .container {
     width: 90%;
-    /* height: 60vh; */
     margin: 0 auto;
-    /* display:flex;
-    flex-direction:column; */
-    /* background: pink; */
 }
 
 .admin-title {
     width: 100%;
-        text-align: center;
-        margin: 0 auto;
-        font-size: 24px;
-        padding: 4px;
+    text-align: center;
+    margin: 10px auto;
+    font-size: 24px;
+    padding: 4px;
 }
 
 .admin__form{
-    /* width: 50%;
-    margin: 0 auto; */
     width: 80%;
-    margin: 24px auto;
-    /* background: lightgrey; */
+    margin: 10px auto;
+    background: lightgrey;
+    border-radius: 3px;
+    overflow: hidden;
+    /* padding-bottom: 16px; */
+}
+
+.admin__form-title{
+background-color: #007BFF;
+color: #ffffff;
+width: 100%;
+text-align: center;
+margin: 0 auto;
+font-size: 24px;
+padding: 4px;
 }
 
 .form__group{
@@ -31,9 +38,10 @@
     display: block;
     margin: 0 auto;
     width: 50%;
+    outline: none;
 }
 
-.admin__form-title{
+.form__group__title{
     text-align: center;
     margin: 0;
 }
@@ -47,20 +55,45 @@
     margin: 0 auto;
 }
 
-.submit-btn{
+.submit__button{
+    width: 100px;
     display: block;
-    margin: 8px auto;
+    margin: 8px auto 24px;
+
+}
+.submit__button:hover {
+    background: lightgrey;
 }
 
-.back-btn {
-    display: block;
+
+.back__button {
+    width: 100px;
+    background: #007BFF;
+    margin: 0 auto 16px;
+    border-radius: 3px;
+}
+
+.back__button-btn {
+    width: 100%;
     text-align: center;
+    display: block;
+    text-decoration: none;
+    color: white;
 }
 
-.button-logout {
+.back__button:hover {
+    background: blue;
+}
+
+.logout__button {
+    width: 100px;
     display: block;
     margin: 0 auto;
+}
 
+.logout__button:hover {
+    background: lightgrey;
+    border-radius: 3px;
 }
 
 

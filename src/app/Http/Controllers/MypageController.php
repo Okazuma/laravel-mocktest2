@@ -51,15 +51,17 @@ class MypageController extends Controller
         return redirect()->route('reservation-update');
     }
 
-    
 
     public function showQRCode($id)
     {
-        $reservation = Reservation::find($id);
+        // 予約IDから予約データを取得
+        $reservation = Reservation::findOrFail($id);
         $restaurant = optional($reservation->restaurant);
-        $qrCode = QrCode::format('png')->size(300)->generate(route('edit', $id));
+        $data = route('management.reservations', ['id' => $id]);
+        $qrCode = QrCode::format('png')->size(300)->generate($data);
         $base64QrCode = 'data:image/png;base64,' . base64_encode($qrCode);
-        return view('qrcode',compact('reservation','restaurant', 'base64QrCode'));
+
+        return view('qrcode', compact('reservation', 'restaurant', 'base64QrCode'));
     }
 
 }

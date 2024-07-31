@@ -1,40 +1,30 @@
 .container {
     width: 90%;
     margin: 0 auto;
-    /* background: lightgrey; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; */
 }
 
-.inner{
-    width: 80%;
-    margin: 24px auto;
-    /* background: lightgrey; */
-}
-
-.title {
+.management__title {
     width: 100%;
     text-align: center;
-    margin: 0 auto;
+    margin: 10px auto;
     font-size: 24px;
     padding: 4px;
 }
 
-.items{
-    margin: 24px auto;
+
+.management__content{
+    margin: 10px auto;
     height:30vh;
-    width: 100%;
-    /* background: lightgrey; */
+    width: 80%;
     display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        /* color: #007BFF; */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.edit-btn {
+.edit__button,
+.reservation__button,
+.mail__button {
     display: block;
     text-align: center;
     text-decoration: none;
@@ -44,31 +34,39 @@
     margin: 16px;
 }
 
-.reservation-btn {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-    color: #007BFF;
-    font-size: 24px;
-    margin: 16px;
-}
-.mail-btn{
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-    color: #007BFF;
-    font-size: 24px;
-    margin: 16px;
+.edit__button:hover,
+.reservation__button:hover,
+.mail__button:hover{
+    color: blue;
 }
 
-.back-btn{
-    display: block;
-    text-align: center;
+
+.back__button {
+    width: 100px;
+    background: #007BFF;
+    margin: 0 auto 16px;
+    border-radius: 3px;
 }
-.button-logout{
+
+.back__button-btn {
+    width: 100%;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.back__button:hover {
+    background: blue;
+}
+
+.logout__button{
+    width: 100px;
     display: block;
     margin: 0 auto;
+}
 
+.logout__button:hover{
+    background: lightgrey;
+    border-radius: 3px;
 }

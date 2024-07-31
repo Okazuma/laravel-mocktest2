@@ -1,42 +1,33 @@
 .container{
     width: 90%;
     margin: 0 auto;
-    /* background: lightgrey; */
-}
-
-.reservations{
-    width: 80%;
-    margin: 24px auto;
-    /* background: lightgrey; */
-
 }
 
 .reservations__title{
-    /* background-color: #007BFF; */
-    /* color: #ffffff; */
     width: 100%;
     text-align: center;
-    margin: 0 auto;
+    margin: 10px auto;
     font-size: 24px;
     padding: 4px;
 }
 
 .reservations__table{
-    margin: 24px auto;
-    width: 100%;
+    margin: 10px auto;
+    width: 80%;
     background: lightgrey;
+    border-radius: 3px;
+    overflow: hidden;
+    font-size:16px;
 }
 
 .reservations__head {
-    background-color: #007BFF;
-        color: #ffffff;
+    background: #007BFF;
+    color: #ffffff;
     width: 100%;
     display: flex;
     justify-content: space-between;
     border-top: 1px solid grey;
-
 }
-
 
 .reservations__row{
     width: 100%;
@@ -63,6 +54,13 @@
     text-align: center;
 }
 
+.reservations__date-white{
+    width: 20%;
+    border-left: 1px solid grey;
+    text-align: center;
+    background:#ffffff;
+}
+
 .reservations__time{
     width: 20%;
     border-left: 1px solid grey;
@@ -75,9 +73,46 @@
     text-align: center;
 }
 
+.reservations__people-white {
+    width: 10%;
+    border-left: 1px solid grey;
+    text-align: center;
+    background: #ffffff;
+}
+
 .reservations__user-name{
     width: 30%;
     border-left: 1px solid grey;
     border-right: 1px solid grey;
     text-align:center;
+}
+
+.back__button {
+    width: 100px;
+    background:#007BFF;
+    margin: 24px auto;
+    border-radius: 3px;
+}
+
+.back__button-btn{
+    width: 100%;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.back__button:hover {
+    background: blue;
+}
+
+
+
+@media (max-width: 768px) {
+    .reservations__table{
+        width: 100%;
+    }
+    .reservations__table {
+    font-size: 12px;
+    }
 }

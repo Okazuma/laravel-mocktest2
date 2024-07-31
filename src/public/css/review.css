@@ -1,0 +1,129 @@
+.session__alert{
+    width: 100%;
+    background: blue;
+    color: white
+}
+
+.session__alert--success{
+    text-align: center;
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.form__title{
+background-color: #007BFF;
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 24px;
+    padding: 8px;
+}
+
+.review__form{
+    width: 80%;
+    margin: 0 auto;
+    background: lightgrey;
+    margin: 10px auto;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+
+.form__group{
+    padding: 12px;
+}
+
+.form__group__title{
+    margin: 4px;
+    text-align: center;
+}
+
+.form__group--rating{
+    display: flex;
+    flex-direction:column;
+}
+
+.form__group__item{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.rating-star{
+    color: yellow;
+    margin-left: 12px;
+}
+
+.form__select {
+    display: block;
+    margin: 0 auto;
+    outline: none;
+    width: 30%;
+}
+
+.form__text {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    outline: none;
+}
+
+.review__content{
+    width: 80%;
+    margin: 0 auto;
+    background: blue;
+}
+
+.review__table{
+    margin: 0 auto;
+}
+
+.submit__button {
+    width: 100px;
+    display: block;
+    margin: 8px auto 8px;
+}
+
+.submit__button:hover {
+    background: lightgrey;
+}
+
+.back__button {
+    width: 100px;
+    background: #007BFF;
+    margin: 24px auto;
+    border-radius: 3px;
+}
+
+.back__button-btn {
+    width: 100%;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.back__button:hover {
+    background: blue;
+}
+
+
+@media (max-width: 768px){
+    .form__select {
+        display: block;
+        margin: 0 auto;
+        outline: none;
+        width: 50%;
+    }
+
+    .form__text {
+        display: block;
+        margin: 0 auto;
+        width: 80%;
+        outline: none;
+    }
+}
