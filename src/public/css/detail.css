@@ -14,7 +14,7 @@
     display:flex;
 }
 
-.back-button{
+.back__button{
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     margin: auto 0;
     width:24px;
@@ -24,7 +24,7 @@
     border-radius:3px
 }
 
-.back-button-back{
+.back__button-back{
     display: block;
     text-align: center;
     text-decoration: none;
@@ -32,7 +32,7 @@
     color: grey;
 }
 
-.restaurant-name{
+.restaurant__name{
     display: block;
     font-size:24px
 }
@@ -41,7 +41,7 @@
     width:100%;
 }
 
-.restaurant__image-img{
+.restaurant__image__img{
     width: 100%;
 }
 
@@ -49,20 +49,20 @@
     display: flex;
 }
 
-.restaurant-area{
+.restaurant__area{
     margin-right:8px;
     font-size: 12px;
 }
 
-.restaurant-genre{
+.restaurant__genre{
     font-size: 12px;
 }
 
-.restaurant-description{
+.restaurant__description{
     font-size:12px;
 }
 
-.reservation-form {
+.reservation__form {
     width: 47.5%;
     background-color: #007BFF;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -74,7 +74,7 @@
     height: 72vh;
 }
 
-.reservation__heading-ttl{
+.reservation__heading__ttl{
     margin: 0 0 20px 0;
     font-size:20px;
     font-weight:bold;
@@ -85,26 +85,26 @@
     width: 100%;
 }
 
-.form-group{
+.form__group{
     margin-bottom:8px;
     width: 90%;
 }
 
-.input-date input{
+.input__date input{
     width: 40%;
     height: 24px;
     border-radius:3px;
     border: none;
 }
 
-.input-time select{
+.input__time select{
     width:100%;
     height: 24px;
     border-radius: 3px;
     border: none;
 }
 
-.input-number select{
+.input__number select{
     width: 100%;
     height:24px;
     border-radius: 3px;
@@ -136,7 +136,7 @@
     display: block;
 }
 
-.reservation-submit{
+.submit__button{
     width:100%;
     border: none;
     color:#ffffff;
@@ -145,8 +145,6 @@
     height: 8vh;
 }
 
-
-/* ーーーーーーーーーーレスポンシブデザインーーーーーーーーーー */
 
 @media (max-width: 768px) {
 
@@ -159,23 +157,26 @@
         width: 100%;
         height: auto;
         margin-bottom:24px;
-
     }
-    .reservation-form{
+
+    .reservation__form{
         width: 100%;
         margin-bottom: 24px;
     }
+
     .reservation__inner {
         padding: 20px;
         height: auto;
     }
-    .reservation__heading-ttl {
+
+    .reservation__heading__ttl {
         margin: 0 0 20px 0;
         font-size: 24px;
         font-weight: bold;
         color: #ffffff;
         text-align: center;
     }
+
     .reservation__content{
         width: 100%;
         margin:  0 auto;

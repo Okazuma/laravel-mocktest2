@@ -14,13 +14,11 @@
     justify-content: space-between;
 }
 
-
-/* ーーーーーーーーーー画面左側ーーーーーーーーーー */
 .space{
     width: 42%;
 }
 
-.likes-whose {
+.likes__whose {
     width: 54%;
     font-size: 24px;
     margin:auto 0;
@@ -37,8 +35,7 @@
     width: 42%;
 }
 
-
-.reservation__title-ttl{
+.reservation__title__ttl{
     font-size: 24px;
 }
 
@@ -49,6 +46,8 @@
     margin: auto 0;
     color: #ffffff;
     margin-bottom: 20px;
+    border-radius: 3px;
+    overflow: hidden;
 }
 
 .reservation__items{
@@ -57,7 +56,7 @@
     padding: 8px;
 }
 
-.reservation-time{
+.reservation__time{
 
     display: block;
     display: flex;
@@ -65,7 +64,7 @@
     justify-content: center;
 }
 
-.reservation-edit{
+.reservation__edit{
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -74,13 +73,13 @@
     height: 24px;
 }
 
-.reservation-time i {
+.reservation__time i {
     font-size: 24px;
     color: #ffffff;
     margin: 0 auto;
 }
 
-.reservation-number{
+.reservation__number{
     margin: auto 32px 0;
     font-size: 16px;
     text-decoration: none;
@@ -93,7 +92,7 @@
     justify-content: center;
 }
 
-.delete__button-btn{
+.delete__button__btn{
     background-color: #007BFF;
     color: white;
     border: 2px solid #ffffff;
@@ -108,7 +107,7 @@
     margin:  auto 0;
 }
 
-.delete__button-btn i {
+.delete__button__btn i {
     font-size: 16px;
     margin: auto 0;
 }
@@ -141,8 +140,6 @@
     padding: 8px;
 }
 
-
-/* ーーーーーーーーーー画面右側ーーーーーーーーーー */
 .likes{
     width: 54%;
     height:100%;
@@ -150,7 +147,7 @@
     align-items: center;
 }
 
-.likes__title-ttl{
+.likes__title__ttl{
     font-size: 24px;
 }
 
@@ -177,40 +174,40 @@
     margin:0 auto 20px 0;
 }
 
-.likes__card-image{
+.likes__card__image{
     width: 100%;
     height: 140px;
     overflow:hidden;
 }
 
-.likes__card-image img {
+.likes__card__image img {
     width: 100%;
     object-fit:cover;
 }
 
-.likes__card-content {
+.likes__card__content {
     padding:  20px;
 }
 
-.likes__restaurant-name {
+.likes__restaurant__name {
     font-size: 16px;
     margin: 0;
 }
 
-.likes__restaurant-area-genre {
+.likes__restaurant__area__genre {
     color: #666;
     font-size: 12px;
     margin:0;
 }
 
-.likes__card-actions {
+.likes__card__actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 32px;
 }
 
-.likes__details-button {
+.likes__details__button {
     background-color: #007BFF;
     border: none;
     color: white;
@@ -223,11 +220,11 @@
     text-align:center;
 }
 
-.likes__details-button:hover {
+.likes__details__button:hover {
     background-color: #0056b3;
 }
 
-.like-button {
+.like__button {
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -235,19 +232,17 @@
     color: rgb(222, 222, 222);
 }
 
-.like-button .fa-heart {
+.like__button .fa-heart {
     transition: color 0.1s;
 }
 
-.like-button .fa-heart.liked {
+.like__button .fa-heart.liked {
     color: #ff0000;
 }
 
 
-
-/* ーーーーーーーーーーレスポンシブデザインーーーーーーーーーー */
 @media (max-width: 768px) {
-    .likes-whose{
+    .likes__whose{
         width: 50%;
         display:flex;
         flex-direction:column;
@@ -262,7 +257,7 @@
         width: 100%;
     }
 
-    .likes__details-button {
+    .likes__details__button {
         background-color: #007BFF;
         border: none;
         color: white;
@@ -287,7 +282,7 @@
         padding: 0 auto;
     }
 
-    .reservation-number {
+    .reservation__number {
         font-size: 10px;
         margin: auto 10px;
     }

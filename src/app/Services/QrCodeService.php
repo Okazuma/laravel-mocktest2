@@ -24,7 +24,6 @@ class QrCodeService
      */
     public function generateQrCodeImage($data)
     {
-        // QRコードを生成し、画像データとして返す
         return QrCode::format('png')->size(300)->generate($data);
     }
 }

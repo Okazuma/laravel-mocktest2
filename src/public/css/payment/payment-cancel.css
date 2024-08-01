@@ -8,7 +8,6 @@
     width: 60%;
     margin: 0 auto;
     background: lightgrey;
-    border: 1px solid grey;
     border-radius: 3px;
     overflow: hidden;
 }
@@ -33,7 +32,6 @@
     justify-content: space-between;
     width: 40%;
     margin: 24px auto;
-
 }
 
 .checkout__button{
@@ -56,4 +54,15 @@
     border-radius: 3px;
     text-align: center;
     font-size: 14px;
+}
+
+
+@media (max-width:768px){
+    .inner{
+    width: 100%;
+    }
+
+    .cancel__items {
+    width: 60%;
+    }
 }

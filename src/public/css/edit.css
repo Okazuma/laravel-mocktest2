@@ -1,11 +1,13 @@
 .container{
-    width:100%;
+    width:90%;
+    margin: 0 auto;
 }
-.reservation-form {
+.reservation__form {
     width: 47.5%;
     background-color: #007BFF;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 3px;
+    overflow: hidden;
     margin: 0 auto;
 }
 
@@ -14,43 +16,43 @@
     height: 72vh;
 }
 
-.reservation__heading-ttl {
+.reservation__heading__ttl {
     margin: 0 0 20px 0;
     font-size: 20px;
     font-weight: bold;
     color: #ffffff;
+    text-align: center;
 }
 
 .reservation__content {
     width: 100%;
 }
 
-.form-group {
+.form__group {
     margin-bottom: 8px;
     width: 90%;
 }
 
-.input-date input {
+.input__date input {
     width: 40%;
     height: 24px;
     border-radius: 3px;
     border: none;
 }
 
-.input-time select {
+.input__time select {
     width: 100%;
     height: 24px;
     border-radius: 3px;
     border: none;
 }
 
-.input-number select {
+.input__number select {
     width: 100%;
     height: 24px;
     border-radius: 3px;
     border: none;
 }
-
 
 .confirm__table {
     width: 90%;
@@ -58,7 +60,6 @@
     border-radius: 3px;
     margin: 16px 0;
     font-size: 12px;
-
 }
 
 .confirm__row {
@@ -72,18 +73,24 @@
     display: block;
     text-align: left;
     margin-left: 8px;
-
 }
 
 .confirm__detail {
     display: block;
 }
 
-.reservation-submit {
+.update__button {
     width: 100%;
     border: none;
     color: #ffffff;
     background: rgb(51, 43, 213);
     height: 60px;
-    height: 8vh;
+}
+
+
+
+@media (max-width:768px) {
+    .reservation__form {
+        width: 100%;
+    }
 }

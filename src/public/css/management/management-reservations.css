@@ -6,7 +6,7 @@
 .reservations__title{
     width: 100%;
     text-align: center;
-    margin: 10px auto;
+    margin: 20px auto;
     font-size: 24px;
     padding: 4px;
 }
@@ -80,7 +80,7 @@
     background: #ffffff;
 }
 
-.reservations__user-name{
+.reservations__user__name{
     width: 30%;
     border-left: 1px solid grey;
     border-right: 1px solid grey;
@@ -94,7 +94,7 @@
     border-radius: 3px;
 }
 
-.back__button-btn{
+.back__button__btn{
     width: 100%;
     text-align: center;
     display: block;
@@ -102,7 +102,7 @@
     color: white;
 }
 
-.back__button:hover {
+.back__button__btn:hover {
     background: blue;
 }
 

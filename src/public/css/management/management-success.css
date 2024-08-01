@@ -9,11 +9,11 @@
     flex-direction: column;
 }
 
-.success-text {
+.success__text {
     font-size: 24px;
 }
 
-.back-btn {
+.back__button {
     display: block;
     text-align: center;
     text-decoration: none;

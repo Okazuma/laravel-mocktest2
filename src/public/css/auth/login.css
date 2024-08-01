@@ -53,11 +53,17 @@
     height: 100%;
 }
 
+.form__error{
+    text-align: center;
+    color: red;
+}
+
 .form__input input {
     width: 100%;
     border: none;
     outline: none;
     height: 100%;
+    display: block;
 }
 
 .icon {

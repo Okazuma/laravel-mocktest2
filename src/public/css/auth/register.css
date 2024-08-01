@@ -60,6 +60,11 @@
     height: 100%;
 }
 
+.form__error {
+    text-align: center;
+    color: red;
+}
+
 .icon {
     width: 20px;
     display: flex;

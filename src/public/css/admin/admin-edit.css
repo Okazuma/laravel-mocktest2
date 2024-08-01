@@ -3,10 +3,10 @@
     margin: 0 auto;
 }
 
-.admin-title {
+.admin__title {
     width: 100%;
     text-align: center;
-    margin: 10px auto;
+    margin: 20px auto;
     font-size: 24px;
     padding: 4px;
 }
@@ -17,10 +17,9 @@
     background: lightgrey;
     border-radius: 3px;
     overflow: hidden;
-    /* padding-bottom: 16px; */
 }
 
-.admin__form-title{
+.admin__form__title{
 background-color: #007BFF;
 color: #ffffff;
 width: 100%;
@@ -34,7 +33,7 @@ padding: 4px;
     padding: 16px;
 }
 
-.form-input{
+.form__input{
     display: block;
     margin: 0 auto;
     width: 50%;
@@ -59,12 +58,10 @@ padding: 4px;
     width: 100px;
     display: block;
     margin: 8px auto 24px;
-
 }
 .submit__button:hover {
     background: lightgrey;
 }
-
 
 .back__button {
     width: 100px;
@@ -73,7 +70,7 @@ padding: 4px;
     border-radius: 3px;
 }
 
-.back__button-btn {
+.back__button__btn {
     width: 100%;
     text-align: center;
     display: block;
@@ -81,7 +78,7 @@ padding: 4px;
     color: white;
 }
 
-.back__button:hover {
+.back__button__btn:hover {
     background: blue;
 }
 
@@ -96,7 +93,6 @@ padding: 4px;
     border-radius: 3px;
 }
 
-
 .todo__alert{
     background: pink;
     width: 100%;
@@ -106,3 +102,9 @@ padding: 4px;
     text-align: center;
 }
 
+
+@media (max-width:768px){
+    .admin__form {
+            width: 100%;
+    }
+}

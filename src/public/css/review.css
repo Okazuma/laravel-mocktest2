@@ -42,7 +42,7 @@ background-color: #007BFF;
     text-align: center;
 }
 
-.form__group--rating{
+.form__group__rating{
     display: flex;
     flex-direction:column;
 }
@@ -53,7 +53,7 @@ background-color: #007BFF;
     margin: 0 auto;
 }
 
-.rating-star{
+.rating__star{
     color: yellow;
     margin-left: 12px;
 }
@@ -70,16 +70,6 @@ background-color: #007BFF;
     margin: 0 auto;
     width: 50%;
     outline: none;
-}
-
-.review__content{
-    width: 80%;
-    margin: 0 auto;
-    background: blue;
-}
-
-.review__table{
-    margin: 0 auto;
 }
 
 .submit__button {

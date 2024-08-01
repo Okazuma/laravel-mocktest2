@@ -16,7 +16,7 @@
 .edit__title {
     width: 100%;
     text-align: center;
-    margin: 10px auto;
+    margin: 20px auto;
     font-size: 24px;
     padding: 4px;
 }
@@ -29,16 +29,6 @@
 .create{
     width: 47.5%;
     height: auto;
-    border-radius: 3px;
-    overflow: hidden;
-    margin-top: 10px;
-}
-
-.detail{
-    display: flex;
-    flex-direction: column;
-    width: 47.5%;
-    margin-bottom: 24px;
     border-radius: 3px;
     overflow: hidden;
     margin-top: 10px;
@@ -70,7 +60,7 @@
 .form__input {
     display: block;
     margin: 0 auto;
-    width: 50%;
+    width: 60%;
     border-radius: 3px;
     border: none;
     outline: none;
@@ -94,6 +84,15 @@
     width: 80px;
 }
 
+.detail {
+    display: flex;
+    flex-direction: column;
+    width: 47.5%;
+    margin-bottom: 24px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 10px;
+}
 
 .detail__content{
     width: 100%;
@@ -115,7 +114,6 @@
     margin: auto 0;
 }
 
-
 .restaurant__detail__button{
     width: 70%;
     display: block;
@@ -132,7 +130,7 @@
     border-radius: 3px;
 }
 
-.back__button-btn {
+.back__button__btn {
     width: 100%;
     text-align: center;
     display: block;
@@ -140,7 +138,7 @@
     color: white;
 }
 
-.back__button:hover {
+.back__button__btn:hover {
     background: blue;
 }
 
@@ -154,11 +152,9 @@
 
         .create{
             width: 100%
-
         }
 
         .detail{
             width: 100%
-
         }
 }

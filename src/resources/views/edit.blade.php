@@ -5,19 +5,16 @@
 @endsection
 
 @section('content')
-
-
 <div class="container">
-    
-    <form class="reservation-form" action="{{route('reservation-update')}}" method="post">
+    <form class="reservation__form" action="{{route('update')}}" method="post">
     @csrf
-    <div class="reservation__inner">
-            <p class="reservation__heading-ttl">※予約の変更</p>
+        <div class="reservation__inner">
+            <p class="reservation__heading__ttl">※予約の変更</p>
             <div class="reservation__content">
-                <div class="form-group">
+                <div class="form__group">
                     <input type="hidden" name="id" value="{{ $reservation->id }}">
-                    <div class="input-date">
-                        <input type="date" class="form-control" id="date" name="date" >
+                    <div class="input__date">
+                        <input type="date" class="form__control" id="date" name="date" >
                         <div class="form__error">
                         @error('date')
                         {{ $message }}
@@ -25,22 +22,19 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <div class="input-time">
-                        <select class="form-control" id="time" name="time">
+                <div class="form__group">
+                    <div class="input__time">
+                        <select class="form__control" id="time" name="time">
                             <option value="" selected>予約時間</option>
                                 @php
                                 $startTime = strtotime('17:00');
                                 $endTime = strtotime('23:00');
                                 $interval = 30 * 60; // 30分
-
                                 for ($time = $startTime; $time <= $endTime; $time += $interval) {
                                     $formattedTime = date('H:i', $time);
                                     echo "<option value='$formattedTime'>$formattedTime</option>";
                                 }
                                 @endphp
-
                         </select>
                         <div class="form__error">
                         @error('time')
@@ -49,9 +43,8 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <div class="input-number">
+                <div class="form__group">
+                    <div class="input__number">
                         <select class="form-control" id="number" name="no_people">
                             <option value="" selected>人数</option>
                             <option value="1">1人</option>
@@ -67,7 +60,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <table class="confirm__table">
                     <tr class="confirm__row">
@@ -87,15 +79,13 @@
                         <td class="confirm__detail"><span id="display-number"></span></td>
                     </tr>
                 </table>
-
             </div>
-
         </div>
-        <button type="submit" class="reservation-submit">予約を変更する</button>
+        <button class="update__button" type="submit">予約を変更する</button>
     </form>
-
 </div>
 
+<!-- ーーーー入力値をテーブルに反映させるーーーーー -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const dateInput = document.getElementById('date');
@@ -105,11 +95,9 @@
         dateInput.addEventListener('input', function () {
             document.getElementById('display-date').textContent = dateInput.value;
         });
-
         timeInput.addEventListener('input', function () {
             document.getElementById('display-time').textContent = timeInput.value;
         });
-
         numberInput.addEventListener('change', function () {
             const numberValue = numberInput.options[numberInput.selectedIndex].text;
             document.getElementById('display-number').textContent = numberValue;

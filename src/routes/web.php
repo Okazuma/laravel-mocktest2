@@ -56,6 +56,38 @@ Route::post('/', [AuthController::class, 'logout'])->name('logout');
 
 
 
+// ーーーーーーーーーーメール認証ーーーーーーーーーー
+
+// メール認証通知ページを表示するルート
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->name('verification.notice');
+
+// メール認証を行うルート
+Route::get('/email/verify/{id}/{hash}', function (Request $request, $id, $hash) {
+    $user = User::findOrFail($id);
+    $user->markEmailAsVerified();
+        return view('auth.thanks');
+})->middleware(['signed'])->name('verification.verify');
+
+// 認証メールを再送信するルート
+Route::post('/email/verify/resend', function (Request $request) {
+    $email = session('email');
+    $user = User::where('email', $email)->first();
+    if (!$user) {
+        return redirect()->route('login')->withErrors(['message' => 'ユーザーが見つかりません。']);
+    }
+    if ($user->hasVerifiedEmail()) {
+        return redirect()->route('login')->withErrors(['message' => 'このメールアドレスは既に認証されています。']);
+    }
+    $user->sendEmailVerificationNotification();
+    return redirect()->route('verification.notice')->with('message', '認証メールを再送しました。');
+})->name('verification.resend');
+
+
+
+
+
 // ーーーーーーーーーー飲食店一覧ーーーーーーーーーー
 
 // 飲食店一覧ページ(HOME)表示のルート
@@ -100,51 +132,18 @@ Route::middleware(['auth'])->group(function () {
     // マイページの表示ルート
     Route::get('/mypage', [MypageController::class, 'mypage'])->name('mypage');
 
-    // 予約情報を削除するルート
-    Route::delete('/delete/{id}',[MypageController::class,'destroy']);
-
     // 予約情報の更新ページ表示のルート
     Route::get('/mypage-edit/{id}',[MypageController::class,'edit'])->name('edit');
 
-    // QRコードを表示するルート
-    Route::get('/qrcode/{id}', [MypageController::class, 'showQRCode'])->name('show.qrcode');
+    // 予約情報を更新するルート
+    Route::post('/mypage',[MypageController::class,'update'])->name('update');
 
-    // マイページから予約情報の詳細を表示して予約情報を更新するルート
-    Route::post('/mypage',[MypageController::class,'update'])->name('reservation-update');
+    // 予約削除確認ページ表示のルート
+    Route::get('/confirm/{id}', [MypageController::class, 'confirm'])->name('confirm');
+
+    // 予約情報を削除するルート
+    Route::delete('/delete/{id}',[MypageController::class,'destroy']);
 });
-
-
-
-// ーーーーーーーーーーメール認証ーーーーーーーーーー
-
-// メール認証通知ページを表示するルート
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->name('verification.notice');
-
-
-// メール認証を実際に行うルート
-Route::get('/email/verify/{id}/{hash}', function (Request $request, $id, $hash) {
-    $user = User::findOrFail($id);
-    $user->markEmailAsVerified();
-        return view('auth.thanks');
-})->middleware(['signed'])->name('verification.verify');
-
-
-// 認証メールを再送信するルート
-Route::post('/email/verify/resend', function (Request $request) {
-    $email = session('email');
-    $user = User::where('email', $email)->first();
-    if (!$user) {
-        return redirect()->route('login')->withErrors(['message' => 'ユーザーが見つかりません。']);
-    }
-    if ($user->hasVerifiedEmail()) {
-        return redirect()->route('login')->withErrors(['message' => 'このメールアドレスは既に認証されています。']);
-    }
-    $user->sendEmailVerificationNotification();
-    return redirect()->route('verification.notice')->with('message', '認証リンクを再送しました。');
-})->name('verification.resend');
-
 
 
 
@@ -185,7 +184,7 @@ Route::middleware(['store_manager'])->group(function(){
 
     // 店舗情報の更新処理ルート
     Route::patch('/management/update/{id}', [ManagementController::class, 'updateRestaurant'])->name('management.update');
-});
+
     // 予約情報ページ表示のルート
     Route::get('/management/reservations',[ManagementController::class,'showManagementReservations'])->name('management.reservations');
 
@@ -194,7 +193,7 @@ Route::middleware(['store_manager'])->group(function(){
 
     // お知らせメールを送信するルート
     Route::post('/management/send-email', [ManagementController::class, 'sendEmail'])->name('management.email.send');
-
+});
 
 
 
@@ -205,8 +204,6 @@ Route::get('/reviews',[ReviewController::class,'reviews']);
 
 // レビューを記録するルート
 Route::post('/reviews',[ReviewController::class,'storeReview']);
-
-
 
 
 
@@ -229,4 +226,3 @@ Route::get('payment/cancel',function(){
 
 // 支払い処理を行うルート
 Route::post('/create-checkout-session', [PaymentController::class, 'createCheckoutSession']);
-

@@ -21,12 +21,12 @@
     border-radius: 3px;
 }
 
-.thanks-text {
+.thanks__text {
     font-size: 18px;
     margin-bottom: 24px;
 }
 
-.login-btn {
+.login__button {
     display: block;
     text-align: center;
     text-decoration: none;

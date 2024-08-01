@@ -8,7 +8,6 @@
     width: 60%;
     margin: 0 auto;
     background: lightgrey;
-    border: 1px solid grey;
     border-radius: 3px;
     overflow: hidden;
 }
@@ -31,6 +30,7 @@
 .checkout-input{
     display: block;
     margin: 8px auto 8px;
+        outline: none;
 }
 
 .submit__button {
@@ -54,6 +54,6 @@
 
 @media (max-width:768px){
     .checkout__form {
-            width: 80%;
+            width: 100%;
         }
 }

@@ -16,21 +16,18 @@ class RestaurantController extends Controller
     }
 
 
-
-    // menu1ページの表示ーーーーーーーーーー
+    // ログインユーザーメニューの表示ーーーーーーーーーー
     public function menuUser()
     {
         return view('user-menu');
     }
 
 
-
-    // menu2ページの表示ーーーーーーーーーー
+    // ゲストユーザーメニューの表示ーーーーーーーーーー
     public function menuGuest()
     {
         return view('guest-menu');
     }
-
 
 
     // 検索フォームの処理ーーーーーーーーーー
@@ -38,19 +35,16 @@ class RestaurantController extends Controller
     {
         $query = Restaurant::query();
 
-        // エリアのフィルタリング
-        if ($request->filled('area')) {
-            $query->where('area', $request->input('area'));
-        }
-        // ジャンルのフィルタリング
-        if ($request->filled('genre')) {
-            $query->where('genre', $request->input('genre'));
-        }
-
-        if ($request->filled('keyword')) {
-            $keyword = $request->input('keyword');
-            $query->where('name', 'like', '%' . $keyword . '%');
-        }
+            if ($request->filled('area')) {
+                $query->where('area', $request->input('area'));
+            }
+            if ($request->filled('genre')) {
+                $query->where('genre', $request->input('genre'));
+            }
+            if ($request->filled('keyword')) {
+                $keyword = $request->input('keyword');
+                $query->where('name', 'like', '%' . $keyword . '%');
+            }
 
         $restaurants = $query->get();
         return view('index', compact('restaurants'));
@@ -64,7 +58,6 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::findOrFail($shop_id);
         return view('detail', compact('restaurant'));
     }
-
 
 
     // いいね機能の処理ーーーーーーーーーー

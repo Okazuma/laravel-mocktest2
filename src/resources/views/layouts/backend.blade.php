@@ -14,7 +14,7 @@
 
 <body>
     <header class="header">
-            <h1 class="header__inner-title">Rese:Dashboard</h1>
+            <h1 class="header__inner__title">Rese:Dashboard</h1>
     </header>
 
     <main>

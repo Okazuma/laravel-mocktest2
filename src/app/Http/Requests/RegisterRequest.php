@@ -36,13 +36,11 @@ class RegisterRequest extends FormRequest
             'name.required' => '名前を入力してください',
             'name.string' => '名前は文字列で入力してください',
             'name.max' => '50文字以内で入力してください',
-
             'email.required' => 'メールアドレスを入力してください',
             'email.string' => 'メールアドレスを文字列で入力してください',
             'email.email' => 'メールアドレス形式で入力してください',
             'email.unique' => 'このメールアドレスは既に使われています',
             'email.max' => '100文字以内で入力してください',
-
             'password.required' => 'パスワードを入力してください',
             'password.string' => 'パスワードは文字列で入力してください',
             'password.digits_between' => 'パスワードは8桁から12桁で入力してください',

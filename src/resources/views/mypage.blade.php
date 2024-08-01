@@ -2,38 +2,28 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
-
 @endsection
 
 @section('content')
-
 <div class="container">
     <div class="heading">
         <div class="space"></div>
-        <p class="likes-whose">{{Auth::user()->name}}さん</p>
+        <p class="likes__whose">{{Auth::user()->name}}さん</p>
     </div>
-
     <div class="content">
-
         <div class="reservation">
             <div class="reservation__title">
-                <p class="reservation__title-ttl">予約状況</p>
+                <p class="reservation__title__ttl">予約状況</p>
             </div>
-
             @foreach($reservations as $index => $reservation)
             <div class="reservation__content">
                 <div class="reservation__items">
-                    <div class="reservation-time" >
-                        <a class="reservation-edit" href="{{ route('edit', ['id' => $reservation->id]) }}">
-                        <i class="fa-solid fa-clock"></i>
-                        </a>
-                        <a class="reservation-number" href="{{ route('show.qrcode', $reservation->id) }}">予約{{ $index + 1 }}</a>
+                    <div class="reservation__time" >
+                        <a class="reservation__edit" href="{{ route('edit', ['id' => $reservation->id]) }}">
+                        <i class="fa-solid fa-clock"></i></a>
+                        <span class="reservation__number">予約{{ $index + 1 }}</span>
                     </div>
-                    <form class="delete__button" action="/delete/{{ $reservation->id }}" method="post">
-                    @method('delete')
-                    @csrf
-                        <button class="delete__button-btn" type="submit" ><i class="fa-solid fa-x"></i></button>
-                    </form>
+                    <a class="delete__button__btn" href="{{ route('confirm', $reservation->id) }}" ><i class="fa-solid fa-x"></i></a>
                 </div>
 
                 <div class="reservation__detail">
@@ -56,35 +46,31 @@
                         </tr>
                     </table>
                 </div>
-
             </div>
             @endforeach
         </div>
 
-
-
         <div class="likes">
             <div class="likes__title">
-                <p class="likes__title-ttl">お気に入り店舗</p>
+                <p class="likes__title__ttl">お気に入り店舗</p>
             </div>
-
             <div class="likes__inner">
                 @foreach($likedRestaurants as $restaurant)
                 <div class="likes__card">
-                    <div class="likes__card-image">
+                    <div class="likes__card__image">
                         <img src="{{ asset($restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
                     </div>
-                    <div class="likes__card-content">
-                        <h4 class="likes__restaurant-name">{{ $restaurant->name }}</h4>
-                        <p class="likes__restaurant-area-genre">#{{ $restaurant->area }}  #{{ $restaurant->genre }}</p>
-                        <div class="likes__card-actions">
-                            <a href="{{ route('restaurants.detail', $restaurant->id) }}" class="likes__details-button">詳しく見る</a>
+                    <div class="likes__card__content">
+                        <h4 class="likes__restaurant__name">{{ $restaurant->name }}</h4>
+                        <p class="likes__restaurant__area__genre">#{{ $restaurant->area }}  #{{ $restaurant->genre }}</p>
+                        <div class="likes__card__actions">
+                            <a href="{{ route('restaurants.detail', $restaurant->id) }}" class="likes__details__button">詳しく見る</a>
                             @auth
-                                <button class="like-button" data-restaurant-id="{{ $restaurant->id }}">
+                                <button class="like__button" data-restaurant-id="{{ $restaurant->id }}">
                                     <i class="fas fa-heart {{ Auth::user() && Auth::user()->likedRestaurants->contains($restaurant->id) ? 'liked' : '' }}"></i>
                                 </button>
                             @else
-                                <button class="like-button">
+                                <button class="like__button">
                                     <i class="fas fa-heart"></i>
                                 </button>
                             @endauth

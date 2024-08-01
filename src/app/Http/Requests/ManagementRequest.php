@@ -25,9 +25,10 @@ class ManagementRequest extends FormRequest
     {
         return [
             'name' => ['required','string','max:100'],
-            'description' => ['required','string','max:255'],
+            'image_path' => ['required'],
             'area' => ['required'],
             'genre' => ['required'],
+            'description' => ['required','string','max:255'],
         ];
     }
 
@@ -37,15 +38,12 @@ class ManagementRequest extends FormRequest
             'name.required' => '飲食店名を入力してください',
             'name.string' => '文字列で入力してください',
             'name.Max' => '100文字以内で入力してください',
-
+            'image_path.required' => 'イメージ画像を設定してください',
             'description.required' => '飲食店情報を入力してください',
             'description.string' => '文字列で入力してください',
             'description.Max' => '255文字以内で入力してください',
-
-            'area.required' => 'エリアを選択してください',
-
-            'genre.required' => 'ジャンルを選択してください',
-
+            'area.required' => 'エリアを入力してください',
+            'genre.required' => 'ジャンルを入力してください',
         ];
     }
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,58 +16,45 @@
   <header class="header">
     <div class="header__container">
       <div class="header__inner">
-
       @auth
-        <a id="menu-button" class="burger-icon {{ request()->is('user/menu') ? 'close-icon' : '' }}" href="{{ route('user-menu') }}">
+        <a id="menu-button" class="burger__icon {{ request()->is('user/menu') ? 'close-icon' : '' }}" href="{{ route('user-menu') }}">
           <span></span>
           <span></span>
           <span></span>
         </a>
       @else
-        <a id="menu-button" class="burger-icon {{ request()->is('guest/menu') ? 'close-icon' : '' }}" href="{{ route('guest-menu') }}">
+        <a id="menu-button" class="burger__icon {{ request()->is('guest/menu') ? 'close-icon' : '' }}" href="{{ route('guest-menu') }}">
           <span></span>
           <span></span>
           <span></span>
         </a>
       @endauth
 
-
         <h1 class="header__logo">Rese</h1>
       </div>
-
       <div class="header__search">
         @yield('search')
-        
       </div>
-
-
-
   </header>
 
   <main>
     @yield('content')
   </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuButton = document.getElementById('menu-button');
+      const currentPath = window.location.pathname;
 
-<script>
-
-document.addEventListener('DOMContentLoaded', function() {
-    const menuButton = document.getElementById('menu-button');
-    const currentPath = window.location.pathname;
-
-    // メニュー画面にいる場合は戻るボタンにする
-    if (currentPath.includes('user/menu') || currentPath.includes('guest/menu')) {
-        menuButton.addEventListener('click', function(event) {
-            event.preventDefault(); // デフォルトのクリック動作をキャンセル
-            window.history.back(); // ブラウザの履歴を一つ戻る（前のページに戻る）
-        });
-        menuButton.classList.add('close-icon');
-    }
-});
-</script>
-
-@yield('scripts')
-
-
+      // メニュー画面にいる場合は戻るボタンにする
+      if (currentPath.includes('user/menu') || currentPath.includes('guest/menu')) {
+          menuButton.addEventListener('click', function(event) {
+              event.preventDefault();
+              window.history.back();
+          });
+          menuButton.classList.add('close__icon');
+      }
+    });
+  </script>
+  @yield('scripts')
 </body>
-
 </html>

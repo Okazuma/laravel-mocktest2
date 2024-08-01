@@ -22,6 +22,14 @@ class MypageController extends Controller
     }
 
 
+    // 予約削除確認ページの表示
+    public function confirm($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+        $restaurant = optional($reservation->restaurant);
+        return view('confirm', compact('reservation', 'restaurant'));
+    }
+
 
     // 予約情報の削除ーーーーーーーーーー
     public function destroy(Request $request)
@@ -31,16 +39,13 @@ class MypageController extends Controller
     }
 
 
-
     // 予約情報の編集画面の表示ーーーーーーーーーー
     public function edit($id)
     {
         $reservation = Reservation::find($id);
         $restaurant = optional($reservation->restaurant);
-        
         return view('edit',compact('reservation','restaurant'));
     }
-
 
 
     // 予約情報の編集処理ーーーーーーーーーー
@@ -48,20 +53,7 @@ class MypageController extends Controller
     {
         $reservation = $request->only('date','time','no_people');
         Reservation::find($request->id)->update($reservation);
-        return redirect()->route('reservation-update');
-    }
-
-
-    public function showQRCode($id)
-    {
-        // 予約IDから予約データを取得
-        $reservation = Reservation::findOrFail($id);
-        $restaurant = optional($reservation->restaurant);
-        $data = route('management.reservations', ['id' => $id]);
-        $qrCode = QrCode::format('png')->size(300)->generate($data);
-        $base64QrCode = 'data:image/png;base64,' . base64_encode($qrCode);
-
-        return view('qrcode', compact('reservation', 'restaurant', 'base64QrCode'));
+        return redirect()->route('update');
     }
 
 }

@@ -10,52 +10,28 @@ use App\Http\Requests\LoginRequest;
 
 class AuthController extends Controller
 {
-
-    // ログインフォームの表示ーーーーー
-
+    // ログインフォームの表示ーーーーーーーーーー
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
 
-    // ログイン処理ーーーーー
-
-    // public function login(LoginRequest $request)
-    // {
-    //     $credentials = $request->only('email', 'password');
-
-    //     if (Auth::attempt($credentials)) {
-    //         $user = Auth::user();
-
-    //         if($user->hasRole('admin')){
-    //             return redirect()->intended('/admin/edit');//  認証済みなら'/admin/edit'へ
-    //         }elseif($user->hasRole('store_manager')){
-    //             return redirect()->intended('/management/home');
-    //         }else{
-    //             return redirect()->intended('/');//  認証済みなら'/'へ
-    //     }
-    //     } else {
-    //         return redirect('/login');
-    //     }
-    // }
-
-
+    // ログイン処理ーーーーーーーーーー
     public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-                return redirect()->intended('/');//  認証済みなら'/'へ
+                return redirect()->intended('/');
         }else{
             return redirect('/login');
         }
     }
 
 
-    // ログアウト処理ーーーーー
-
+    // ログアウト処理ーーーーーーーーーー
     public function logout()
     {
         Auth::logout();

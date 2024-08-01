@@ -5,7 +5,6 @@
 @endsection
     <script src="https://js.stripe.com/v3/"></script>
 @section('content')
-
 <div class="container">
     <form class="checkout__form" id="payment-form">
         <h1 class="checkout__title">Check out</h1>
@@ -17,7 +16,6 @@
 
     <script>
         const stripe = Stripe('pk_test_51PhnPlRuekiYr2wt9X0QAJ9BkRhK512lVTJXfI7xAacZX8wBe6GEE13CfLeccZl2pBI75pVldmUr6CyWPoOMjvNE00bBFKj28e');
-
         document.getElementById('payment-form').addEventListener('submit', function (event) {
             event.preventDefault();
             const amount = document.getElementById('amount').value; // Convert yen to cents

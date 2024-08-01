@@ -36,17 +36,14 @@ class AdminRequest extends FormRequest
             'name.required' => '店舗代表者名を入力してください',
             'name.string' => '文字列で入力してください',
             'name.max' => '50文字以内で入力してください',
-
             'email.required' => 'メールアドレスを入力してください',
             'email.string' => '文字列で入力してください',
             'email.email' => 'メールアドレス形式で入力してください',
             'email.unique' => 'このメールアドレスは既に使われています',
             'email.max' => '100文字以内で入力してください',
-
             'password.required' => 'パスワードを入力してください',
             'password.string' => '文字列で入力してください',
             'password.digits_between' => '8桁から12桁で入力してください',
-
         ];
     }
 }

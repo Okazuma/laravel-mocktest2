@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
-    //
+    // レビューページの表示ーーーーーーーーーー
     public function reviews()
     {
         $restaurants = Restaurant::with('reviews')->get();
@@ -18,6 +18,7 @@ class ReviewController extends Controller
     }
 
 
+    // レビュー投稿処理ーーーーーーーーーー
     public function storeReview(Request $request)
     {
         $userId = Auth::id();
@@ -29,4 +30,5 @@ class ReviewController extends Controller
         ]);
         return redirect ('/reviews')->with('message','レビューを投稿しました。');
     }
+
 }

@@ -24,7 +24,6 @@ class UserNotification extends Mailable
         //
         $this->subject = $subject;
         $this->content = $content;
-
     }
 
     /**

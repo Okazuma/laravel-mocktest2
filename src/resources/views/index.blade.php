@@ -2,12 +2,11 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-
 @endsection
 
 @section('search')
-<form class="search-form" id="search-form" action="{{route('restaurants.search')}}" method="GET">
-    <div class="search__area-genre">
+<form class="search__form" id="search-form" action="{{route('restaurants.search')}}" method="GET">
+    <div class="search__area__genre">
         <div class="search__area">
             <select name="area" id="area">
                 <option value="">All area</option>
@@ -38,21 +37,21 @@
 <div class="container">
     @foreach($restaurants as $restaurant)
         <div class="card">
-            <div class="card-image">
+            <div class="card__image">
                 <img src="{{ asset($restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
             </div>
-            <div class="card-content">
-                <h4 class="restaurant-name">{{ $restaurant->name }}</h4>
-                <p class="restaurant-area-genre">#{{ $restaurant->area }}  #{{ $restaurant->genre }}</p>
-                <div class="card-actions">
-                    <a href="{{ route('restaurants.detail', $restaurant->id) }}" class="details-button">詳しく見る</a>
+            <div class="card__content">
+                <h4 class="restaurant__name">{{ $restaurant->name }}</h4>
+                <p class="restaurant__area__genre">#{{ $restaurant->area }}  #{{ $restaurant->genre }}</p>
+                <div class="card__actions">
+                    <a href="{{ route('restaurants.detail', $restaurant->id) }}" class="details__button">詳しく見る</a>
 
                     @auth
-                        <button class="like-button" data-restaurant-id="{{ $restaurant->id }}">
+                        <button class="like__button" data-restaurant-id="{{ $restaurant->id }}">
                             <i class="fas fa-heart {{ Auth::user() && Auth::user()->likedRestaurants->contains($restaurant->id) ? 'liked' : '' }}"></i>
                         </button>
                     @else
-                        <button class="like-button">
+                        <button class="like__button">
                             <i class="fas fa-heart"></i>
                         </button>
                     @endauth
@@ -61,8 +60,6 @@
         </div>
     @endforeach
 </div>
-
-
 
 <!-- ーーーーーイイネボタン押下時の処理ーーーーー -->
 <script>
@@ -102,9 +99,6 @@
         });
     });
 </script>
-<!-- ーーーーーイイネボタン押下時の処理ーーーーー -->
-
-
 
 @yield('scripts')
 <!-- ーーーーー検索フォーム使用時の処理ーーーーー -->
@@ -115,12 +109,10 @@
         const keywordInput = document.getElementById('keyword');
         const searchForm = document.getElementById('search-form');
 
-        // 初期値の設定
         const initialAreaValue = "{{ request()->input('area') }}";
         const initialGenreValue = "{{ request()->input('genre') }}";
         const initialKeywordValue = "{{ request()->input('keyword') }}";
 
-        // 初期値を設定
         if (initialAreaValue) {
             areaSelect.value = initialAreaValue;
         }
@@ -139,23 +131,17 @@
         clearTimeout(debounceTimeoutArea);
         debounceTimeoutArea = setTimeout(() => searchForm.submit(), 100);
     }
-
     function debounceSubmitGenre() {
         clearTimeout(debounceTimeoutGenre);
         debounceTimeoutGenre = setTimeout(() => searchForm.submit(), 100);
     }
-
     function debounceSubmitKeyword() {
         clearTimeout(debounceTimeoutKeyword);
         debounceTimeoutKeyword = setTimeout(() => searchForm.submit(), 1500);
     }
-
         areaSelect.addEventListener('change', debounceSubmitArea);
         genreSelect.addEventListener('change', debounceSubmitGenre);
         keywordInput.addEventListener('input', debounceSubmitKeyword);
     });
 </script>
-<!-- ーーーーー検索フォーム使用時の処理ーーーーー -->
-
-
 @endsection

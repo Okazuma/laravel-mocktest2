@@ -49,7 +49,6 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::authenticateUsing(function (Request $request) {
-            // カスタム認証処理を使用
             $controller = new AuthController();
             return $controller->login($request);
         });

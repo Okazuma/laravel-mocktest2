@@ -17,6 +17,7 @@ class AdminController extends Controller
         $this->middleware('admin');
     }
 
+
     // 管理者ページの表示ーーーーーーーーーー
     public function showAdminEdit()
     {
@@ -26,55 +27,21 @@ class AdminController extends Controller
     }
 
 
-
     // 店舗代表者作成の処理ーーーーーーーーーー
     public function storeRestaurantManager(AdminRequest $request)
     {
-        $storeManagerRole = Role::where('name','store_manager')->first();  //ロールを取得
-
+        $storeManagerRole = Role::where('name','store_manager')->first();
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        $user -> assignRole('store_manager');  //ロールを付与
-
-        // return redirect()->route('admin.admin-success');
+        $user -> assignRole('store_manager');
         return redirect()->route('admin.admin-edit')->with('message','managerを作成しました');
     }
 
-//     public function storeRestaurantManager(AdminRequest $request)
-// {
-//     $existingUser = $request->input('existing_user');
-//     $email = $request->input('email');
-//     $restaurantManagerRole = Role::where('name', 'restaurant_manager')->first();
 
-//     if ($existingUser) {
-//         // 既存ユーザーとして処理
-//         $user = User::where('email', $email)->first();
-//         if (!$user) {
-//             return redirect()->back()->withErrors(['email' => '指定されたメールアドレスのユーザーが見つかりません。']);
-//         }
-//     } else {
-//         // 新規ユーザーとして処理
-//         $user = User::create([
-//             'name' => $request->name,
-//             'email' => $email,
-//             'password' => Hash::make($request->password),
-//             'role_id' => $restaurantManagerRole->id,
-//         ]);
-//     }
-
-//     // 中間テーブルにレコードを追加
-//     $user->managedRestaurants()->attach($request->restaurant_id);
-
-//     return redirect()->route('admin.admin-success');
-// }
-
-
-
-
-// 店舗代表者作成完了ページの表示ーーーーーーーーーー
+    // 店舗代表者作成完了ページの表示ーーーーーーーーーー
     public function adminSuccess()
     {
         return view('admin.admin-success');

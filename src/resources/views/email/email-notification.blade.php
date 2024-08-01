@@ -2,7 +2,6 @@
 <html>
 <head>
     <style>
-        /* インラインスタイルやスタイルタグを使ってCSSを定義 */
         .email-body {
             font-family: Arial, sans-serif;
             padding: 20px;

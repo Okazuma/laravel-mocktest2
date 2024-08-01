@@ -21,12 +21,12 @@
     border-radius: 3px;
 }
 
-.done-text{
+.done__text{
     margin-bottom:24px;
     font-size:18px;
 }
 
-.back-btn {
+.back__button {
     display: block;
     text-align: center;
     text-decoration: none;

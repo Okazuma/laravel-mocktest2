@@ -8,13 +8,10 @@ use Stripe\Checkout\Session;
 
 class PaymentController extends Controller
 {
-    //
     public function createCheckoutSession(Request $request)
     {
         Stripe::setApiKey(env('STRIPE_SECRET'));
-
         $amount = $request->input('amount');
-
         $session = Session::create([
             'payment_method_types' =>['card'],
             'line_items' => [[
@@ -33,4 +30,5 @@ class PaymentController extends Controller
         ]);
             return response()->json(['id' => $session->id]);
     }
+
 }
