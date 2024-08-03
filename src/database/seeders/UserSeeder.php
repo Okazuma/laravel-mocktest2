@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     {
         //
         $adminRole = Role::where('name','admin')->first();
-        
+
         User::create([
             'name' => 'admin',
             'email' => 'admin@example.com',

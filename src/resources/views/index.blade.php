@@ -41,11 +41,10 @@
                 <img src="{{ asset($restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
             </div>
             <div class="card__content">
-                <h4 class="restaurant__name">{{ $restaurant->name }}</h4>
-                <p class="restaurant__area__genre">#{{ $restaurant->area }}  #{{ $restaurant->genre }}</p>
+                <p class="restaurant__name">{{ $restaurant->name }}</p>
+                <span class="restaurant__area__genre">#{{ $restaurant->area }}  #{{ $restaurant->genre }}</span>
                 <div class="card__actions">
-                    <a href="{{ route('restaurants.detail', $restaurant->id) }}" class="details__button">詳しく見る</a>
-
+                    <a  class="details__button" href="{{ route('restaurants.detail', $restaurant->id) }}" class="details__button">詳しく見る</a>
                     @auth
                         <button class="like__button" data-restaurant-id="{{ $restaurant->id }}">
                             <i class="fas fa-heart {{ Auth::user() && Auth::user()->likedRestaurants->contains($restaurant->id) ? 'liked' : '' }}"></i>
@@ -64,7 +63,7 @@
 <!-- ーーーーーイイネボタン押下時の処理ーーーーー -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const likeButtons = document.querySelectorAll('.like-button');
+        const likeButtons = document.querySelectorAll('.like__button');
 
         likeButtons.forEach(button => {
             button.addEventListener('click', function (event) {
