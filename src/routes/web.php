@@ -15,7 +15,7 @@ use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\VerifyEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use App\models\User;
+use App\Models\User;
 
 
 /*
