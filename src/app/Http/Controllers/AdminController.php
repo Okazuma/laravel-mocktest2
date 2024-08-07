@@ -37,7 +37,7 @@ class AdminController extends Controller
             'password' => Hash::make($request->password),
         ]);
         $user -> assignRole('store_manager');
-        return redirect()->route('admin.admin-edit')->with('message','managerを作成しました');
+        return redirect()->route('admin.admin-create')->with('message','managerを作成しました');
     }
 
 

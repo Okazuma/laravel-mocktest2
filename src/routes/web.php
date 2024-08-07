@@ -162,7 +162,7 @@ Route::middleware(['admin'])->group(function(){
     Route::get('/admin/edit',[AdminController::class,'showAdminEdit'])->name('admin.admin-edit');
 
     // 飲食店代表者を作成するルート
-    Route::post('/admin/edit',[AdminController::class,'storeRestaurantManager'])->name('admin.admin-edit');
+    Route::post('/admin/edit',[AdminController::class,'storeRestaurantManager'])->name('admin.admin-create');
 });
 
 
