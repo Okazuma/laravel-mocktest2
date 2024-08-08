@@ -22,12 +22,14 @@ class ManagementController extends Controller
     }
 
 
+
     // 飲食店代表者の編集ページの表示ーーーーーーーーーー
     public function showManagementEdit()
     {
         $restaurants = Restaurant::all();
         return view('management.management-edit',compact('restaurants'));
     }
+
 
 
     // 飲食店作成の処理ーーーーーーーーーー
@@ -46,6 +48,7 @@ class ManagementController extends Controller
     }
 
 
+
     // 飲食店の編集画面の表示ーーーーーーーーーー
     public function showManagementUpdate($id)
     {
@@ -54,27 +57,27 @@ class ManagementController extends Controller
     }
 
 
+
     // 飲食店の編集の処理ーーーーーーーーーー
     public function updateRestaurant(Request $request, $id)
     {
-        $restaurant = Restaurant::findOrFail($id);
-        $data = $request->only(['name', 'description', 'area', 'genre']);
+    $restaurant = Restaurant::findOrFail($id);
+    $data = $request->only(['name', 'description', 'area', 'genre']);
 
-        if ($request->hasFile('image')) {
+    if ($request->hasFile('image')) {
         // 古い画像がある場合は削除
         if ($restaurant->image_path) {
-            Storage::delete('public/' . str_replace('storage/', '', $restaurant->image_path));
+            Storage::disk('s3')->delete(str_replace('https://s3.amazonaws.com/your-bucket-name/', '', $restaurant->image_path));
         }
-
-        // 新しい画像を保存
-        $imagePath = $request->file('image')->store('public/images');
-        $data['image_path'] = str_replace('public/', 'storage/', $imagePath);
+        // 新しい画像をS3に保存
+        $imagePath = $request->file('image')->store('images', 's3');
+        $data['image_path'] = Storage::disk('s3')->url($imagePath);
     }
-        $restaurant->update($data);
-
-        return redirect()->route('management.update', ['id' => $id])
-                        ->with('message', '店舗情報を更新しました');
+    $restaurant->update($data);
+    return redirect()->route('management.update', ['id' => $id])
+                    ->with('message', '店舗情報を更新しました');
     }
+
 
 
     // 予約確認ページの表示ーーーーーーーーーー
@@ -85,6 +88,7 @@ class ManagementController extends Controller
     }
 
 
+
     // お知らせメール送信画面の表示ーーーーーーーーーー
     public function showEmailForm()
     {
@@ -92,9 +96,9 @@ class ManagementController extends Controller
     }
 
 
-
+    // お知らせメール送信の処理ーーーーーーーーーー
     public function sendEmail(NoticeRequest $request)
-{
+    {
     $users = $request->input('users');
     $subject = $request->input('subject');
     $content = $request->input('content');
@@ -108,7 +112,6 @@ class ManagementController extends Controller
         Mail::to($user->email)->send(new UserNotification($subject, $content));
     }
     return redirect()->route('management.email.form')->with('message', 'お知らせメールを送信しました');
-}
-
+    }
 
 }
