@@ -1,0 +1,28 @@
+# MySQLデータ
+docker/mysql/data/
+
+# Laravelのキャッシュとログ
+/storage/*.key
+/storage/*.log
+/storage/*.cache
+
+# Node.js の依存関係
+/node_modules/
+
+# Composer の依存関係
+/vendor/
+
+# 環境設定ファイル
+.env
+.env.local
+.env.*.local
+
+# OS やエディタの設定ファイル
+.DS_Store
+.idea/
+.vscode/
+
+# その他の無視するパターン
+*.log
+*.cache
+*.tmp
