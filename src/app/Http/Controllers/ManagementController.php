@@ -34,18 +34,21 @@ class ManagementController extends Controller
 
     // 飲食店作成の処理ーーーーーーーーーー
     public function storeRestaurant(ManagementRequest $request)
-    {
-        $imagePath = $request->file('image')->store('public/images');
-        $imagePath = str_replace('public/', 'storage/', $imagePath);
-        $restaurant = Restaurant::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'area' => $request->area,
-            'genre' => $request->genre,
-            'image_path' => $imagePath,
-        ]);
-        return redirect()->route('management-edit')->with('message','店舗情報を追加しました');
+{
+    $data = $request->only(['name', 'description', 'area', 'genre']);
+
+    if ($request->hasFile('image')) {
+        // 画像を S3 に保存
+        $imagePath = $request->file('image')->store('images', 's3');
+        $data['image_path'] = Storage::disk('s3')->url($imagePath);
     }
+
+    // 新規店舗を作成
+    $restaurant = Restaurant::create($data);
+
+    return redirect()->route('management-edit')->with('message', '店舗情報を追加しました');
+}
+
 
 
 

@@ -25,7 +25,7 @@ class ManagementRequest extends FormRequest
     {
         return [
             'name' => ['required','string','max:100'],
-            'image_path' => ['required'],
+            'image' => ['required', 'file', 'mimes:jpeg,png,jpg', 'max:5120'],
             'area' => ['required'],
             'genre' => ['required'],
             'description' => ['required','string','max:255'],
@@ -38,7 +38,10 @@ class ManagementRequest extends FormRequest
             'name.required' => '飲食店名を入力してください',
             'name.string' => '文字列で入力してください',
             'name.Max' => '100文字以内で入力してください',
-            'image_path.required' => 'イメージ画像を設定してください',
+            'image.required' => 'イメージ画像を設定してください',
+            'image.file' => '画像ファイルを選択してください',
+            'image.mimes' => 'jpeg, png, jpg を選択してください',
+            'image.max' => '画像サイスは5MBまでです',
             'description.required' => '飲食店情報を入力してください',
             'description.string' => '文字列で入力してください',
             'description.Max' => '255文字以内で入力してください',
