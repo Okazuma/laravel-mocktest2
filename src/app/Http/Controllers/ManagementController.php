@@ -92,18 +92,6 @@ class ManagementController extends Controller
     }
 
 
-    // お知らせメール送信の処理ーーーーーーーーーー
-    // public function sendEmail(Request $request)
-    // {
-    //     $users = User::whereIn('id',$request->input('users'))->get();
-    //     // dd($request->input('users'));
-    //     $subject = $request->input('subject');
-    //     $content = $request->input('content');
-    //         foreach($users as $user){
-    //             Mail::to($user->email)->send(new UserNotification($subject, $content));
-    //         }
-    //     return redirect()->route('management.email.form')->with('message','お知らせメールを送信しました');
-    // }
 
     public function sendEmail(NoticeRequest $request)
 {
