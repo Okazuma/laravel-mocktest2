@@ -67,7 +67,7 @@ class ManagementController extends Controller
     if ($request->hasFile('image')) {
         // 古い画像がある場合は削除
         if ($restaurant->image_path) {
-            Storage::disk('s3')->delete(str_replace('https://s3.amazonaws.com/your-bucket-name/', '', $restaurant->image_path));
+            Storage::disk('s3')->delete(str_replace('https://s3.amazonaws.com/laravel-mocktest-bucket2/', '', $restaurant->image_path));
         }
         // 新しい画像をS3に保存
         $imagePath = $request->file('image')->store('images', 's3');
