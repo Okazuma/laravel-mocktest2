@@ -51,9 +51,6 @@ Route::get('/login',[AuthController::class,'showLoginForm'])->name('login');
 // ログイン処理のルート
 Route::post('/login',[AuthController::class,'login']);
 
-// ログアウト処理のルート
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
 
 
 // ーーーーーーーーーーメール認証ーーーーーーーーーー

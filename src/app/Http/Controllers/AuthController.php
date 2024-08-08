@@ -31,12 +31,5 @@ class AuthController extends Controller
     }
 
 
-    // ログアウト処理ーーーーーーーーーー
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/');
-    }
-
 }
 
