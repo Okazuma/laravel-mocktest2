@@ -62,7 +62,7 @@ class ManagementController extends Controller
 
 
     // 飲食店の編集の処理ーーーーーーーーーー
-    public function updateRestaurant(Request $request, $id)
+    public function updateRestaurant(ManagementRequest $request, $id)
     {
     $restaurant = Restaurant::findOrFail($id);
     $data = $request->only(['name', 'description', 'area', 'genre']);
