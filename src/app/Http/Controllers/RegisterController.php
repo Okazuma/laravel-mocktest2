@@ -18,6 +18,7 @@ class RegisterController extends Controller
     }
 
 
+
     //会員登録の処理ーーーーーーーーーー
     public function register(RegisterRequest $request)
     {
@@ -30,8 +31,10 @@ class RegisterController extends Controller
 
         event(new Registered($user));
         session(['email' => $user->email]);
+
         return view('auth.verify-email');
     }
+
 
 
     // メール認証後のページの表示

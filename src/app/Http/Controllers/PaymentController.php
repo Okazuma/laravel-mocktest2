@@ -28,7 +28,7 @@ class PaymentController extends Controller
             'success_url' => route('payment.success'),
             'cancel_url' => route('payment.cancel'),
         ]);
-            return response()->json(['id' => $session->id]);
+        return response()->json(['id' => $session->id]);
     }
 
 }

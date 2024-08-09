@@ -12,6 +12,10 @@ class DashboardController extends Controller
     {
         $this->middleware('can:view-dashboard');
     }
+
+
+
+    // 管理者と店舗代表者の管理ページの表示ーーーーーーーーーー
     public function showDashboard()
     {
         $user = Auth::user();

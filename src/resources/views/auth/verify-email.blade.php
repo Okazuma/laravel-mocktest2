@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/auth/verify-email.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth/verify-email.css') }}">
 @endsection
 
 @section('content')
-
-    <div class="session__alert">
+<div class="session__alert">
     @if(session('message'))
-        <div class="session__alert--success">
-            {{ session('message') }}
-        </div>
-    @endif
+    <div class="session__alert--success">
+        {{ session('message') }}
     </div>
+    @endif
+</div>
+
 <div class="container">
     <div class="card">
         <p class="card__text__head">会員登録ありがとうございます。</p>

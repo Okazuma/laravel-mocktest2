@@ -17,6 +17,7 @@ class AuthController extends Controller
     }
 
 
+
     // ログイン処理ーーーーーーーーーー
     public function login(LoginRequest $request)
     {
@@ -29,7 +30,6 @@ class AuthController extends Controller
             return redirect('/login');
         }
     }
-
 
 }
 

@@ -30,6 +30,8 @@ class RegisterRequest extends FormRequest
         ];
     }
 
+
+
     public function messages()
     {
         return [

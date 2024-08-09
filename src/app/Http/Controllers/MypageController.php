@@ -18,8 +18,10 @@ class MypageController extends Controller
         $user = Auth::user();
         $reservations = $user->reservations()->with('restaurant')->orderBy('date')->get();
         $likedRestaurants = $user->likedRestaurants;
+
         return view('mypage', compact('reservations', 'likedRestaurants'));
     }
+
 
 
     // 予約削除確認ページの表示
@@ -27,16 +29,20 @@ class MypageController extends Controller
     {
         $reservation = Reservation::findOrFail($id);
         $restaurant = optional($reservation->restaurant);
-        return view('confirm', compact('reservation', 'restaurant'));
+
+        return view('delete-confirm', compact('reservation', 'restaurant'));
     }
+
 
 
     // 予約情報の削除ーーーーーーーーーー
     public function destroy(Request $request)
     {
         Reservation::find($request->id)->delete();
+
         return redirect()->route('mypage');
     }
+
 
 
     // 予約情報の編集画面の表示ーーーーーーーーーー
@@ -44,8 +50,10 @@ class MypageController extends Controller
     {
         $reservation = Reservation::find($id);
         $restaurant = optional($reservation->restaurant);
-        return view('edit',compact('reservation','restaurant'));
+
+        return view('reservation-edit',compact('reservation','restaurant'));
     }
+
 
 
     // 予約情報の編集処理ーーーーーーーーーー
@@ -53,6 +61,7 @@ class MypageController extends Controller
     {
         $reservation = $request->only('date','time','no_people');
         Reservation::find($request->id)->update($reservation);
+
         return redirect()->route('update');
     }
 

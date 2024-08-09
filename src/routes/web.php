@@ -83,8 +83,6 @@ Route::post('/email/verify/resend', function (Request $request) {
 
 
 
-
-
 // ーーーーーーーーーー飲食店一覧ーーーーーーーーーー
 
 // 飲食店一覧ページ(HOME)表示のルート
@@ -141,8 +139,6 @@ Route::middleware(['auth'])->group(function () {
     // 予約情報を削除するルート
     Route::delete('/delete/{id}',[MypageController::class,'destroy']);
 });
-
-
 
 
 
