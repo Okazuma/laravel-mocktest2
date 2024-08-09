@@ -12,10 +12,12 @@ use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\QRCodeController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\VerifyEmail;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Models\User;
+
 
 
 /*
@@ -187,6 +189,12 @@ Route::middleware(['store_manager'])->group(function(){
     // お知らせメールを送信するルート
     Route::post('/management/send-email', [ManagementController::class, 'sendEmail'])->name('management.email.send');
 });
+
+
+
+// ーーーーーーーーーーQRコードを表示するルートーーーーーーーーーー
+
+Route::get('/qr-code/open', [QRCodeController::class, 'openQrCode'])->name('qr-code.open');
 
 
 
