@@ -25,7 +25,7 @@
 
 アプリケーションURL
 =====
-    hhttp://13.231.194.162/
+    http://13.231.194.162/
 
     メール認証機能を設定しているのでホーム画面へアクセスするためには
     初回アクセス時に会員登録->メール認証->ログインの順でユーザー登録が必要です。
@@ -140,7 +140,7 @@
 
 ER図
 =====
-<img width="650" src="https://github.com/user-attachments/assets/85ad57e2-25cf-4711-ad3e-089c97f38b7d">
+<img width="650" src="https://github.com/user-attachments/assets/f667732d-74fb-4bea-8434-9f605eca961e">
 
 
 dockerビルド
