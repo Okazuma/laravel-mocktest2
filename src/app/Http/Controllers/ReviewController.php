@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ReviewRequest;
 
 
 class ReviewController extends Controller
@@ -14,12 +15,14 @@ class ReviewController extends Controller
     public function reviews()
     {
         $restaurants = Restaurant::with('reviews')->get();
+
         return view('review',compact('restaurants'));
     }
 
 
+
     // レビュー投稿処理ーーーーーーーーーー
-    public function storeReview(Request $request)
+    public function storeReview(ReviewRequest $request)
     {
         $userId = Auth::id();
         $review = Review::create([

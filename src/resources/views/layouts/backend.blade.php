@@ -16,11 +16,8 @@
     <header class="header">
             <h1 class="header__inner__title">Rese:Dashboard</h1>
     </header>
-
     <main>
-    @yield('content')
+        @yield('content')
     </main>
-
-
 </body>
 </html>

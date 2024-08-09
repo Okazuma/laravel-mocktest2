@@ -12,8 +12,10 @@ class RestaurantController extends Controller
     public function index()
     {
         $restaurants = Restaurant::all();
+
         return view('index',compact('restaurants'));
     }
+
 
 
     // ログインユーザーメニューの表示ーーーーーーーーーー
@@ -23,11 +25,13 @@ class RestaurantController extends Controller
     }
 
 
+
     // ゲストユーザーメニューの表示ーーーーーーーーーー
     public function menuGuest()
     {
         return view('guest-menu');
     }
+
 
 
     // 検索フォームの処理ーーーーーーーーーー
@@ -45,10 +49,11 @@ class RestaurantController extends Controller
                 $keyword = $request->input('keyword');
                 $query->where('name', 'like', '%' . $keyword . '%');
             }
-
         $restaurants = $query->get();
+
         return view('index', compact('restaurants'));
     }
+
 
 
     // 飲食店一覧ページの表示ーーーーーーーーーー
@@ -56,8 +61,10 @@ class RestaurantController extends Controller
     {
         $shop_id = $request->route('shop_id');
         $restaurant = Restaurant::findOrFail($shop_id);
-        return view('detail', compact('restaurant'));
+
+        return view('restaurant-detail', compact('restaurant'));
     }
+
 
 
     // いいね機能の処理ーーーーーーーーーー

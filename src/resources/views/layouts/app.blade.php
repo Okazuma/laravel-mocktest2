@@ -29,7 +29,6 @@
           <span></span>
         </a>
       @endauth
-
         <h1 class="header__logo">Rese</h1>
       </div>
       <div class="header__search">
@@ -45,7 +44,6 @@
       const menuButton = document.getElementById('menu-button');
       const currentPath = window.location.pathname;
 
-      // メニュー画面にいる場合は戻るボタンにする
       if (currentPath.includes('user/menu') || currentPath.includes('guest/menu')) {
           menuButton.addEventListener('click', function(event) {
               event.preventDefault();

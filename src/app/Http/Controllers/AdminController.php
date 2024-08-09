@@ -27,6 +27,7 @@ class AdminController extends Controller
     }
 
 
+
     // 店舗代表者作成の処理ーーーーーーーーーー
     public function storeRestaurantManager(AdminRequest $request)
     {
@@ -37,8 +38,10 @@ class AdminController extends Controller
             'password' => Hash::make($request->password),
         ]);
         $user -> assignRole('store_manager');
+
         return redirect()->route('admin.admin-create')->with('message','managerを作成しました');
     }
+
 
 
     // 店舗代表者作成完了ページの表示ーーーーーーーーーー

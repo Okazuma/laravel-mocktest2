@@ -1,7 +1,7 @@
 @extends('layouts.app')<!DOCTYPE html>
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/payment/payment-success.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/payment/payment-success.css') }}">
 @endsection
 
 @section('content')

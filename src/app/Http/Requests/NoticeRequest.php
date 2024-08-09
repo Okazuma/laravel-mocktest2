@@ -31,6 +31,8 @@ class NoticeRequest extends FormRequest
         ];
     }
 
+
+
     public function messages()
     {
         return [

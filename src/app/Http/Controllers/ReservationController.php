@@ -24,14 +24,16 @@ class ReservationController extends Controller
         $reservation->time = $request->time;
         $reservation->no_people = $request->no_people;
         $reservation->save();
+
         return redirect()->route('done');
     }
+
 
 
     // 予約完了ページの表示ーーーーーーーーーー
     public function done()
     {
-        return view('done');
+        return view('reservation-done');
     }
 
 }

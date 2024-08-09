@@ -72,6 +72,11 @@ background-color: #007BFF;
     outline: none;
 }
 
+.form__error {
+    text-align: center;
+    color: red;
+}
+
 .submit__button {
     width: 100px;
     display: block;
