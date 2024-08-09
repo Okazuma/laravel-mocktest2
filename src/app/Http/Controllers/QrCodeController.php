@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class QrCodeController extends Controller
 {
-    //
-    public function openQrCode()
+    //QRコードにアクセスしたときの処理ーーーーーーーーーー
+        public function openQrCode(Request $request)
     {
         if (Auth::check()) {
             $user = Auth::user();
@@ -16,6 +16,7 @@ class QrCodeController extends Controller
             }
             return redirect()->route('restaurants.index');
         }
+        Session::put('intended_url', route('qr-code.open'));
         return redirect()->route('login');
     }
 }

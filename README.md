@@ -29,6 +29,7 @@
 
     メール認証機能を設定しているのでホーム画面へアクセスするためには
     初回アクセス時に会員登録->メール認証->ログインの順でユーザー登録が必要です。
+    シーディングで追加される管理者(admin)でのログインも可能です。
 
 
 
@@ -132,14 +133,14 @@
 
 
 
-テーブル設計　ー
+テーブル設計
 =====
-<img width="650" src="https://github.com/Okazuma/laravel-mocktest/assets/160417297/5253e412-73d0-48e2-8be1-2052239a3ac8">
+<img width="650" src="https://github.com/user-attachments/assets/0d8e3e86-ae0e-4144-a08f-f26944942df8">
 
 
-ER図　ー
+ER図
 =====
-<img width="650" src="https://github.com/Okazuma/laravel-mocktest/assets/160417297/faceeab7-4bf2-43c3-aeff-3068a5a04f1f">
+<img width="650" src="https://github.com/user-attachments/assets/85ad57e2-25cf-4711-ad3e-089c97f38b7d">
 
 
 dockerビルド
