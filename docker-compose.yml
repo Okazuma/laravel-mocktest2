@@ -35,9 +35,10 @@ services:
         platform: linux/amd64
         environment:
             - PMA_ARBITRARY=1
-            - PMA_HOST=mysql
-            - PMA_USER=laravel_user
-            - PMA_PASSWORD=laravel_pass
+            - PMA_HOST=laravel-mocktest-db2.cjksiys8iqyn.ap-northeast-1.rds.amazonaws.com
+            - PMA_POAT=3306
+            - PMA_USER=lmdbadmin2
+            - PMA_PASSWORD=lmdbpass2
         depends_on:
             - mysql
         ports:
