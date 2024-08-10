@@ -4,6 +4,7 @@
 <img width="650" src="https://github.com/user-attachments/assets/b6f7748b-49d8-4566-acee-efa76fcccd53">
 
 
+
 概要説明
 =====
     1 利用者が飲食店一覧から店舗情報を見て予約やお気に入り登録ができる
@@ -23,13 +24,15 @@
     3 シンプルな見た目と構成にして利用側と管理側のユーザーが直感的に使えるように
 
 
+
 アプリケーションURL
 =====
     http://13.231.194.162/
 
     メール認証機能を設定しているのでホーム画面へアクセスするためには
     初回アクセス時に会員登録->メール認証->ログインの順でユーザー登録が必要です。
-    シーディングで追加される管理者(admin)でのログインも可能です。
+    ※ シーディングで追加される管理者(admin)でのログインも可能です。
+      email: admin@example.com    password: 00000000
 
 
 
@@ -141,6 +144,7 @@
 ER図
 =====
 <img width="650" src="https://github.com/user-attachments/assets/f667732d-74fb-4bea-8434-9f605eca961e">
+
 
 
 dockerビルド
