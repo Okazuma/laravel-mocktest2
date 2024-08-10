@@ -35,7 +35,7 @@ services:
         platform: linux/amd64
         environment:
             - PMA_ARBITRARY=1
-            - PMA_HOST=${DB_HOST}
+            - PMA_HOST=laravel-mocktest-db2.cjksiys8iqyn.ap-northeast-1.rds.amazonaws.com
             - PMA_PORT=3306
             - PMA_USER=laravel_user
             - PMA_PASSWORD=laravel_pass
