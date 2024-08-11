@@ -13,7 +13,7 @@
             <th class="reservations__date">予約日</th>
             <th class="reservations__time">予約時間</th>
             <th class="reservations__people">人数</th>
-            <th class="reservations__user-name">お客様名</th>
+            <th class="reservations__user__name">お客様名</th>
         </tr>
         @foreach ($reservations as $reservation)
         <tr class="reservations__row">
