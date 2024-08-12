@@ -56,7 +56,7 @@ class RestaurantController extends Controller
 
 
 
-    // 飲食店一覧ページの表示ーーーーーーーーーー
+    // 飲食店詳細ページの表示ーーーーーーーーーー
     public function detail(Request $request)
     {
         $shop_id = $request->route('shop_id');
