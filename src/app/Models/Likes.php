@@ -10,7 +10,7 @@ class Likes extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_is','restaurant_id'
+        'user_id','restaurant_id'
     ];
 
 }
