@@ -35,7 +35,7 @@ use App\Models\User;
 // ーーーーーーーーーー会員登録処理ーーーーーーーーーー
 
 // 会員登録ページ表示のルート
-Route::get('/register',[RegisterController::class,'showRegisterForm']);
+Route::get('/register',[RegisterController::class,'showRegisterForm'])->name('register');
 
 // 会員登録処理のルート
 Route::post('/register', [RegisterController::class, 'register']);

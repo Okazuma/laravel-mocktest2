@@ -11,7 +11,7 @@
             <a class="home__button" href="/">Home</a>
         </div>
         <div class="menu__button">
-            <a class="register__button" href="/register">Registration</a>
+            <a class="register__button" href="{{route('register')}}">Registration</a>
         </div>
         <div class="menu__button">
             <a class="mypage__button" href="{{route('login')}}">Login</a>
