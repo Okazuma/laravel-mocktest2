@@ -16,6 +16,7 @@ docker/mysql/data/
 .env
 .env.local
 .env.*.local
+.env.production
 
 # OS やエディタの設定ファイル
 .DS_Store

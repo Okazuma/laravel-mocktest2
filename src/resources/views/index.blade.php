@@ -38,7 +38,11 @@
     @foreach($restaurants as $restaurant)
         <div class="card">
             <div class="card__image">
-                <img src="{{ asset($restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
+                @if (config('filesystems.default') === 's3')
+    <img src="{{ Storage::disk('s3')->url($restaurant->image_path) }}" alt="No image">
+@else
+    <img src="{{ asset($restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
+@endif
             </div>
             <div class="card__content">
                 <p class="restaurant__name">{{ $restaurant->name }}</p>
