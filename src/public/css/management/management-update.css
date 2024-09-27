@@ -63,22 +63,16 @@
     font-size: 12px;
 }
 
-.restaurant__area {
+.restaurant--area {
     margin: 4px 0 4px 8px;
     font-size: 12px;
 }
 
-.restaurant__genre {
+.restaurant--genre {
     margin: 4px 0 4px 8px;
     font-size: 12px;
 }
 
-.restaurant__text__title{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    font-size: 12px;
-}
 
 .restaurant__description {
     font-size: 12px;

@@ -14,7 +14,7 @@
 
 <body>
     <header class="header">
-            <h1 class="header__inner__title">Rese:Dashboard</h1>
+            <a class="header__inner__title" href="/">Rese:Dashboard</a>
     </header>
     <main>
         @yield('content')

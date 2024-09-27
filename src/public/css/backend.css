@@ -12,9 +12,12 @@ body {
     margin: 0 auto;
 }
 
-.header__inner__title{
+.header__inner__title {
     font-size: 30px;
     width: 90%;
+    display: block;
     margin: 0 auto;
     text-align: center;
+    text-decoration: none;
+    color: white;
 }

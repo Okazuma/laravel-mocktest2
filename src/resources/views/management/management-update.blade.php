@@ -27,11 +27,11 @@
         <div class="restaurant__detail">
             <div class="restaurant__detail__item">
                 <span class="restaurant__detail__title">エリア:</span>
-                <p class="restaurant-area">#{{ $restaurant->area }}</p>
+                <p class="restaurant--area">#{{ $restaurant->area }}</p>
             </div>
             <div class="restaurant__detail__item">
                 <span class="restaurant__detail__title">ジャンル:</span>
-                <p class="restaurant-genre">#{{ $restaurant->genre }}</p>
+                <p class="restaurant--genre">#{{ $restaurant->genre }}</p>
             </div>
         </div>
         <p class="restaurant__description">{{ $restaurant->description }}</p>
