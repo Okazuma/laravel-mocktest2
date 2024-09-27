@@ -58,7 +58,11 @@
                 @foreach($likedRestaurants as $restaurant)
                 <div class="likes__card">
                     <div class="likes__card__image">
-                        <img src="{{ asset($restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
+                        @if (config('filesystems.default') === 's3')
+                            <img src="{{ Storage::disk('s3')->url($restaurant->image_path) }}" alt="No image">
+                        @else
+                            <img src="{{ asset($restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
+                        @endif
                     </div>
                     <div class="likes__card__content">
                         <h4 class="likes__restaurant__name">{{ $restaurant->name }}</h4>

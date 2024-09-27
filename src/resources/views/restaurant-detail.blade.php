@@ -14,7 +14,11 @@
             <h4 class="restaurant__name">{{ $restaurant->name }}</h4>
         </div>
         <div class="restaurant__image">
-            <img src="{{ asset($restaurant->image_path) }}" class="restaurant__image__img" alt="{{ $restaurant->name }}">
+            @if (config('filesystems.default') === 's3')
+                <img src="{{ Storage::disk('s3')->url($restaurant->image_path) }}" alt="No image">
+            @else
+                <img src="{{ asset($restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
+            @endif
         </div>
         <div class="restaurant__detail">
             <p class="restaurant__area">#{{ $restaurant->area }}</p>

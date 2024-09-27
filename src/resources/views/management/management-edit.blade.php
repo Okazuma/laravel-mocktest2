@@ -29,7 +29,7 @@
         </div>
         <div class="form__group">
           <P class="form__title">image_path:</P>
-          <input class="form__input" type="file" name="image" value="">
+          <input class="form__input" type="file" name="image_path" value="">
               @error('image_path')
               <span class="error-message">{{$message}}</span>
               @enderror

@@ -37,10 +37,14 @@ class ManagementController extends Controller
     public function storeRestaurant(ManagementRequest $request)
     {
         $data = $request->only(['name', 'description', 'area', 'genre']);
-            if ($request->hasFile('image')) {
+            if ($request->hasFile('image_path')) {
                 // 画像を S3 に保存
-                $imagePath = $request->file('image')->store('images', 's3');
-                $data['image_path'] = Storage::disk('s3')->url($imagePath);
+                $imagePath = $request->file('image_path')->store('images', config('filesystems.default'));
+                if (config('filesystems.default') === 's3') {
+            $data['image_path'] = Storage::disk('s3')->url($imagePath);  // S3のURL
+        } else {
+            $data['image_path'] = 'storage/' . $imagePath;  // ローカルの場合
+        }
             }
         $restaurant = Restaurant::create($data);
 

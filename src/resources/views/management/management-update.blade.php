@@ -18,7 +18,11 @@
         <p class="update__title">現在の店舗情報</p>
         <p class="restaurant__name">店舗名:{{ $restaurant->name }}</p>
         <div class="restaurant__image">
-            <img class="restaurant__image__img" src="{{ asset($restaurant->image_path) }}" class="restaurant__image__img" alt="{{ $restaurant->name }}">
+            @if (config('filesystems.default') === 's3')
+                <img src="{{ Storage::disk('s3')->url($restaurant->image_path) }}" alt="No image">
+            @else
+                <img src="{{ asset($restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
+            @endif
         </div>
         <div class="restaurant__detail">
             <div class="restaurant__detail__item">
