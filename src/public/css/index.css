@@ -38,12 +38,13 @@
 
 .search__area,
 .search__genre {
+    background-color: inherit;
     display: inline-block;
 }
 
 .search__area select,
 .search__genre select {
-    background-color: inherit;
+    /* background-color: inherit; */
     width: 100px;
     height: 30px;
     border: none;
@@ -176,7 +177,7 @@
 
     .search__area select,
     .search__genre select {
-        background-color: inherit;
+        /* background-color: inherit; */
         height: 30px;
         width: 100%;
         border: none;
@@ -240,7 +241,7 @@
 
     .search__area select,
     .search__genre select {
-                background-color: inherit;
+                /* background-color: inherit; */
         height: 30px;
         width: 100%;
         border: none;
@@ -347,7 +348,7 @@
 
     .search__area select,
     .search__genre select {
-        background-color: inherit;
+        /* background-color: inherit; */
         border-radius: 0;
     }
 
