@@ -38,13 +38,13 @@
 
 .search__area,
 .search__genre {
-    background-color: inherit;
+    background: #ffffff;
     display: inline-block;
 }
 
 .search__area select,
 .search__genre select {
-    /* background-color: inherit; */
+    background-color: inherit;
     width: 100px;
     height: 30px;
     border: none;
