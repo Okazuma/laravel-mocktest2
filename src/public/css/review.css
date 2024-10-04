@@ -345,6 +345,18 @@
         width: 70%;
     }
 
+    .card__image {
+        width: 100%;
+        height: 56%;
+        overflow: hidden;
+    }
+
+    .card__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
     .submit__button {
         color: black;
         /* スマホ用に明示的に指定 */
