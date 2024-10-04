@@ -34,7 +34,7 @@
     </div>
 </div>
 
-@else
-<a href="{{ route('verification.resendAgain', ['email' => auth()->user()->email]) }}">認証メールを再送する</a>
-@endif
+    @else
+    <a href="{{ route('verification.resendAgain', ['email' => auth()->user()->email]) }}">認証メールを再送する</a>
+    @endif
 @endsection

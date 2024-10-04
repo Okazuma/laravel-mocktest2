@@ -201,10 +201,16 @@ Route::get('/qr-code/open', [QRCodeController::class, 'openQrCode'])->name('qr-c
 // ーーーーーーーーーーレビュー画面ーーーーーーーーーー
 
 // レビューページを表示するルート
-Route::get('/reviews',[ReviewController::class,'reviews']);
+Route::get('/reviews/{restaurant_id}',[ReviewController::class,'reviews'])->name('reviews');
 
 // レビューを記録するルート
-Route::post('/reviews',[ReviewController::class,'storeReview']);
+Route::post('/reviews/{restaurant_id}',[ReviewController::class,'storeReview'])->name('reviews.store');
+
+// レビューを削除するルート
+Route::delete('/reviews/{id}', [ReviewController::class, 'deleteReview'])->name('reviews.destroy');
+
+// レビュー一覧を表示するルートするルート
+Route::get('/reviews-all/{restaurant_id}',[ReviewController::class,'reviewsAll'])->name('reviews.all');
 
 
 

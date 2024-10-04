@@ -86,4 +86,44 @@
         </div>
     </div>
 </div>
+
+
+<!-- ーーーーーイイネボタン押下時の処理ーーーーー -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const likeButtons = document.querySelectorAll('.like__button');
+
+        likeButtons.forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                @guest
+                    alert('いいねを押すにはログインが必要です。');
+                    return;
+                @endguest
+
+                const icon = this.querySelector('.fa-heart');
+                const restaurantId = this.dataset.restaurantId;
+
+                fetch(`/restaurants/${restaurantId}/like`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify({ restaurantId: restaurantId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        icon.classList.toggle('liked', data.liked);
+                    } else {
+                        console.error('いいね処理に失敗しました');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        });
+    });
+</script>
 @endsection

@@ -14,6 +14,7 @@ class Review extends Model
         'restaurant_id',
         'rating',
         'comment',
+        'review_image',
     ];
 
 

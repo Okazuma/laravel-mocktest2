@@ -11,10 +11,112 @@
 .container{
     width: 90%;
     margin: 0 auto;
+    display: flex;
+}
+
+.restaurant{
+    width: 40%;
+}
+
+.restaurant__title{
+    font-size: 24px;
+    text-align:center;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    width: 98%;
+    height: 72%;
+}
+
+.card__image {
+    width: 100%;
+    height: 56%;
+    overflow: hidden;
+}
+
+.card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card__content {
+    height: 50%;
+    height: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.restaurant__name {
+    font-size: 16px;
+    margin-top: 0;
+    flex: 1;
+}
+
+.restaurant__area__genre {
+    display: block;
+    color: #666;
+    font-size: 12px;
+    margin: 2px 0;
+    flex: 1;
+}
+
+.card__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    flex: 2;
+}
+
+.details__button {
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    height: 80%;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 40%;
+    min-width: 120px;
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details__button:hover {
+    background-color: #0056b3;
+}
+
+.like__button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: rgb(222, 222, 222);
+}
+
+.like__button .fa-heart {
+    transition: color 0.1s;
+}
+
+.like__button .fa-heart.liked {
+    color: #ff0000;
 }
 
 .form__title{
-background-color: #007BFF;
+    background-color: #007BFF;
     color: #ffffff;
     width: 100%;
     text-align: center;
@@ -24,22 +126,20 @@ background-color: #007BFF;
 }
 
 .review__form{
-    width: 80%;
-    margin: 0 auto;
-    background: lightgrey;
+    width: 50%;
     margin: 10px auto;
     border-radius: 3px;
     overflow: hidden;
 }
-
 
 .form__group{
     padding: 12px;
 }
 
 .form__group__title{
-    margin: 4px;
-    text-align: center;
+    font-size: 24px;
+    margin: 0px;
+    padding: 12px;
 }
 
 .form__group__rating{
@@ -47,29 +147,44 @@ background-color: #007BFF;
     flex-direction:column;
 }
 
-.form__group__item{
+.star-rating {
     display: flex;
-    justify-content: center;
-    margin: 0 auto;
+    padding: 12px;
 }
 
-.rating__star{
-    color: yellow;
-    margin-left: 12px;
+.star {
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
 }
 
-.form__select {
-    display: block;
-    margin: 0 auto;
-    outline: none;
-    width: 30%;
+.star-rating input {
+    display: none;
+}
+
+.star-rating input:checked~label,
+.star-rating input:checked+label~label {
+    color: gold;
+}
+
+.form__group__sub {
+    font-size: 20px;
+    margin: 4px;
 }
 
 .form__text {
     display: block;
     margin: 0 auto;
-    width: 50%;
+    width: 100%;
+    height: 16vh;
     outline: none;
+}
+
+.form__group__memo {
+    font-size: 12px;
+    display:block;
+    text-align: right;
 }
 
 .form__error {
@@ -77,48 +192,160 @@ background-color: #007BFF;
     color: red;
 }
 
-.submit__button {
-    width: 100px;
+.drop-area{
+    width: 100%;
+    height: 16vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.drop-area:hover {
+    background-color: lightgrey;
+}
+
+.drop-area__text{
+    font-size:12px;
     display: block;
-    margin: 8px auto 8px;
+}
+
+.submit__button {
+    width: 40%;
+    display: block;
+    margin: 0 auto;
+    height:6vh;
+    border-radius:24px;
+    border: none;
+    background: #ffffff;
+    padding: 0;
 }
 
 .submit__button:hover {
     background: lightgrey;
 }
 
-.back__button {
-    width: 100px;
-    background: #007BFF;
-    margin: 24px auto;
-    border-radius: 3px;
-}
-
-.back__button-btn {
-    width: 100%;
-    text-align: center;
-    display: block;
-    text-decoration: none;
-    color: white;
-}
-
-.back__button:hover {
-    background: blue;
-}
 
 
+/* タブレット用 */
 @media (max-width: 768px){
-    .form__select {
-        display: block;
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .restaurant {
+        width: 100%;
         margin: 0 auto;
-        outline: none;
-        width: 50%;
+        height: auto;
+    }
+
+    .card {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .card__content {
+        padding: 20px;
+    }
+
+    .restaurant__name {
+        font-size: 20px;
+        margin-bottom: 16px;
+        flex: 1;
+    }
+
+    .restaurant__area__genre {
+        display: block;
+        color: #666;
+        font-size: 16px;
+        margin: 2px 0;
+        flex: 1;
+    }
+
+    .details__button {
+        min-width: 120px;
+        font-size: 20px;
+        padding:8px;
+    }
+
+    .like__button {
+        font-size: 2rem;
+    }
+
+    .review__form {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .form__group__title {
+        margin-top: 36px;
+        text-align: center;
+    }
+
+    .star-rating {
+        justify-content:center;
+        padding: 8px;
+        margin: 0px;
+        gap: 12px;
+    }
+
+    .star {
+        font-size: 48px;
+        color: #ccc;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+
+    .form__group {
+        padding: 12px;
+        width: 100%;
+    }
+
+    .form__group__sub {
+        font-size: 20px;
+        margin: 4px;
     }
 
     .form__text {
-        display: block;
-        margin: 0 auto;
-        width: 80%;
-        outline: none;
+        margin: 0 ;
+        width: 100%;
+        height: 16vh;
+        padding: 0;
+        font-size:20px;
+    }
+
+    .drop-area__text {
+        font-size: 20px;
+    }
+
+    .form__group__memo {
+        font-size: 16px;
+    }
+
+    .submit__button {
+        width: 50%;
+        margin: 24px auto;
+        height: 6vh;
+        border-radius: 50px;
+        font-size: 20px;
+        line-height: 1.5;
     }
 }
+
+
+
+/* スマホ用 */
+@media (max-width: 576px) {
+    .card {
+        width: 70%;
+    }
+}
+
+
+
+
+
+

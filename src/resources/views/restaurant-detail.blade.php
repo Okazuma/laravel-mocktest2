@@ -3,10 +3,16 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/restaurant-detail.css') }}">
 @endsection
-
+<div class="session__alert">
+    @if(session('message'))
+    <div class="session__alert--success">
+    {{ session('message') }}
+    </div>
+    @endif
+</div>
 @section('content')
 <div class="container">
-    <div class="restaurant__inner">
+    <div class="restaurant__inner {{ isset($userReview) ? 'shortened' : '' }}" >
         <div class="restaurant__heading">
             <div class="back__button">
                 <a class="back__button-back" href="{{route('restaurants.index')}}"><</a>
@@ -25,7 +31,53 @@
             <p class="restaurant__genre">#{{ $restaurant->genre }}</p>
         </div>
         <p class="restaurant__description">{{ $restaurant->description }}</p>
+
+
+
+        <div class="review">
+        <!-- 口コミの表示 -->
+        @if (Auth::check())
+        <!-- 管理者または一般ユーザーがログインしている場合 -->
+            @if($userReview || Auth::user()->hasRole('admin'))
+            <!-- 「全ての口コミ情報」ボタン -->
+            <div class="reviews--all">
+            <a class="reviews--all__button" href="{{ route('reviews.all', ['restaurant_id' => $restaurant->id]) }}">全ての口コミ情報</a>
+            </div>
+            @endif
+            @if($userReview)
+                <div class="user__review">
+
+                    <div class="review__button">
+                        <a class="review__button--edit-btn" href="{{ route('reviews', ['restaurant_id' => $restaurant->id]) }}">口コミを編集</a>
+                        <form class="review__button--delete" action="{{ route('reviews.destroy', $userReview->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
+                            @csrf
+                            @method('DELETE')
+                            <button class="review__button--delete-btn" type="submit">口コミを削除</button>
+                        </form>
+                    </div>
+
+                    <div class="form__group__rating">
+                        <div class="star-rating">
+                            @for ($i = 1; $i <= 5; $i++)
+                                <span class="star {{ $i <= $userReview->rating ? 'filled' : '' }}">
+                                    @if ($i <= $userReview->rating)
+                                        &#9733; <!-- Filled star -->
+                                    @else
+                                        &#9734; <!-- Empty star -->
+                                    @endif
+                                </span>
+                            @endfor
+                        </div>
+                        <p class="review--comment">{{ $userReview->comment }}</p>
+                    </div>
+                </div>
+            @else
+                <a class="review__comment--first" href="{{ route('reviews', ['restaurant_id' => $restaurant->id]) }}">口コミを投稿する</a>
+            @endif
+        @endif
+        </div>
     </div>
+
     <form class="reservation__form" action="{{ route('restaurants.reservation', $restaurant->id) }}" method="post">
         @csrf
         <div class="reservation__inner">

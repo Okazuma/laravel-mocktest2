@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Review;
 
 class RestaurantController extends Controller
 {
@@ -61,10 +62,17 @@ class RestaurantController extends Controller
     {
         $shop_id = $request->route('shop_id');
         $restaurant = Restaurant::findOrFail($shop_id);
+        $userId = Auth::id();
+        $userReview = null;  // 未ログインユーザーに対しては null を設定
+        // ユーザーの口コミを取得
+        if ($userId) {
+        $userReview = Review::where('restaurant_id', $shop_id)
+                            ->where('user_id', $userId)
+                            ->first();
+        }
 
-        return view('restaurant-detail', compact('restaurant'));
+        return view('restaurant-detail', compact('restaurant','userReview'));
     }
-
 
 
     // いいね機能の処理ーーーーーーーーーー
