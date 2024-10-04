@@ -274,7 +274,6 @@
         object-fit: cover;
     }
 
-
     .restaurant__area {
         margin-right: 8px;
         font-size: 12px;
@@ -314,12 +313,10 @@
         color: grey;
     }
 
-
     .review__button--delete-btn {
         font-size: 12px;
         color: grey;
     }
-
 
     .star-rating {
         font-size: 24px;
@@ -412,23 +409,24 @@
 
 
 
+
 /* スマホ用 */
 @media (max-width: 576px) {
     .restaurant__image {
-            width: 100%;
-            height: 30%;
-            overflow: hidden;
-        }
+        width: 100%;
+        height: 30%;
+        overflow: hidden;
+    }
 
     .restaurant__image img {
         width: 100%;
-        height: 100%;
+        /* height: 100%; */
         height: auto;
         object-fit: cover;
     }
 
     .input__date{
-            width: 80%;
+        width: 80%;
     }
 
     .input__date input {
@@ -438,16 +436,15 @@
         color: black;
     }
 
-        .input__time select {
-            height: 36px;
-            font-size: 14px;
-            color: black;
-        }
+    .input__time select {
+        height: 36px;
+        font-size: 14px;
+        color: black;
+    }
 
-        .input__number select {
-            height: 36px;
-            font-size: 14px;
-            font-size: 14px;
-        }
-
+    .input__number select {
+        height: 36px;
+        font-size: 14px;
+        font-size: 14px;
+    }
 }
