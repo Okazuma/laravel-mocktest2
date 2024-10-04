@@ -203,10 +203,10 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .form__sort-search {
+    /* .form__sort-search {
         display: flex;
         flex-direction: column;
-    }
+    } */
 
     .sort__form {
         width: 100px;

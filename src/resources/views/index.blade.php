@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
-    <div class="form__sort-search">
+
 
 @section('sort')
 <form class="sort__form" id="sort-form" action="{{ route('restaurants.sort') }}" method="GET">
@@ -45,7 +45,7 @@
     </div>
 </form>
 @endsection
-        </div>
+
 
 
 
