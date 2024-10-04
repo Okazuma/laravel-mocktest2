@@ -346,11 +346,12 @@
 
     .search__area,
     .search__genre {
-        background-color: inherit;
+        /* background-color: inherit; */
     }
 
     .search__area select,
     .search__genre select {
+        background-color: inherit;
         border-radius: 0;
     }
 
