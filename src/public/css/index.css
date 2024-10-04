@@ -38,12 +38,12 @@
 
 .search__area,
 .search__genre {
-    background-color: inherit;
     display: inline-block;
 }
 
 .search__area select,
 .search__genre select {
+    background-color: inherit;
     width: 100px;
     height: 30px;
     border: none;
@@ -176,6 +176,7 @@
 
     .search__area select,
     .search__genre select {
+        background-color: inherit;
         height: 30px;
         width: 100%;
         border: none;
@@ -224,7 +225,6 @@
 
     .search__area,
     .search__genre {
-        background-color: inherit;
         display: inline-block;
         width: 45%;
     }
@@ -240,6 +240,7 @@
 
     .search__area select,
     .search__genre select {
+                background-color: inherit;
         height: 30px;
         width: 100%;
         border: none;
@@ -342,11 +343,6 @@
     .like__button {
         font-size: 1.5rem;
         width: 20%;
-    }
-
-    .search__area,
-    .search__genre {
-        /* background-color: inherit; */
     }
 
     .search__area select,
