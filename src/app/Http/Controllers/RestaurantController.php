@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Review;
+use Illuminate\Support\Facades\DB;
 
 class RestaurantController extends Controller
 {
@@ -88,5 +89,44 @@ class RestaurantController extends Controller
         }
         return response()->json(['success' => true, 'liked' => $liked]);
     }
+
+
+
+// public function sort(Request $request)
+// {
+//     $sortOrder = $request->input('sort', 'desc'); // デフォルトで降順
+
+//     $restaurants = Restaurant::with('reviews')
+//         ->withAvg('reviews', 'rating') // reviewsテーブルのratingの平均値を取得
+//         ->orderBy('reviews_avg_rating', $sortOrder) // 取得した平均値でソート
+//         ->get();
+
+//     return view('index', compact('restaurants'));
+// }
+
+
+public function sort(Request $request)
+{
+    $sortOrder = $request->input('sort', 'desc'); // デフォルトは評価が高い順（降順）
+
+    $query = Restaurant::with('reviews');
+
+    // ソートの条件に応じたクエリの分岐
+    if ($sortOrder === 'random') {
+        // ランダムで並べ替え
+        $query->inRandomOrder();
+    } else {
+        // 評価の高い順または低い順で並べ替え
+        $query->withAvg('reviews', 'rating')
+              ->orderBy('reviews_avg_rating', $sortOrder);
+    }
+
+    $restaurants = $query->get();
+
+    return view('index', compact('restaurants'));
+}
+
+
+
 
 }

@@ -76,9 +76,9 @@ body {
     width: 24px;
 }
 
-.header__search {
+/* .header__search {
     margin: auto 0;
-}
+} */
 
 
 @media (max-width: 768px) {

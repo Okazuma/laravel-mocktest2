@@ -97,6 +97,10 @@ Route::get('/restaurants.search',[RestaurantController::class,'search'])->name('
 Route::post('/restaurants/{restaurant}/like', [RestaurantController::class, 'like'])->middleware(['auth'])->name('restaurants.like');
 
 
+Route::get('/restaurants/sort', [RestaurantController::class, 'sort'])->name('restaurants.sort');
+
+
+
 
 // ーーーーーーーーーーMenu画面ーーーーーーーーーー
 

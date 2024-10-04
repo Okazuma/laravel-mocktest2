@@ -4,6 +4,20 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
+
+@section('sort')
+<form class="sort__form" id="sort-form" action="{{ route('restaurants.sort') }}" method="GET">
+    <select class="sort__select" name="sort" id="sort">
+        @if(!request('sort'))
+        <option value="" disabled {{ request('sort') ? '' : 'selected' }}>並び替え: 評価高/低</option>
+        @endif
+        <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>評価が高い順</option>
+        <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>評価が低い順</option>
+        <option value="random" {{ request('sort') == 'random' ? 'selected' : '' }}>ランダム</option>
+    </select>
+</form>
+@endsection
+
 @section('search')
 <form class="search__form" id="search-form" action="{{route('restaurants.search')}}" method="GET">
     <div class="search__area__genre">
@@ -32,6 +46,9 @@
     </div>
 </form>
 @endsection
+
+
+
 
 @section('content')
 <div class="container">
@@ -146,5 +163,38 @@
         genreSelect.addEventListener('change', debounceSubmitGenre);
         keywordInput.addEventListener('input', debounceSubmitKeyword);
     });
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sortSelect = document.getElementById('sort');
+    const sortForm = document.getElementById('sort-form'); // ソート用のフォームを用意
+
+    function submitSortForm() {
+        sortForm.submit(); // ソート用フォームを送信
+    }
+
+    sortSelect.addEventListener('change', submitSortForm);
+});
+
+
+
+function adjustOptionText() {
+    const sortOption = document.querySelector('option[disabled]');
+    if (window.innerWidth <= 768) {
+        sortOption.textContent = '並び替え';
+    } else {
+        sortOption.textContent = '並び替え: 評価高/低';
+    }
+}
+
+// ページが読み込まれたときと、画面サイズが変更されたときに実行
+window.addEventListener('load', adjustOptionText);
+window.addEventListener('resize', adjustOptionText);
+
+
+
+
 </script>
 @endsection
