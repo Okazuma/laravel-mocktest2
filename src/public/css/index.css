@@ -230,11 +230,7 @@
         width: 45vw;
     }
 
-    .search__area {
-        display: inline-block;
-        width: 45%;
-    }
-
+    .search__area,
     .search__genre {
         display: inline-block;
         width: 45%;
@@ -360,4 +356,11 @@
     .search__keyword input {
         border-radius: 0;
     }
+
+
+
+        .search__area,
+        .search__genre {
+            background-color: inherit;
+        }
 }
