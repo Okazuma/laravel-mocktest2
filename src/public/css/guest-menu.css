@@ -20,7 +20,7 @@
     color: #007BFF;
     text-align: center;
     padding: 8px;
-    font-size: 26px;
+    font-size: 32px;
     font-weight: normal;
 }
 
@@ -36,7 +36,24 @@
     display: block;
     border: none;
     color: #007BFF;
-    font-size: 26px;
+    font-size: 32px;
     background: transparent;
     font-weight:normal;
+}
+
+
+@media (max-width: 576px) {
+
+    .home__button,
+    .mypage__button,
+    .register__button {
+        font-size: 26px;
+        font-weight: normal;
+    }
+
+
+    .logout__button {
+        font-size: 26px;
+        font-weight: normal;
+    }
 }
