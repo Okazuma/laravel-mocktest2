@@ -156,7 +156,6 @@
 
 /* フォーム崩れ防止 */
 @media (max-width: 900px){
-
     .sort__select {
         background-color: inherit;
         border-radius: 0;
@@ -177,7 +176,6 @@
 
     .search__area select,
     .search__genre select {
-        /* background-color: inherit; */
         height: 30px;
         width: 100%;
         border: none;
@@ -193,6 +191,7 @@
         outline: none;
     }
 }
+
 
 
 
@@ -241,7 +240,6 @@
 
     .search__area select,
     .search__genre select {
-                /* background-color: inherit; */
         height: 30px;
         width: 100%;
         border: none;
@@ -301,6 +299,7 @@
 
 
 
+
 /* スマホ用 */
 @media (max-width: 576px) {
     .card__actions {
@@ -348,12 +347,10 @@
 
     .search__area select,
     .search__genre select {
-        /* background-color: inherit; */
         border-radius: 0;
     }
 
     .search__keyword input {
         border-radius: 0;
     }
-
 }
