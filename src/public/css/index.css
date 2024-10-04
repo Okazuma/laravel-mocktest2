@@ -23,11 +23,9 @@
     border: none;
 }
 
-
 .search__form {
     display: flex;
     justify-content: space-between;
-
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
     margin: auto 0;
 }
@@ -180,6 +178,7 @@
         border: none;
         margin: 0 auto;
         outline: none;
+        border-radius: 0;
     }
 
         .search__keyword input {
@@ -202,11 +201,6 @@
     .container {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    /* .form__sort-search {
-        display: flex;
-        flex-direction: column;
-    } */
 
     .sort__form {
         width: 100px;
@@ -239,20 +233,22 @@
         background: #ffffff;
     }
 
-        .search__area select,
-        .search__genre select {
+    .search__area select,
+    .search__genre select {
         height: 30px;
         width: 100%;
         border: none;
         margin: 0 auto;
         outline: none;
+        border-radius: 0;
     }
 
-        .search__keyword input {
+    .search__keyword input {
         height: 30px;
         width: 100%;
         border: none;
         outline: none;
+        border-radius: 0;
     }
 
     .search__area__genre {
@@ -322,7 +318,8 @@
     }
 
     .sort__form {
-        width: 56px;
+        width: 50px;
+        text-align:center;
     }
 
     .details__button {
@@ -335,5 +332,15 @@
     .like__button {
         font-size: 1.5rem;
         width: 20%;
+    }
+
+
+    .search__area select,
+    .search__genre select {
+        border-radius: 0;
+    }
+
+    .search__keyword input {
+        border-radius: 0;
     }
 }
