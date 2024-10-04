@@ -4,13 +4,12 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
+    <div class="form__sort-search">
 
 @section('sort')
 <form class="sort__form" id="sort-form" action="{{ route('restaurants.sort') }}" method="GET">
     <select class="sort__select" name="sort" id="sort">
-        @if(!request('sort'))
         <option value="" disabled {{ request('sort') ? '' : 'selected' }}>並び替え: 評価高/低</option>
-        @endif
         <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>評価が高い順</option>
         <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>評価が低い順</option>
         <option value="random" {{ request('sort') == 'random' ? 'selected' : '' }}>ランダム</option>
@@ -46,6 +45,8 @@
     </div>
 </form>
 @endsection
+        </div>
+
 
 
 
@@ -182,7 +183,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function adjustOptionText() {
     const sortOption = document.querySelector('option[disabled]');
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 576) {
+        sortOption.textContent = '並び';
+    } else if (window.innerWidth <= 768) {
         sortOption.textContent = '並び替え';
     } else {
         sortOption.textContent = '並び替え: 評価高/低';

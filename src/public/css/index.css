@@ -27,6 +27,7 @@
 .search__form {
     display: flex;
     justify-content: space-between;
+
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
     margin: auto 0;
 }
@@ -40,15 +41,8 @@
     display: inline-block;
 }
 
-.search__keyword {
-    display: inline-block;
-}
-
-.header__search {
-    margin: auto 0;
-}
-
-.header__search select {
+.search__area select,
+.search__genre select {
     width: 100px;
     height: 30px;
     border: none;
@@ -56,12 +50,17 @@
     outline: none;
 }
 
-.header__search input {
+.search__keyword {
+    display: inline-block;
+}
+
+.search__keyword input{
     width: 320px;
     height: 30px;
     border: none;
     outline: none;
 }
+
 
 
 .card {
@@ -153,6 +152,9 @@
 }
 
 
+
+
+/* フォーム崩れ防止 */
 @media (max-width: 900px){
     .search__form {
         display: flex;
@@ -161,10 +163,36 @@
         width: 45vw;
     }
 
+    .search__area {
+        display: inline-block;
+        width: 45%;
+    }
+
+    .search__genre {
+        display: inline-block;
+        width: 45%;
+    }
+
+    .search__area select,
+    .search__genre select {
+        height: 30px;
+        width: 100%;
+        border: none;
+        margin: 0 auto;
+        outline: none;
+    }
+
+        .search__keyword input {
+        height: 30px;
+        width: 100%;
+        border: none;
+        outline: none;
+    }
 }
 
 
 
+/* タブレット用 */
 @media (min-width: 768px) {
     .container {
         grid-template-columns: repeat(4, 1fr);
@@ -175,9 +203,68 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .form__sort-search {
+        display: flex;
+        flex-direction: column;
+    }
+
     .sort__form {
         width: 100px;
+        display: block;
+    }
 
+    .search__form {
+        display: flex;
+        flex-direction: column;
+        outline: none;
+        width: 45vw;
+    }
+
+    .search__area {
+        display: inline-block;
+        width: 45%;
+    }
+
+    .search__genre {
+        display: inline-block;
+        width: 45%;
+    }
+
+    .search__keyword {
+        display: inline-block;
+        width: 45vw;
+        border-bottom: 1px solid grey;
+        padding-left: 10%;
+        padding-right: 10%;
+        background: #ffffff;
+    }
+
+        .search__area select,
+        .search__genre select {
+        height: 30px;
+        width: 100%;
+        border: none;
+        margin: 0 auto;
+        outline: none;
+    }
+
+        .search__keyword input {
+        height: 30px;
+        width: 100%;
+        border: none;
+        outline: none;
+    }
+
+    .search__area__genre {
+        width: 45vw;
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        padding-left: 10%;
+        padding-right: 10%;
+        border-bottom: 1px solid lightgrey;
     }
 
     .card__content{
@@ -207,59 +294,6 @@
         font-size: 1.5rem;
         color: rgb(222, 222, 222);
     }
-
-    .search__form {
-        display: flex;
-        flex-direction: column;
-        outline: none;
-        width: 45vw;
-    }
-
-    .search__area {
-        display: inline-block;
-        width: 45%;
-    }
-
-    .search__genre {
-        display: inline-block;
-        width: 45%;
-    }
-
-    .search__keyword {
-        display: inline-block;
-        width: 45vw;
-        border-bottom: 1px solid grey;
-        padding-left: 10%;
-        padding-right: 10%;
-        background: #ffffff;
-    }
-
-    .header__search select {
-        height: 30px;
-        width: 100%;
-        border: none;
-        margin: 0 auto;
-        outline: none;
-    }
-
-    .header__search input {
-        height: 30px;
-        width: 100%;
-        border: none;
-        outline: none;
-    }
-
-    .search__area__genre {
-        width: 45vw;
-        display: flex;
-        justify-content: space-between;
-        margin: 0;
-        padding: 0;
-        background: #ffffff;
-        padding-left: 10%;
-        padding-right: 10%;
-        border-bottom: 1px solid lightgrey;
-    }
 }
 
 
@@ -275,7 +309,7 @@
     }
 
     .sort__form {
-        width: 72px;
+        width: 56px;
     }
 
     .details__button {
@@ -289,5 +323,4 @@
         font-size: 1.5rem;
         width: 20%;
     }
-
 }

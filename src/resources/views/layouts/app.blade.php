@@ -32,9 +32,7 @@
         <h1 class="header__logo">Rese</h1>
       </div>
       @yield('sort')
-      <div class="header__search">
-        @yield('search')
-      </div>
+      @yield('search')
   </header>
 
   <main>
