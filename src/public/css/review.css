@@ -221,6 +221,7 @@
     border: none;
     background: #ffffff;
     padding: 0;
+    color: black;
 }
 
 .submit__button:hover {

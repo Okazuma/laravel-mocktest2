@@ -222,7 +222,6 @@
     width:20%;
     display: block;
     text-align:left;
-    margin-left:8px;
 }
 
 .confirm__detail{
@@ -257,25 +256,17 @@
         margin-bottom: 0%;
     }
 
+    .restaurant__image {
+        width: 100%;
+        height: 56%;
+        overflow: hidden;
+    }
 
-    
-        .restaurant__image {
-            width: 100%;
-            height: 56%;
-            overflow: hidden;
-        }
-    
-        .restaurant__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-
-
-
-
-
+    .restaurant__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
 
     .restaurant__area {
@@ -387,11 +378,28 @@
     .confirm__table {
         margin-bottom: 12px;
         font-size: 16px;
+                padding: 8px;
+    }
+
+
+    .confirm__row {
+        display: flex;
+        justify-content: left;
+        line-height: 1.5;
     }
 
     .confirm__title {
-        margin-left: 0px;
+        width:30%;
+        display: block;
+        text-align: left;
     }
+
+    .confirm__detail {
+        width: 70%;
+
+    }
+
+
 }
 
 
@@ -399,6 +407,15 @@
 /* スマホ用 */
 @media (max-width: 576px) {
     .restaurant__image {
-            height: 36%;
+            width: 100%;
+            height: 30%;
+            overflow: hidden;
         }
+
+        .restaurant__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
 }
