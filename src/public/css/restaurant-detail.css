@@ -392,7 +392,6 @@
         padding: 8px;
     }
 
-
     .confirm__row {
         display: flex;
         justify-content: left;
@@ -407,10 +406,7 @@
 
     .confirm__detail {
         width: 70%;
-
     }
-
-
 }
 
 
