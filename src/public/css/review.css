@@ -333,6 +333,7 @@
         border-radius: 50px;
         font-size: 20px;
         line-height: 1.5;
+        color: black;
     }
 }
 
@@ -342,6 +343,11 @@
 @media (max-width: 576px) {
     .card {
         width: 70%;
+    }
+
+    .submit__button {
+        color: black;
+        /* スマホ用に明示的に指定 */
     }
 }
 
