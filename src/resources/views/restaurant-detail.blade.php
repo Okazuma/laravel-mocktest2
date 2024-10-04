@@ -23,7 +23,7 @@
             @if (config('filesystems.default') === 's3')
                 <img src="{{ $restaurant->image_path }}" alt="Restaurant Image">
             @else
-                <img src="{{ asset($restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
+                <img src="{{ asset('/' . $restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
             @endif
         </div>
         <div class="restaurant__detail">
@@ -46,7 +46,6 @@
             @endif
             @if($userReview)
                 <div class="user__review">
-
                     <div class="review__button">
                         <a class="review__button--edit-btn" href="{{ route('reviews', ['restaurant_id' => $restaurant->id]) }}">口コミを編集</a>
                         <form class="review__button--delete" action="{{ route('reviews.destroy', $userReview->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
