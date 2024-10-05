@@ -72,6 +72,13 @@ class ReviewController extends Controller
 public function storeReview(ReviewRequest $request, $restaurant_id)
 {
     $userId = Auth::id();
+    $user = Auth::user();
+
+    // store_manager権限を持つユーザーはレビューできない
+    if ($user->hasRole('store_manager')) {  // 例: 'hasRole' は適切な権限管理パッケージ（例: Spatie）を利用している場合
+        return redirect()->back()->with('error', 'このアカウントではレビューを投稿できません。');
+    }
+
     $fileName = null;
 
     // 既存の口コミがある場合、削除する
