@@ -332,7 +332,7 @@
 
     .sort__select {
         background-color: inherit;
-        border-radius: 0;
+        
         /* ここでsort機能デザイン変更 */
             border-radius: 10px;
     }
