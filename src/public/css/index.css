@@ -327,13 +327,14 @@
         width: 50px;
         text-align:center;
         /* ここでsort機能デザイン変更 */
-            border-radius: 10px;
+        /* border-radius: 10px; */
     }
 
     .sort__select {
-        /* background-color: inherit; */
+        background-color: inherit;
+        border-radius: 0;
         /* ここでsort機能デザイン変更 */
-        border-radius: 10px;
+        /* border-radius: 10px; */
     }
 
     .details__button {
