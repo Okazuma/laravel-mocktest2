@@ -14,8 +14,6 @@
     align-items: center;
     margin: auto 0;
     background: #ffffff;
-    /* ここでsort機能デザイン変更 */
-    border-radius: 10px;
 }
 
 .sort__select {
@@ -25,8 +23,6 @@
     width: 100%;
     height: 100%;
     border: none;
-    /* ここでsort機能デザイン変更 */
-    border-radius: 10px;
 }
 
 .search__form {
@@ -330,11 +326,15 @@
     .sort__form {
         width: 50px;
         text-align:center;
+        /* ここでsort機能デザイン変更 */
+            border-radius: 10px;
     }
 
     .sort__select {
         background-color: inherit;
         border-radius: 0;
+        /* ここでsort機能デザイン変更 */
+            border-radius: 10px;
     }
 
     .details__button {
