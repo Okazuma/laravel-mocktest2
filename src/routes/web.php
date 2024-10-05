@@ -96,9 +96,8 @@ Route::get('/restaurants.search',[RestaurantController::class,'search'])->name('
 // イイネボタンの処理をするルート
 Route::post('/restaurants/{restaurant}/like', [RestaurantController::class, 'like'])->middleware(['auth'])->name('restaurants.like');
 
-
+// カードの並び替え処理のルート
 Route::get('/restaurants/sort', [RestaurantController::class, 'sort'])->name('restaurants.sort');
-
 
 
 
@@ -205,7 +204,7 @@ Route::get('/qr-code/open', [QRCodeController::class, 'openQrCode'])->name('qr-c
 // ーーーーーーーーーーレビュー画面ーーーーーーーーーー
 
 // レビューページを表示するルート
-Route::get('/reviews/{restaurant_id}',[ReviewController::class,'reviews'])->name('reviews');
+Route::get('/reviews/{restaurant_id}',[ReviewController::class,'reviews'])->middleware('check.store_manager')->name('reviews');
 
 // レビューを記録するルート
 Route::post('/reviews/{restaurant_id}',[ReviewController::class,'storeReview'])->name('reviews.store');
@@ -237,3 +236,12 @@ Route::get('payment/cancel',function(){
 
 // 支払い処理を行うルート
 Route::post('/create-checkout-session', [PaymentController::class, 'createCheckoutSession']);
+
+
+
+
+
+
+// csvをインポートするルート
+Route::post('/restaurants/import', [RestaurantController::class, 'import'])->name('restaurants.import');
+

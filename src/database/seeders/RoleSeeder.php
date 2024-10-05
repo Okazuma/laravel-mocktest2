@@ -28,13 +28,13 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'create_store']);
         Permission::create(['name' => 'update_store']);
         Permission::create(['name' => 'view_reservations']);
+        Permission::create(['name' => 'import_store']);
 
         // 役割に権限を付与
         $storeManagerRole = Role::findByName('store_manager');
         $storeManagerRole -> givePermissionTo(['create_store','update_store','view_reservations']);
 
         $adminRole = Role::findByName('admin');
-        $adminRole -> givePermissionTo('create_store_manager');
-
+        $adminRole -> givePermissionTo('create_store_manager', 'import_store');
     }
 }

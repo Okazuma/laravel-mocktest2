@@ -17,7 +17,6 @@ class ReviewController extends Controller
         $userId = Auth::id();
         $restaurant = Restaurant::with('reviews')->findOrFail($restaurant_id);
 
-
         // ユーザーの口コミを取得
         $userReview = Review::where('user_id', $userId)
                         ->where('restaurant_id', $restaurant_id)
@@ -29,96 +28,50 @@ class ReviewController extends Controller
 
 
     // レビュー投稿処理ーーーーーーーーーー
-    // public function storeReview(ReviewRequest $request,$restaurant_id)
-    // {
-    //     $userId = Auth::id();
-    //     $fileName = null;
-        
-    //     // 既存の口コミがある場合、削除する
-    //     $existingReview = Review::where('user_id', $userId)
-    //                             ->where('restaurant_id', $restaurant_id)
-    //                             ->first();
+    public function storeReview(ReviewRequest $request, $restaurant_id)
+    {
+        $userId = Auth::id();
+        $user = Auth::user();
 
-    //     if ($existingReview) {
-    //         $existingReview->delete(); // 古い口コミを削除
-    //     }
+        $fileName = null;
 
-    //     // 新しい画像を保存
-    //     if ($request->hasFile('review_image')) {
-    //         $filePath = $request->file('review_image')->store('review_images', config('filesystems.default'));
-    //         if (config('filesystems.default') === 's3') {
-    //             $fileName = Storage::disk('s3')->url($filePath);
-    //         } else {
-    //             $fileName = $filePath;
-    //         }
-    //     }
+        // 既存の口コミがある場合、削除する
+        $existingReview = Review::where('user_id', $userId)
+                                ->where('restaurant_id', $restaurant_id)
+                                ->first();
 
-    //     // 新しい口コミを作成
-    //     $review = Review::create([
-    //         'user_id' => $userId,
-    //         'restaurant_id' => $restaurant_id,
-    //         'rating' => $request->input('rating'),
-    //         'comment' => $request->input('comment'),
-    //         'review_image' => $fileName,
-    //     ]);
-
-    //     return redirect()->route('restaurants.detail', ['shop_id' => $restaurant_id])
-    //                     ->with('message','レビューを投稿しました。');
-    // }
-
-
-
-    // レビュー投稿処理
-public function storeReview(ReviewRequest $request, $restaurant_id)
-{
-    $userId = Auth::id();
-    $user = Auth::user();
-
-    // store_manager権限を持つユーザーはレビューできない
-    if ($user->hasRole('store_manager')) {  // 例: 'hasRole' は適切な権限管理パッケージ（例: Spatie）を利用している場合
-        return redirect()->back()->with('error', 'このアカウントではレビューを投稿できません。');
-    }
-
-    $fileName = null;
-
-    // 既存の口コミがある場合、削除する
-    $existingReview = Review::where('user_id', $userId)
-                            ->where('restaurant_id', $restaurant_id)
-                            ->first();
-
-    if ($existingReview) {
-        // 画像が送信されている場合、新しい画像を保存
-        if ($request->hasFile('review_image')) {
-            $filePath = $request->file('review_image')->store('review_images', config('filesystems.default'));
-            if (config('filesystems.default') === 's3') {
-                $fileName = Storage::disk('s3')->url($filePath);
-            } else {
-                $fileName = $filePath;
+            if ($existingReview) {
+                // 画像が送信されている場合、新しい画像を保存
+                if ($request->hasFile('review_image')) {
+                    $filePath = $request->file('review_image')->store('review_images', config('filesystems.default'));
+                    if (config('filesystems.default') === 's3') {
+                        $fileName = Storage::disk('s3')->url($filePath);
+                    } else {
+                        $fileName = $filePath;
+                    }
+                } else {
+                    // 画像が送信されていない場合、既存の画像を保持
+                    $fileName = $existingReview->review_image;
+                }
+                // 古い口コミを削除
+                $existingReview->delete();
             }
-        } else {
-            // 画像が送信されていない場合、既存の画像を保持
-            $fileName = $existingReview->review_image;
-        }
 
-        // 古い口コミを削除
-        $existingReview->delete();
+        // 新しい口コミを作成
+        $review = Review::create([
+            'user_id' => $userId,
+            'restaurant_id' => $restaurant_id,
+            'rating' => $request->input('rating'),
+            'comment' => $request->input('comment'),
+            'review_image' => $fileName, // 既存の画像か新しい画像を使用
+        ]);
+
+        return redirect()->route('restaurants.detail', ['shop_id' => $restaurant_id]);
     }
 
-    // 新しい口コミを作成
-    $review = Review::create([
-        'user_id' => $userId,
-        'restaurant_id' => $restaurant_id,
-        'rating' => $request->input('rating'),
-        'comment' => $request->input('comment'),
-        'review_image' => $fileName, // 既存の画像か新しい画像を使用
-    ]);
-
-    return redirect()->route('restaurants.detail', ['shop_id' => $restaurant_id])
-                    ->with('message','レビューを投稿しました。');
-}
 
 
-
+    // レビュー削除処理ーーーーーーーーーー
     public function deleteReview($id)
     {
         $userId = Auth::id();
@@ -136,6 +89,7 @@ public function storeReview(ReviewRequest $request, $restaurant_id)
 
 
 
+    // レビュー一覧ページの表示ーーーーーーーーーー
     public function reviewsAll($restaurant_id)
     {
         // 該当するレストランを取得
@@ -149,5 +103,4 @@ public function storeReview(ReviewRequest $request, $restaurant_id)
         // ビューにデータを渡して表示
         return view('reviews-all', compact('restaurant', 'reviews'));
     }
-
 }
