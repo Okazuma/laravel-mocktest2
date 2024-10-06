@@ -55,6 +55,16 @@ class ReviewController extends Controller
                 }
                 // 古い口コミを削除
                 $existingReview->delete();
+            } else {
+                // 新しい口コミの場合、画像が送信されているか確認
+                if ($request->hasFile('review_image')) {
+                    $filePath = $request->file('review_image')->store('review_images', config('filesystems.default'));
+                    if (config('filesystems.default') === 's3') {
+                        $fileName = Storage::disk('s3')->url($filePath);
+                    } else {
+                        $fileName = $filePath;
+                    }
+                }
             }
 
         // 新しい口コミを作成
