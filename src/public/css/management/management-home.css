@@ -47,6 +47,8 @@
 }
 
 .back__button__btn {
+    font-size: 16px;
+    line-height: 1.5;
     width: 100%;
     text-align: center;
     display: block;
@@ -58,11 +60,15 @@
     background: blue;
 }
 
-.logout__button{
-    font-size:16px;
+.logout__button {
+    font-size: 16px;
+    line-height: 1.5;
     width: 100px;
     display: block;
+    padding: 0;
     margin: 0 auto;
+    border-radius: 3px;
+    border: 1px solid grey;
 }
 
 .logout__button:hover{
