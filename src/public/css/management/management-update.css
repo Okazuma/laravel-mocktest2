@@ -153,6 +153,7 @@
     background: #007BFF;
     margin: 16px auto;
     border-radius: 3px;
+    border: 1px solid grey;
 }
 
 .back__button__btn {

@@ -79,6 +79,7 @@ padding: 4px;
     background: #007BFF;
     margin: 0 auto 16px;
     border-radius: 3px;
+    border: 1px solid grey;
 }
 
 .back__button__btn {
