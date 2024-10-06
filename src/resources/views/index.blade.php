@@ -4,9 +4,6 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
-        
-
-
 @section('sort')
 <form class="sort__form" id="sort-form" action="{{ route('restaurants.sort') }}" method="GET">
     <select class="sort__select" name="sort" id="sort">
@@ -117,14 +114,13 @@
 </script>
 
 @yield('scripts')
-<!-- ーーーーー検索フォーム使用時の処理ーーーーー -->
 <script>
+// ーーーーー検索フォーム使用時の処理ーーーーー
     document.addEventListener('DOMContentLoaded', function() {
         const areaSelect = document.getElementById('area');
         const genreSelect = document.getElementById('genre');
         const keywordInput = document.getElementById('keyword');
         const searchForm = document.getElementById('search-form');
-
         const initialAreaValue = "{{ request()->input('area') }}";
         const initialGenreValue = "{{ request()->input('genre') }}";
         const initialKeywordValue = "{{ request()->input('keyword') }}";
@@ -160,39 +156,28 @@
         keywordInput.addEventListener('input', debounceSubmitKeyword);
     });
 
+// ーーーーーソート機能の処理ーーーーー
+    document.addEventListener('DOMContentLoaded', function() {
+        const sortSelect = document.getElementById('sort');
+        const sortForm = document.getElementById('sort-form');
+        function submitSortForm() {
+            sortForm.submit();
+        }
+        sortSelect.addEventListener('change', submitSortForm);
+    });
 
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    const sortSelect = document.getElementById('sort');
-    const sortForm = document.getElementById('sort-form'); // ソート用のフォームを用意
-
-    function submitSortForm() {
-        sortForm.submit(); // ソート用フォームを送信
+// ーーーーー並び替えボタンの文字調整処理ーーーーー
+    function adjustOptionText() {
+        const sortOption = document.querySelector('option[disabled]');
+        if (window.innerWidth <= 576) {
+            sortOption.textContent = '並び';
+        } else if (window.innerWidth <= 768) {
+            sortOption.textContent = '並び替え';
+        } else {
+            sortOption.textContent = '並び替え: 評価高/低';
+        }
     }
-
-    sortSelect.addEventListener('change', submitSortForm);
-});
-
-
-
-function adjustOptionText() {
-    const sortOption = document.querySelector('option[disabled]');
-    if (window.innerWidth <= 576) {
-        sortOption.textContent = '並び';
-    } else if (window.innerWidth <= 768) {
-        sortOption.textContent = '並び替え';
-    } else {
-        sortOption.textContent = '並び替え: 評価高/低';
-    }
-}
-
-// ページが読み込まれたときと、画面サイズが変更されたときに実行
-window.addEventListener('load', adjustOptionText);
-window.addEventListener('resize', adjustOptionText);
-
-
-
-
+    window.addEventListener('load', adjustOptionText);
+    window.addEventListener('resize', adjustOptionText);
 </script>
 @endsection
