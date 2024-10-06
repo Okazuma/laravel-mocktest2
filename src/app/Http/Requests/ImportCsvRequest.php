@@ -31,7 +31,7 @@ class ImportCsvRequest extends FormRequest
     public function messages()
     {
         return [
-            'csv_file.required' => 'csvファイルをアップロードしてください',
+            'csv_file.required' => 'csvファイルが選択されていません',
             'csv_file.mimes' => 'CSVファイルまたはテキストファイルを選択してください',
             'csv_file.max' => 'CSVファイルのサイズは2MB以下でなければなりません。',
         ];

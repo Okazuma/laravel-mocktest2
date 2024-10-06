@@ -4,20 +4,7 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
-        <form action="{{ route('restaurants.import') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="file" name="csv_file" accept=".csv" required>
-            <button type="submit">インポート</button>
-        </form>
-        @if ($errors->has('csv_file'))
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->get('csv_file') as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        
 
 
 @section('sort')

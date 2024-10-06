@@ -1,0 +1,101 @@
+.session__alert {
+    background: pink;
+    width: 100%;
+}
+
+.session__alert--success {
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.admin__title {
+    width: 100%;
+    text-align: center;
+    margin: 20px auto;
+    font-size: 24px;
+    padding: 4px;
+}
+
+.admin__form{
+    width: 80%;
+    margin: 10px auto;
+    background: lightgrey;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.admin__form__title{
+background-color: #007BFF;
+color: #ffffff;
+width: 100%;
+text-align: center;
+margin: 0 auto;
+font-size: 24px;
+padding: 4px;
+}
+
+.form__group{
+    padding: 16px;
+}
+
+.form__input{
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    outline: none;
+}
+
+.form__group__title{
+    text-align: center;
+    margin: 0;
+}
+
+.form__error{
+    text-align: center;
+}
+
+.error-message{
+    color: red;
+    margin: 0 auto;
+}
+
+.submit__button{
+    width: 100px;
+    display: block;
+    margin: 8px auto 24px;
+}
+.submit__button:hover {
+    background: lightgrey;
+}
+
+.back__button {
+    width: 100px;
+    background: #007BFF;
+    margin: 0 auto 16px;
+    border-radius: 3px;
+}
+
+.back__button__btn {
+    width: 100%;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.back__button__btn:hover {
+    background: blue;
+}
+
+
+
+
+@media (max-width:768px){
+    .admin__form {
+            width: 100%;
+    }
+}

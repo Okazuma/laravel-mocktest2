@@ -1,23 +1,22 @@
 @extends('layouts.backend')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/admin/admin-edit.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/create-manager.css') }}">
 @endsection
 
 @section('content')
-<div class="todo__alert">
+<div class="session__alert">
     @if(session('message'))
-    <div class="todo__alert--success">
+    <div class="session__alert--success">
     {{ session('message') }}
     </div>
     @endif
 </div>
-
 <div class="container">
-    <p class="admin__title">Admin</p>
-    <form class="admin__form" action="{{route('admin.admin-edit')}}" method="post">
+    <p class="admin__title">飲食店代表者の作成</p>
+    <form class="admin__form" action="{{route('admin.store-manager')}}" method="post">
         @csrf
-        <p class="admin__form__title">飲食店情報の作成</p>
+        <p class="admin__form__title">ユーザー情報</p>
         <div class="form__group">
             <p class="form__group__title">※飲食店の代表者名</p>
             <input class="form__input" type="text" name="name" value="{{ old('name') }}" placeholder="フルネーム" >
@@ -48,11 +47,7 @@
         <button class="submit__button" type="submit">作成</button>
     </form>
     <div class="back__button">
-        <a class="back__button__btn" href="/">Back</a>
+        <a class="back__button__btn" href="{{route('admin.admin-home')}}">Back</a>
     </div>
-    <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button class="logout__button" type="submit">Logout</button>
-    </form>
 </div>
 @endsection

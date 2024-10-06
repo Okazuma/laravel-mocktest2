@@ -3,7 +3,7 @@
     margin: 0 auto;
 }
 
-.management__title {
+.admin__title {
     width: 100%;
     text-align: center;
     margin: 20px auto;
@@ -11,9 +11,9 @@
     padding: 4px;
 }
 
-.management__content{
+.admin__content {
     margin: 10px auto;
-    height:30vh;
+    height: 30vh;
     width: 80%;
     display: flex;
     justify-content: center;
@@ -21,9 +21,8 @@
     flex-direction: column;
 }
 
-.edit__button,
-.reservation__button,
-.mail__button {
+.create-manager__button,
+.import-csv__button {
     display: block;
     text-align: center;
     text-decoration: none;
@@ -33,9 +32,8 @@
     margin: 16px;
 }
 
-.edit__button:hover,
-.reservation__button:hover,
-.mail__button:hover{
+.create-manager__button:hover,
+.import-csv__button:hover {
     color: blue;
 }
 
@@ -58,13 +56,13 @@
     background: blue;
 }
 
-.logout__button{
+.logout__button {
     width: 100px;
     display: block;
     margin: 0 auto;
 }
 
-.logout__button:hover{
+.logout__button:hover {
     background: lightgrey;
     border-radius: 3px;
 }

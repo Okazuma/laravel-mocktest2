@@ -156,11 +156,20 @@ Route::get('/dashboard',[DashboardController::class,'showDashboard'])->name('das
 // ーーーーーーーーーー管理者関連ーーーーーーーーーー
 
 Route::middleware(['admin'])->group(function(){
-    // 管理者ページ表示のルート
-    Route::get('/admin/edit',[AdminController::class,'showAdminEdit'])->name('admin.admin-edit');
+    // トップページ表示のルート（管理者用）
+    Route::get('/admin/home',[AdminController::class,'showAdminHome'])->name('admin.admin-home');
+
+    // 飲食店代表者の作成ページ表示のルート
+    Route::get('/admin/create-manager',[AdminController::class,'showCreateManager'])->name('admin.create-manager');
 
     // 飲食店代表者を作成するルート
-    Route::post('/admin/edit',[AdminController::class,'storeRestaurantManager'])->name('admin.admin-create');
+    Route::post('/admin/create-manager',[AdminController::class,'storeRestaurantManager'])->name('admin.store-manager');
+
+    // インポートページ表示のルート
+    Route::get('/admin/import-csv',[AdminController::class,'showAdminImport'])->name('admin.import-csv');
+
+    // CSVをインポートするルート
+    Route::post('/restaurants/import', [AdminController::class, 'import'])->name('restaurants.import');
 });
 
 
@@ -169,7 +178,7 @@ Route::middleware(['admin'])->group(function(){
 
 Route::middleware(['store_manager'])->group(function(){
     // 店舗代表者ページ表示のルート
-    Route::get('/management/home',[ManagementController::class,'showManagementHome']);
+    Route::get('/management/home',[ManagementController::class,'showManagementHome'])->name('management-home');
 
     // 店舗情報の管理ページ表示のルート
     Route::get('/management/edit',[ManagementController::class,'showManagementEdit'])->name('management.edit');
@@ -237,11 +246,4 @@ Route::get('payment/cancel',function(){
 // 支払い処理を行うルート
 Route::post('/create-checkout-session', [PaymentController::class, 'createCheckoutSession']);
 
-
-
-
-
-
-// csvをインポートするルート
-Route::post('/restaurants/import', [RestaurantController::class, 'import'])->name('restaurants.import');
 

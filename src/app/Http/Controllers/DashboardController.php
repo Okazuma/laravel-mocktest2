@@ -20,9 +20,9 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         if ($user->hasRole('admin')) {
-            return redirect()->route('admin.admin-edit');
+            return redirect()->route('admin.admin-home');
         } elseif ($user->hasRole('store_manager')) {
-            return redirect('/management/home');
+            return redirect()->route('management-home');
         }
         return redirect('/');
     }

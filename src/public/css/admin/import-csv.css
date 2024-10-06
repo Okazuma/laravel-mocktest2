@@ -11,7 +11,7 @@
     padding: 4px;
 }
 
-.admin__form{
+.admin__form {
     width: 80%;
     margin: 10px auto;
     background: lightgrey;
@@ -19,46 +19,60 @@
     overflow: hidden;
 }
 
-.admin__form__title{
-background-color: #007BFF;
-color: #ffffff;
-width: 100%;
-text-align: center;
-margin: 0 auto;
-font-size: 24px;
-padding: 4px;
+.admin__form__title {
+    background-color: #007BFF;
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 24px;
+    padding: 4px;
 }
 
-.form__group{
-    padding: 16px;
+.custom-file-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4%;
+    margin-bottom: 4%;
 }
 
-.form__input{
+.custom-file-label {
+    background-color: #ffffff;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.form__input {
     display: block;
     margin: 0 auto;
     width: 50%;
     outline: none;
 }
 
-.form__group__title{
-    text-align: center;
-    margin: 0;
+input[type="file"] {
+    display: none;
 }
 
-.form__error{
-    text-align: center;
+.file-name {
+    font-size: 16px;
+    color: #555;
 }
 
-.error-message{
+.error-message {
     color: red;
     margin: 0 auto;
 }
 
-.submit__button{
+.submit__button {
     width: 100px;
     display: block;
     margin: 8px auto 24px;
 }
+
 .submit__button:hover {
     background: lightgrey;
 }
@@ -82,29 +96,9 @@ padding: 4px;
     background: blue;
 }
 
-.logout__button {
-    width: 100px;
-    display: block;
-    margin: 0 auto;
-}
 
-.logout__button:hover {
-    background: lightgrey;
-    border-radius: 3px;
-}
-
-.todo__alert{
-    background: pink;
-    width: 100%;
-}
-
-.todo__alert--success {
-    text-align: center;
-}
-
-
-@media (max-width:768px){
+@media (max-width:768px) {
     .admin__form {
-            width: 100%;
+        width: 100%;
     }
 }
