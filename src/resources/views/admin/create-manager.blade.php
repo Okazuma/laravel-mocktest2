@@ -5,13 +5,13 @@
 @endsection
 
 @section('content')
-<div class="session__alert">
-    @if(session('message'))
-    <div class="session__alert--success">
-    {{ session('message') }}
-    </div>
-    @endif
+
+@if(session('message'))
+<div class="alert alert--success">
+{{ session('message') }}
 </div>
+@endif
+
 <div class="container">
     <p class="admin__title">飲食店代表者の作成</p>
     <form class="admin__form" action="{{route('admin.store-manager')}}" method="post">

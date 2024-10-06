@@ -5,12 +5,14 @@
 @endsection
 
 @section('content')
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="container">
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
     <p class="admin__title">店舗情報の追加</p>
     <form class="admin__form" action="{{ route('restaurants.import') }}" method="POST" enctype="multipart/form-data">
     @csrf

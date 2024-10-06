@@ -1,10 +1,7 @@
-.session__alert {
+.alert--success {
+    text-align: center;
     background: pink;
     width: 100%;
-}
-
-.session__alert--success {
-    text-align: center;
 }
 
 .container {
