@@ -24,6 +24,16 @@
     font-weight: normal;
 }
 
+.login__button{
+    display: block;
+        text-decoration: none;
+        color: #007BFF;
+        text-align: center;
+        padding: 8px;
+        font-size: 32px;
+        font-weight: normal;
+}
+
 
 
 
@@ -53,5 +63,15 @@
         padding: 8px;
         font-size: 32px;
         font-weight: normal;
+    }
+
+    .login__button{
+        display: block;
+            text-decoration: none;
+            color: #007BFF;
+            text-align: center;
+            padding: 8px;
+            font-size: 32px;
+            font-weight: normal;
     }
 }
