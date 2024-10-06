@@ -39,6 +39,7 @@
 
 .back__button {
     font-size: 16px;
+    line-height: 1.5;
     width: 100px;
     background: #007BFF;
     margin: 0 auto 16px;
@@ -46,7 +47,6 @@
 }
 
 .back__button__btn {
-    font-size: 16px;
     width: 100%;
     text-align: center;
     display: block;
