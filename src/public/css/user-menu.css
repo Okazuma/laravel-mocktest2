@@ -45,14 +45,14 @@
 
     .home__button,
     .mypage__button,
-    .register__button {
+    .dashboard__button {
         font-size: 26px;
         font-weight: normal;
     }
-
 
     .logout__button {
         font-size: 26px;
         font-weight: normal;
     }
+
 }

@@ -14,7 +14,7 @@
             <a class="register__button" href="{{route('register')}}">Registration</a>
         </div>
         <div class="menu__button">
-            <a class="mypage__button" href="{{route('login')}}">Login</a>
+            <a class="login__button" href="{{route('login')}}">Login</a>
         </div>
     </div>
 </div>

@@ -13,8 +13,8 @@
 }
 
 .home__button,
-.mypage__button,
-.register__button {
+.register__button,
+.login__button {
     display: block;
     text-decoration: none;
     color: #007BFF;
@@ -24,36 +24,16 @@
     font-weight: normal;
 }
 
-.menu__logout {
-    display: block;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}
 
-.logout__button {
-    display: block;
-    border: none;
-    color: #007BFF;
-    font-size: 32px;
-    background: transparent;
-    font-weight:normal;
-}
 
 
 @media (max-width: 576px) {
 
     .home__button,
-    .mypage__button,
-    .register__button {
+    .register__button,
+    .login__button {
         font-size: 26px;
         font-weight: normal;
     }
 
-
-    .logout__button {
-        font-size: 26px;
-        font-weight: normal;
-    }
 }
