@@ -61,6 +61,7 @@ padding: 4px;
 }
 
 .submit__button{
+    font-size: 16px;
     width: 100px;
     display: block;
     margin: 8px auto 24px;
@@ -70,6 +71,7 @@ padding: 4px;
 }
 
 .back__button {
+    font-size: 16px;
     width: 100px;
     background: #007BFF;
     margin: 0 auto 16px;
