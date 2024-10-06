@@ -159,7 +159,7 @@
 
 テーブル設計
 =====
-<img width="650" src="https://github.com/user-attachments/assets/91726dfe-aa1e-4534-8b64-8adcb39aed61">
+<img width="650" src="https://github.com/user-attachments/assets/b8dae6cb-0300-4508-b922-a7a1b4837ef8">
 
 
 ER図
