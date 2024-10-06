@@ -76,6 +76,7 @@
 </div>
 
 <script>
+    // ーーーーーいいね機能の処理ーーーーー
     document.addEventListener('DOMContentLoaded', function () {
         const likeButtons = document.querySelectorAll('.like__button');
 
@@ -111,6 +112,30 @@
             });
         });
     });
+
+    // ーーーーーソート機能の処理ーーーーー
+    document.addEventListener('DOMContentLoaded', function() {
+        const sortSelect = document.getElementById('sort');
+        const sortForm = document.getElementById('sort-form');
+        function submitSortForm() {
+            sortForm.submit();
+        }
+        sortSelect.addEventListener('change', submitSortForm);
+    });
+
+// ーーーーー並び替えボタンの文字調整処理ーーーーー
+    function adjustOptionText() {
+        const sortOption = document.querySelector('option[disabled]');
+        if (window.innerWidth <= 576) {
+            sortOption.textContent = '並び';
+        } else if (window.innerWidth <= 768) {
+            sortOption.textContent = '並び替え';
+        } else {
+            sortOption.textContent = '並び替え: 評価高/低';
+        }
+    }
+    window.addEventListener('load', adjustOptionText);
+    window.addEventListener('resize', adjustOptionText);
 </script>
 
 @yield('scripts')
@@ -155,29 +180,5 @@
         genreSelect.addEventListener('change', debounceSubmitGenre);
         keywordInput.addEventListener('input', debounceSubmitKeyword);
     });
-
-// ーーーーーソート機能の処理ーーーーー
-    document.addEventListener('DOMContentLoaded', function() {
-        const sortSelect = document.getElementById('sort');
-        const sortForm = document.getElementById('sort-form');
-        function submitSortForm() {
-            sortForm.submit();
-        }
-        sortSelect.addEventListener('change', submitSortForm);
-    });
-
-// ーーーーー並び替えボタンの文字調整処理ーーーーー
-    function adjustOptionText() {
-        const sortOption = document.querySelector('option[disabled]');
-        if (window.innerWidth <= 576) {
-            sortOption.textContent = '並び';
-        } else if (window.innerWidth <= 768) {
-            sortOption.textContent = '並び替え';
-        } else {
-            sortOption.textContent = '並び替え: 評価高/低';
-        }
-    }
-    window.addEventListener('load', adjustOptionText);
-    window.addEventListener('resize', adjustOptionText);
 </script>
 @endsection
