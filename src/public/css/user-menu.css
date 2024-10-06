@@ -41,8 +41,10 @@
     font-weight: normal;
 }
 
-@media (max-width: 576px) {
 
+
+
+@media (max-width: 768px) {
     .home__button,
     .mypage__button,
     .dashboard__button {
@@ -54,5 +56,18 @@
         font-size: 32px;
         font-weight: normal;
     }
+}
 
+@media (max-width: 576px) {
+    .home__button,
+    .mypage__button,
+    .dashboard__button {
+        font-size: 26px;
+        font-weight: normal;
+    }
+
+    .logout__button {
+        font-size: 32px;
+        font-weight: normal;
+    }
 }
