@@ -62,6 +62,7 @@ padding: 4px;
 
 .submit__button{
     font-size: 16px;
+    line-height: 1.5;
     width: 100px;
     display: block;
     margin: 8px auto 24px;
@@ -76,6 +77,7 @@ padding: 4px;
 
 .back__button {
     font-size: 16px;
+    line-height: 1.5;
     width: 100px;
     background: #007BFF;
     margin: 0 auto 16px;
@@ -114,6 +116,7 @@ padding: 4px;
 @media (max-width:576px) {
     .submit__button {
         font-size: 16px;
+        line-height: 1.5;
         width: 100px;
         border: none;
     }

@@ -75,6 +75,7 @@ input[type="file"] {
 
 .submit__button {
     font-size: 16px;
+    line-height: 1.5;
     width: 100px;
     display: block;
     margin: 8px auto 24px;
@@ -89,11 +90,12 @@ input[type="file"] {
 
 .back__button {
     font-size: 16px;
+    line-height: 1.5;
     width: 100px;
     background: #007BFF;
     margin: 0 auto 16px;
     border-radius: 3px;
-    border: none;
+    /* border: none; */
 }
 
 .back__button__btn {
@@ -119,8 +121,10 @@ input[type="file"] {
 
     .submit__button {
         font-size: 16px;
+        line-height: 1.5;
         width: 100px;
-        border: none;
+        /* border: none; */
+        border-radius: 3px;
     }
 }
 
@@ -129,8 +133,10 @@ input[type="file"] {
 @media (max-width:576px) {
     .submit__button {
         font-size: 16px;
+        line-height: 1.5;
         width: 100px;
-        border: none;
+        /* border: none; */
+        border-radius: 3px;
     }
 
 }
