@@ -113,6 +113,7 @@ padding: 4px;
     }
 }
 
+
 /* スマホ用 */
 @media (max-width:576px) {
     .submit__button {
@@ -122,5 +123,4 @@ padding: 4px;
         border-radius: 3px;
         border: none;
     }
-
 }

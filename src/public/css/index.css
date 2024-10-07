@@ -230,12 +230,10 @@
 
     .search__area,
     .search__genre {
-        display: inline-block;
         width: 48%;
     }
 
     .search__keyword {
-        display: inline-block;
         width: 100%;
         border-bottom: 1px solid grey;
         padding-left: 10%;
@@ -263,8 +261,6 @@
 
     .search__area__genre {
         width: 45vw;
-        display: flex;
-        justify-content: space-between;
         margin: 0;
         padding: 0;
         background: #ffffff;
@@ -273,27 +269,23 @@
         border-bottom: 1px solid lightgrey;
     }
 
-        .card__image {
-            width: 100%;
-            height: 50%;
-            overflow: hidden;
-        }
+    .card__image {
+        width: 100%;
+        height: 50%;
+        overflow: hidden;
+    }
 
-        .card__image img {
-            width: 100%;
-            height: 100%;
-            /* aspect-ratio: 1/0.75; */
-            object-fit: cover;
-        }
+    .card__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
     .card__content{
         padding:1rem;
     }
 
     .card__actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         margin-top: 1rem;
         flex: 2;
     }
@@ -316,8 +308,6 @@
 }
 
 
-
-
 /* スマホ用 */
 @media (max-width: 576px) {
     .card__actions {
@@ -336,25 +326,18 @@
 
     .card__image img {
         width: 100%;
-        /* aspect-ratio: auto; */
         height: auto;
-        /* aspect-ratio: 1/0.75; */
         object-fit: cover;
     }
 
     .sort__form {
         width: 50px;
-        /* width: 20%; */
         text-align:center;
-        /* ここでsort機能デザイン変更 */
-        /* border-radius: 10px; */
     }
 
     .sort__select {
         background-color: inherit;
         border-radius: 0;
-        /* ここでsort機能デザイン変更 */
-        /* border-radius: 10px; */
     }
 
     .details__button {
@@ -368,7 +351,6 @@
         font-size: 1.5rem;
         width: 20%;
     }
-
 
     .search__form {
         width: 50%;
