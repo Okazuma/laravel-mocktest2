@@ -30,8 +30,7 @@
 }
 
 .resend__form{
-    margin-top:2%;
-    margin-bottom: 2%;
+    margin: 2% auto 2%;
 }
 
 .card__text__resend {
@@ -110,5 +109,22 @@
 
     .card__text {
         font-size: 14px;
+    }
+
+    .resend__form {
+        margin: 2% auto 2%;
+    }
+
+    .resend__button {
+        font-size: 14px;
+        display: block;
+        margin: 0 auto;
+        border: none;
+        width: 100px;
+        /* border: 1px solid grey; */
+    }
+
+    .resend__button:hover {
+        background: blue;
     }
 }
