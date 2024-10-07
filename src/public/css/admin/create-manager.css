@@ -67,6 +67,7 @@ padding: 4px;
     margin: 8px auto 24px;
     padding: 0;
     border-radius: 0;
+    border: none;
 }
 
 .submit__button:hover {
@@ -79,7 +80,7 @@ padding: 4px;
     background: #007BFF;
     margin: 0 auto 16px;
     border-radius: 3px;
-    border: 1px solid grey;
+    border: none;
 }
 
 .back__button__btn {

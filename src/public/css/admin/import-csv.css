@@ -79,6 +79,7 @@ input[type="file"] {
     display: block;
     margin: 8px auto 24px;
     padding: 0;
+    border: none;
 }
 
 .submit__button:hover {
@@ -91,7 +92,7 @@ input[type="file"] {
     background: #007BFF;
     margin: 0 auto 16px;
     border-radius: 3px;
-    border: 1px solid grey;
+    border: none;
 }
 
 .back__button__btn {
@@ -117,6 +118,7 @@ input[type="file"] {
 
     .submit__button {
         font-size: 16px;
+        border: none;
     }
 }
 
@@ -125,5 +127,6 @@ input[type="file"] {
 @media (max-width:576px) {
     .submit__button {
         width:auto;
+        border: none;
     }
 }
