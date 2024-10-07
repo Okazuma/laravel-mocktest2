@@ -125,4 +125,10 @@
         outline: none;
         height: 100%;
     }
+
+    .form__error {
+        font-size:12px;
+        color: red;
+    }
+
 }

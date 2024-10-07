@@ -18,13 +18,13 @@
     <div class="card">
         <p class="card__text">会員登録ありがとうございます。<br>確認メールを送りましたので、<br>本人確認を行なってください。</p>
 
-        <p class="card__text__resend">確認メールが届いていない方</p>
+        <p class="card__text__resend">---確認メールが届いていない方---</p>
 
         <form class="resend__form" method="POST" action="{{ route('verification.resend') }}">
         @csrf
-            <div class="form-group">
-                <label for="email">メールアドレス:</label>
-                <input type="text" name="email" class="form-control" >
+            <div class="form__group">
+                <label class="form__label" for="email">登録したメールアドレスを入力</label>
+                <input class="form__input" type="text" name="email" >
             </div>
             @error('email')
                 <div class="error-message">
@@ -53,7 +53,7 @@
             @csrf
                 <div class="form__group">
                     <label class="form__label" for="email">登録したメールアドレスを入力</label>
-                    <input class="form__input" type="text" name="email" class="form-control" >
+                    <input class="form__input" type="text" name="email" >
                 </div>
                 @error('email')
                     <div class="error-message">
@@ -79,7 +79,7 @@
             @csrf
                 <div class="form__group">
                     <label class="form__label" for="email">登録したメールアドレスを入力</label>
-                    <input class="form__input" type="text" name="email" class="form-control" >
+                    <input class="form__input" type="text" name="email" >
                     @error('email')
                     <div class="error-message">
                         {{ $message }}
