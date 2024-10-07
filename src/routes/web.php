@@ -57,10 +57,8 @@ Route::post('/login',[AuthController::class,'login']);
 
 // ーーーーーーーーーーメール認証ーーーーーーーーーー
 
-// メール認証通知ページを表示するルート
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->name('verification.notice');
+// メール認証を促すページを表示するルート
+Route::get('/email/verify', [AuthController::class, 'notice'])->name('verification.notice');
 
 // メール認証を行うルート
 Route::get('/email/verify/{id}/{hash}', function (Request $request, $id, $hash) {
@@ -69,19 +67,10 @@ Route::get('/email/verify/{id}/{hash}', function (Request $request, $id, $hash) 
         return view('auth.thanks');
 })->middleware(['signed'])->name('verification.verify');
 
-// 認証メールを再送信するルート
-Route::post('/email/verify/resend', function (Request $request) {
-    $email = session('email');
-    $user = User::where('email', $email)->first();
-    if (!$user) {
-        return redirect()->route('login')->withErrors(['message' => 'ユーザーが見つかりません。']);
-    }
-    if ($user->hasVerifiedEmail()) {
-        return redirect()->route('login')->withErrors(['message' => 'このメールアドレスは既に認証されています。']);
-    }
-    $user->sendEmailVerificationNotification();
-    return redirect()->route('verification.notice')->with('message', '認証メールを再送しました。');
-})->name('verification.resend');
+
+// 認証メール再送信のルート
+Route::post('/email/verify/resend', [AuthController::class, 'resendVerificationEmail'])->name('verification.resend');
+
 
 
 
@@ -118,8 +107,7 @@ Route::get('/detail/{shop_id}', [RestaurantController::class,'detail'])->name('r
 
 // 飲食店詳細ページで予約を作成するルート
 Route::post('/restaurants/{restaurant}/reserve', [ReservationController::class, 'store'])
-    ->middleware(['auth','VerifyEmail'])
-    ->name('restaurants.reservation');
+    ->middleware(['auth','VerifyEmail'])->name('restaurants.reservation');
 
 // 飲食店詳細ページで予約完了後にdoneページの表示のルート
 Route::get('/done',[ReservationController::class,'done'])->name('done');

@@ -1,11 +1,7 @@
-.session__alert {
-    width: 100%;
-    background: blue;
-    color: white
-}
-
 .session__alert--success {
     text-align: center;
+    background: pink;
+    width: 100%;
 }
 
 .container{
@@ -20,7 +16,7 @@
 
 .card{
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-    width: 400px;
+    width: 50%;
     height: auto;
     background: #ffffff;
     margin: 0 auto;
@@ -28,34 +24,91 @@
     border-radius: 3px;
 }
 
-.card__text__head {
+.card__text {
     text-align: center;
-    font-size: 18px;
-    margin: 0 24px;
+    font-size: 20px;
 }
 
-.card__text__middle{
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 24px;
+.resend__form{
+    margin-top:2%;
+    margin-bottom: 2%;
 }
 
 .card__text__resend {
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     margin: 4px auto 8px;
 }
 
-.resend__button{
+.form__group{
+    margin-bottom: 4%;
+}
+
+.form__label{
     display: block;
     text-align: center;
-    text-decoration: none;
-    background: blue;
-    border-radius: 3px;
-    border: none;
-    width: 48px;
-    font-size: 12px;
-    color: white;
-    padding: 4px;
+}
+
+.form__input{
+    display: block;
     margin: 0 auto;
+    width:60%;
+    /* outline: none; */
+}
+
+.resend__button{
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+    text-decoration: none;
+    background: #007BFF;
+    color: white;
+    border: none;
+    width: 20%;
+    border-radius: 3px;
+    /* border: 1px solid grey; */
+}
+
+.resend__button:hover {
+    background: blue;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+}
+
+
+
+
+/* テキストデザイン崩れ防止 */
+@media (max-width: 900px){
+    .card__text {
+        text-align: center;
+        font-size: 16px;
+    }
+}
+
+
+/* タブレット用 */
+@media (max-width: 768px) {
+    .card {
+        width: 80%;
+    }
+
+    .card__text {
+        font-size: 16px;
+    }
+}
+
+
+/* スマホ用 */
+@media (max-width: 576px) {
+    .card {
+        width: 80%;
+    }
+
+    .card__text {
+        font-size: 14px;
+    }
 }

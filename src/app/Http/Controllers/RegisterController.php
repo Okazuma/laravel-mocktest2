@@ -32,12 +32,12 @@ class RegisterController extends Controller
         event(new Registered($user));
         session(['email' => $user->email]);
 
-        return view('auth.verify-email');
+        return redirect()->route('verification.notice')->with('registered', true);
     }
 
 
 
-    // メール認証後のページの表示
+    // メール認証後のページの表示ーーーーーーーーーー
     public function thanks()
     {
         return view('auth.thanks');

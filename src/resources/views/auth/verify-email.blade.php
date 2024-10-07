@@ -6,35 +6,97 @@
 
 @section('content')
 <div class="session__alert">
-    @if(session('message'))
+    @if(session('success'))
     <div class="session__alert--success">
-        {{ session('message') }}
+        {{ session('success') }}
     </div>
     @endif
 </div>
 
 <div class="container">
+    @if (session('registered'))
     <div class="card">
-        <p class="card__text__head">会員登録ありがとうございます。</p>
-            <p class="card__text__middle">確認メールを送りましたので、<br>本人確認を行なってください。</p>
-        <div class="card-body">
-            @if (session('resent'))
-            <div class="alert alert-success" role="alert">
-                {{ __('A fresh verification link has been sent to your email address.') }}
+        <p class="card__text">会員登録ありがとうございます。<br>確認メールを送りましたので、<br>本人確認を行なってください。</p>
+
+        <p class="card__text__resend">確認メールが届いていない方</p>
+
+        <form class="resend__form" method="POST" action="{{ route('verification.resend') }}">
+        @csrf
+            <div class="form-group">
+                <label for="email">メールアドレス:</label>
+                <input type="text" name="email" class="form-control" >
             </div>
+            @error('email')
+                <div class="error-message">
+                    {{ $message }}
+                </div>
+            @enderror
+            @if ($errors->has('verify_error'))
+                <div class="error-message">
+                    {{ $errors->first('verify_error') }}
+                </div>
             @endif
-            <p class="card__text__resend">確認メールが届いていない方</p>
-            @if (session('email'))
-            <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                <input type="hidden" name="email" value="{{ session('email') }}">
-                    @csrf
+
+            <button class="resend__button" type="submit">再送信</button>
+        </form>
+    </div>
+
+
+
+
+
+
+    @elseif (session('resend'))
+        <div class="card">
+            <p class="card__text">メールアドレスが認証されていません。<br>確認メールを再度送信して<br>本人確認を行なってください。</p>
+            <form class="resend__form" method="POST" action="{{ route('verification.resend') }}">
+            @csrf
+                <div class="form__group">
+                    <label class="form__label" for="email">登録したメールアドレスを入力</label>
+                    <input class="form__input" type="text" name="email" class="form-control" >
+                </div>
+                @error('email')
+                    <div class="error-message">
+                        {{ $message }}
+                    </div>
+                @enderror
+                @if ($errors->has('verify_error'))
+                    <div class="error-message">
+                        {{ $errors->first('verify_error') }}
+                    </div>
+                @endif
                 <button class="resend__button" type="submit">再送信</button>
             </form>
         </div>
-    </div>
-</div>
+
+
+
 
     @else
-    <a href="{{ route('verification.resendAgain', ['email' => auth()->user()->email]) }}">認証メールを再送する</a>
+        <div class="card">
+            <p class="card__text">メールアドレスが認証されていません。<br>確認メールを再度送信して<br>本人確認を行なってください。</p>
+            <form class="resend__form" method="POST" action="{{ route('verification.resend') }}">
+            @csrf
+                <div class="form__group">
+                    <label class="form__label" for="email">登録したメールアドレスを入力</label>
+                    <input class="form__input" type="text" name="email" class="form-control" >
+                    @error('email')
+                    <div class="error-message">
+                        {{ $message }}
+                    </div>
+                @enderror
+                @if ($errors->has('verify_error'))
+                    <div class="error-message">
+                        {{ $errors->first('verify_error') }}
+                    </div>
+                @endif
+                </div>
+
+            <button class="resend__button" type="submit">再送信</button>
+            </form>
+        </div>
     @endif
+</div>
+
+
 @endsection

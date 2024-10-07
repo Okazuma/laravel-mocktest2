@@ -19,7 +19,7 @@ class VerifyEmail
     {
         $user = Auth::user();
         if ($user && !$user->hasVerifiedEmail()){
-            return redirect('/email/verify');
+            return redirect()->route('verification.notice')->with('resend', true);
         }
         return $next($request);
     }
