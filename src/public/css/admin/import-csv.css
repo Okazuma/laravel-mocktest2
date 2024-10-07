@@ -81,6 +81,7 @@ input[type="file"] {
     margin: 8px auto 24px;
     padding: 0;
     border-radius: 3px;
+    border: none;
 }
 
 .submit__button:hover {
@@ -122,6 +123,7 @@ input[type="file"] {
         line-height: 1.5;
         width: 100px;
         border-radius: 3px;
+        border: none;
     }
 }
 
@@ -133,6 +135,7 @@ input[type="file"] {
         line-height: 1.5;
         width: 100px;
         border-radius: 3px;
+        border: none;
     }
 
 }
