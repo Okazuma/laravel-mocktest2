@@ -56,7 +56,7 @@
                 @endif
             </div>
             <div class="card__content">
-                <h3 class="restaurant__name">{{ $restaurant->name }}</h3>
+                <p class="restaurant__name">{{ $restaurant->name }}</p>
                 <span class="restaurant__area__genre">#{{ $restaurant->area }}  #{{ $restaurant->genre }}</span>
                 <div class="card__actions">
                     <a  class="details__button" href="{{ route('restaurants.detail', $restaurant->id) }}" class="details__button">詳しく見る</a>

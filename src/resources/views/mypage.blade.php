@@ -65,7 +65,7 @@
                         @endif
                     </div>
                     <div class="likes__card__content">
-                        <h3 class="likes__restaurant__name">{{ $restaurant->name }}</h3>
+                        <p class="likes__restaurant__name">{{ $restaurant->name }}</p>
                         <p class="likes__restaurant__area__genre">#{{ $restaurant->area }}  #{{ $restaurant->genre }}</p>
                         <div class="likes__card__actions">
                             <a href="{{ route('restaurants.detail', $restaurant->id) }}" class="likes__details__button">詳しく見る</a>

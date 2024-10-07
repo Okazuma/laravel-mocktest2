@@ -165,13 +165,18 @@
         display: flex;
         flex-direction: column;
         outline: none;
-        width: 45vw;
+        width: 50%;
     }
 
     .search__area,
     .search__genre {
         display: inline-block;
-        width: 45%;
+        width: 48%;
+    }
+
+    .search__keyword {
+        display: inline-block;
+        width: 100%;
     }
 
     .search__area select,
@@ -220,18 +225,18 @@
         display: flex;
         flex-direction: column;
         outline: none;
-        width: 45vw;
+        width: 50%;
     }
 
     .search__area,
     .search__genre {
         display: inline-block;
-        width: 45%;
+        width: 48%;
     }
 
     .search__keyword {
         display: inline-block;
-        width: 45vw;
+        width: 100%;
         border-bottom: 1px solid grey;
         padding-left: 10%;
         padding-right: 10%;
@@ -339,6 +344,7 @@
 
     .sort__form {
         width: 50px;
+        /* width: 20%; */
         text-align:center;
         /* ここでsort機能デザイン変更 */
         /* border-radius: 10px; */
@@ -361,6 +367,20 @@
     .like__button {
         font-size: 1.5rem;
         width: 20%;
+    }
+
+
+    .search__form {
+        width: 50%;
+    }
+
+    .search__area,
+    .search__genre {
+        width: 48%;
+    }
+
+    .search__keyword {
+        width: 100%;
     }
 
     .search__area select,
