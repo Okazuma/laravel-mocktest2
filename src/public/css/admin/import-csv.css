@@ -80,8 +80,7 @@ input[type="file"] {
     display: block;
     margin: 8px auto 24px;
     padding: 0;
-    border-radius: 0;
-    border: none;
+    border-radius: 3px;
 }
 
 .submit__button:hover {
@@ -95,7 +94,6 @@ input[type="file"] {
     background: #007BFF;
     margin: 0 auto 16px;
     border-radius: 3px;
-    /* border: none; */
 }
 
 .back__button__btn {
@@ -123,7 +121,6 @@ input[type="file"] {
         font-size: 16px;
         line-height: 1.5;
         width: 100px;
-        /* border: none; */
         border-radius: 3px;
     }
 }
@@ -135,7 +132,6 @@ input[type="file"] {
         font-size: 16px;
         line-height: 1.5;
         width: 100px;
-        /* border: none; */
         border-radius: 3px;
     }
 
