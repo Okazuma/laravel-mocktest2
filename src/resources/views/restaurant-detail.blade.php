@@ -11,7 +11,7 @@
             <div class="back__button">
                 <a class="back__button-back" href="{{route('restaurants.index')}}"><</a>
             </div>
-            <h4 class="restaurant__name">{{ $restaurant->name }}</h4>
+            <h2 class="restaurant__name">{{ $restaurant->name }}</h2>
         </div>
         <div class="restaurant__image">
             @if (config('filesystems.default') === 's3')
@@ -144,6 +144,8 @@
         <button type="submit" class="submit__button">予約する</button>
     </form>
 </div>
+
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

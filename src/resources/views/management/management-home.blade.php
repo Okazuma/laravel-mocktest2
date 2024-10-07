@@ -16,9 +16,8 @@
         <a class="back__button__btn" href="/">Back</a>
     </div>
     <form action="{{ route('logout') }}" method="POST">
-        @csrf
+    @csrf
         <button class="logout__button" type="submit">Logout</button>
     </form>
 </div>
 @endsection
-

@@ -35,6 +35,7 @@
 </div>
 
 <script>
+    // ーーーーー添付ファイル表示の処理ーーーーー
     document.getElementById('csv_file').addEventListener('change', function() {
         var fileName = this.files.length > 0 ? this.files[0].name : '選択されていません';
         document.querySelector('.file-name').textContent = fileName;

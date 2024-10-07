@@ -74,6 +74,5 @@
   <div class="back__button">
     <a class="back__button__btn" href="/management/home" >Back</a>
   </div>
-
 </div>
 @endsection

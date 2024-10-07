@@ -65,7 +65,7 @@
                         @endif
                     </div>
                     <div class="likes__card__content">
-                        <h4 class="likes__restaurant__name">{{ $restaurant->name }}</h4>
+                        <h3 class="likes__restaurant__name">{{ $restaurant->name }}</h3>
                         <p class="likes__restaurant__area__genre">#{{ $restaurant->area }}  #{{ $restaurant->genre }}</p>
                         <div class="likes__card__actions">
                             <a href="{{ route('restaurants.detail', $restaurant->id) }}" class="likes__details__button">詳しく見る</a>
@@ -88,8 +88,9 @@
 </div>
 
 
-<!-- ーーーーーイイネボタン押下時の処理ーーーーー -->
+
 <script>
+// ーーーーーいいね機能の処理ーーーーー
     document.addEventListener('DOMContentLoaded', function () {
         const likeButtons = document.querySelectorAll('.like__button');
 

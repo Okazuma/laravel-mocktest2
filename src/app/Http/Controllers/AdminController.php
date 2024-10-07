@@ -86,8 +86,9 @@ class AdminController extends Controller
                 $extension = strtolower(pathinfo($imagePath, PATHINFO_EXTENSION)); // 拡張子を取得
 
                 // JPEGまたはPNGかどうかを確認
-                if (!in_array($extension, ['jpeg', 'jpg', 'png'])) {
-                    $errors[] = "画像 {$imagePath} はjpegまたはpng形式のみアップロード可能です。";
+                if (!in_array($extension, ['jpeg', 'png'])) {
+                    $errors[] = "image_pathはjpeg,png形式のみアップロード可能です。";
+                    // "画像 {$imagePath} はjpegまたはpng形式のみアップロード可能です。"
                     continue; // この行の処理をスキップ
                 }
 

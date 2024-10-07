@@ -11,8 +11,7 @@
         <div class="back__button">
                 <a class="back__button-back" href="{{ route('restaurants.detail', $restaurant->id) }}"><</a>
         </div>
-
-        <h4 class="restaurant__name">{{ $restaurant->name }} の口コミ一覧</h4>
+        <h2 class="restaurant__name">{{ $restaurant->name }} の口コミ一覧</h2>
     </div>
 
     @if ($reviews->isEmpty())
@@ -20,7 +19,6 @@
     @else
         @foreach ($reviews as $review)
             <div class="review__item">
-
                 <div class="review__header">
                     <span class="review--user">{{ $review->user->name }}</span>
                     @if(Auth::check())
@@ -56,7 +54,6 @@
                     @endfor
                 </div>
 
-
                 <div class="review__content">
                     @if ($review->review_image)
                     <div class="review__image">
@@ -69,7 +66,6 @@
                     @endif
                     <span class="review__text">{{ $review->comment }}</span>
                 </div>
-
             </div>
         @endforeach
     @endif

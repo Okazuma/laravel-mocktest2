@@ -54,11 +54,8 @@
         </div>
         <button class="submit__button" type="submit">送信</button>
     </form>
-
     <div class="back__button">
         <a class="back__button__btn" href="/management/home">Back</a>
     </div>
-
 </div>
 @endsection
-

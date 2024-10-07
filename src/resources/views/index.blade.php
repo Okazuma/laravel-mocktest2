@@ -56,7 +56,7 @@
                 @endif
             </div>
             <div class="card__content">
-                <p class="restaurant__name">{{ $restaurant->name }}</p>
+                <h3 class="restaurant__name">{{ $restaurant->name }}</h3>
                 <span class="restaurant__area__genre">#{{ $restaurant->area }}  #{{ $restaurant->genre }}</span>
                 <div class="card__actions">
                     <a  class="details__button" href="{{ route('restaurants.detail', $restaurant->id) }}" class="details__button">詳しく見る</a>
@@ -75,8 +75,10 @@
     @endforeach
 </div>
 
+
+
 <script>
-    // ーーーーーいいね機能の処理ーーーーー
+// ーーーーーいいね機能の処理ーーーーー
     document.addEventListener('DOMContentLoaded', function () {
         const likeButtons = document.querySelectorAll('.like__button');
 
@@ -113,7 +115,7 @@
         });
     });
 
-    // ーーーーーソート機能の処理ーーーーー
+// ーーーーーソート機能の処理ーーーーー
     document.addEventListener('DOMContentLoaded', function() {
         const sortSelect = document.getElementById('sort');
         const sortForm = document.getElementById('sort-form');

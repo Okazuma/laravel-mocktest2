@@ -60,7 +60,6 @@
                         </div>
                     </div>
                 </div>
-
                 <table class="confirm__table">
                     <tr class="confirm__row">
                         <th class="confirm__title">Shop</th>
@@ -85,8 +84,10 @@
     </form>
 </div>
 
-<!-- ーーーー入力値をテーブルに反映させるーーーーー -->
+
+
 <script>
+// ーーーーー入力値をテーブルに反映ーーーーー
     document.addEventListener('DOMContentLoaded', function () {
         const dateInput = document.getElementById('date');
         const timeInput = document.getElementById('time');

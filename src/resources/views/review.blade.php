@@ -16,7 +16,6 @@
 <form action="{{ route('reviews.store', $restaurant->id) }}" method="post" enctype="multipart/form-data">
             @csrf
     <div class="container">
-
         <div class="restaurant">
             <p class="restaurant__title">今回のご利用はいかがでしたか？</p>
             <div class="card">
@@ -47,16 +46,8 @@
         </div>
 
 
-
-
-
-
-
-
         <div class="review__form">
-
             <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
-
             <div class="form__group__rating">
                 <p class="form__group__title">体験を評価してください</p>
                 <div class="star-rating">
@@ -94,29 +85,15 @@
                     </div>
                 @enderror
             </div>
-
-
         </div>
-
     </div>
     <button class="submit__button" type="submit">口コミを投稿</button>
-
-            </form>
-
-
-
-
-
-
-
-
-
-
-
+</form>
 
 
 
 <script>
+// ーーーーー５段階評価の処理ーーーーー
     const stars = document.querySelectorAll('.star-rating input');
     const labels = document.querySelectorAll('.star-rating label');
 
@@ -174,6 +151,7 @@
 
 
 
+// ーーーーードラッグ&ドロップで画像添付の処理ーーーーー
     document.addEventListener('DOMContentLoaded', function() {
     const dropArea = document.getElementById('drop-area');
     const fileInput = document.getElementById('file-upload');
@@ -230,8 +208,7 @@
 
 
 
-
-
+// ーーーーーいいね機能の処理ーーーーー
     document.addEventListener('DOMContentLoaded', function () {
         const likeButtons = document.querySelectorAll('.like__button');
 

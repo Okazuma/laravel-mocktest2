@@ -34,11 +34,14 @@
       @yield('sort')
       @yield('search')
   </header>
-
   <main>
     @yield('content')
   </main>
+
+
+
   <script>
+    // ーーーーーメニューアイコンの表示切り替えーーーーー
     document.addEventListener('DOMContentLoaded', function() {
       const menuButton = document.getElementById('menu-button');
       const currentPath = window.location.pathname;
