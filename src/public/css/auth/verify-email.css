@@ -44,6 +44,7 @@
 }
 
 .form__label{
+    font-size: 16px;
     display: block;
     text-align: center;
 }
@@ -86,6 +87,12 @@
         text-align: center;
         font-size: 16px;
     }
+
+    .form__label {
+        font-size: 14px;
+        display: block;
+        text-align: center;
+    }
 }
 
 
@@ -109,6 +116,12 @@
 
     .card__text {
         font-size: 14px;
+    }
+
+    .form__label {
+        font-size: 12px;
+        display: block;
+        text-align: center;
     }
 
     .resend__form {
