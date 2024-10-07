@@ -48,7 +48,7 @@
 
     @elseif (session('resend'))
         <div class="card">
-            <p class="card__text">メールアドレスが認証されていません。<br>確認メールを再度送信して<br>本人確認を行なってください。</p>
+            <p class="card__text">メール認証がされていません。<br>確認メールを再度送信して<br>本人確認を行なってください。</p>
             <form class="resend__form" method="POST" action="{{ route('verification.resend') }}">
             @csrf
                 <div class="form__group">
@@ -74,7 +74,7 @@
 
     @else
         <div class="card">
-            <p class="card__text">メールアドレスが認証されていません。<br>確認メールを再度送信して<br>本人確認を行なってください。</p>
+            <p class="card__text">メール認証がされていません。<br>確認メールを再度送信して<br>本人確認を行なってください。</p>
             <form class="resend__form" method="POST" action="{{ route('verification.resend') }}">
             @csrf
                 <div class="form__group">
