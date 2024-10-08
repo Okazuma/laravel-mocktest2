@@ -12,7 +12,7 @@
 }
 
 .card{
-    width: 30vw;
+    width: 30%;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
@@ -77,13 +77,31 @@
     background: #007BFF;
     border: none;
     border-radius:5px;
-    width: 40px;
+    width: 30%;
     font-size:12px;
     padding:4px;
     display: block;
     margin: 8px 0 4px auto;
 }
 
+
+
+
+/* フォーム崩れ防止 */
+@media (max-width: 950px) {
+    .card {
+        width: 40%;
+    }
+
+    .form__error {
+        font-size: 12px;
+        color: red;
+    }
+
+    .form__button-submit {
+        width: 30%;
+    }
+}
 
 
 
@@ -132,5 +150,4 @@
         font-size: 12px;
         color: red;
     }
-
 }

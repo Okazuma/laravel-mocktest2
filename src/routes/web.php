@@ -163,7 +163,6 @@ Route::middleware(['admin'])->group(function(){
 
 
 
-
 // ーーーーーーーーーー店舗代表者関連ーーーーーーーーーー
 
 Route::middleware(['store_manager'])->group(function(){

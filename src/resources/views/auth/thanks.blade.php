@@ -8,7 +8,9 @@
 <div class="container">
     <div class="card">
         <p class="thanks__text">メールアドレスの確認ができました。<br>ご登録ありがとうございます</p>
-        <a class="login__button" href="{{route('login')">Login</a>
+        <div class="login__button">
+            <a class="login__button-btn" href="{{route('login')}}">Login</a>
+        </div>
     </div>
 </div>
 @endsection
