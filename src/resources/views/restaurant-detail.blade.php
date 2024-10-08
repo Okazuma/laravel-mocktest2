@@ -28,9 +28,9 @@
 
         <div class="review">
             @if (Auth::check())
-                @if($userReview || Auth::user()->hasRole('admin') || Auth::user()->hasRole('store_manager'))
+                @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('store_manager') || Auth::check())
                 <div class="reviews--all">
-                <a class="reviews--all__button" href="{{ route('reviews.all', ['restaurant_id' => $restaurant->id]) }}">全ての口コミ情報</a>
+                    <a class="reviews--all__button" href="{{ route('reviews.all', ['restaurant_id' => $restaurant->id]) }}">全ての口コミ情報</a>
                 </div>
                 @endif
                 @if($userReview)
