@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
     {
         //
         $adminRole = Role::where('name','admin')->first();
+        $storeManagerRole = Role::where('name', 'store_manager')->first();
 
         User::create([
             'name' => 'admin',
@@ -25,6 +26,13 @@ class UserSeeder extends Seeder
             'password' => bcrypt('00000000'),
             'email_verified_at' => Carbon::now(),
         ])->assignRole($adminRole);
+
+        User::create([
+            'name' => 'manager',
+            'email' => 'manager@example.com',
+            'password' => bcrypt('99999999'),
+            'email_verified_at' => Carbon::now(),
+        ])->assignRole($storeManagerRole);
 
     }
 }
