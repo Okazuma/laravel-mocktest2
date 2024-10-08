@@ -56,7 +56,7 @@
             <input id="images" class="form__input" type="file" name="images[]" accept="image/*" multiple hidden>
             <span class="image-name">選択されていません</span>
             @if ($errors->has('images'))
-                <div class="alert alert-danger error-message">{{ $errors->first('images') }}</div>
+                <div class="alert alert-danger error-message">{!! nl2br(e($errors->first('images'))) !!}</div>
             @endif
         </div>
         <button class="submit__button" type="submit">アップロード</button>

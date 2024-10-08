@@ -135,16 +135,24 @@ class AdminController extends Controller
     {
         $disk = config('filesystems.default');
 
-        foreach($request->file('images')as $file){
-            $originalName = $file->getClientOriginalName();
+        if ($request->hasFile('images')) {
+            try {
+                foreach ($request->file('images') as $file) {
+                    $originalName = $file->getClientOriginalName();
 
-            if (Storage::disk($disk)->exists('images/' . $originalName)) {
-                return redirect()->back()->withErrors(['images' => "$originalName はすでに存在します。ファイル名を変更してください。"]);
+                    if (Storage::disk($disk)->exists('images/' . $originalName)) {
+                        return redirect()->back()->withErrors(['images' => "$originalName はすでに存在します。\nファイル名を変更してください。"]);
+                    }
+                    $file->storeAs('images', $originalName, $disk);
+                }
+
+                return redirect()->back()->with('success', '画像がアップロードされました');
+            } catch (\Exception $e) {
+                return redirect()->back()->withErrors(['images' => '画像のアップロード中にエラーが発生しました。もう一度お試しください。']);
             }
-
-            $file->storeAs('images', $originalName,$disk);
+        } else {
+            return redirect()->back()->withErrors(['images' => '画像を選択してください。']);
         }
-        return redirect()->back()->with('success','画像がアップロードされました');
     }
 
 }

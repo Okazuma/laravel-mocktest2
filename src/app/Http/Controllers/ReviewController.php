@@ -17,10 +17,9 @@ class ReviewController extends Controller
         $userId = Auth::id();
         $restaurant = Restaurant::with('reviews')->findOrFail($restaurant_id);
 
-        // ユーザーの口コミを取得
         $userReview = Review::where('user_id', $userId)
                         ->where('restaurant_id', $restaurant_id)
-                        ->first(); // ユーザーが投稿した最初の口コミを取得
+                        ->first();
 
         return view('review',compact('restaurant','userReview'));
     }
@@ -35,7 +34,6 @@ class ReviewController extends Controller
 
         $fileName = null;
 
-        // 既存の口コミがある場合、削除する
         $existingReview = Review::where('user_id', $userId)
                                 ->where('restaurant_id', $restaurant_id)
                                 ->first();
@@ -53,10 +51,8 @@ class ReviewController extends Controller
                     // 画像が送信されていない場合、既存の画像を保持
                     $fileName = $existingReview->review_image;
                 }
-                // 古い口コミを削除
                 $existingReview->delete();
             } else {
-                // 新しい口コミの場合、画像が送信されているか確認
                 if ($request->hasFile('review_image')) {
                     $filePath = $request->file('review_image')->store('review_images', config('filesystems.default'));
                     if (config('filesystems.default') === 's3') {
@@ -67,13 +63,12 @@ class ReviewController extends Controller
                 }
             }
 
-        // 新しい口コミを作成
         $review = Review::create([
             'user_id' => $userId,
             'restaurant_id' => $restaurant_id,
             'rating' => $request->input('rating'),
             'comment' => $request->input('comment'),
-            'review_image' => $fileName, // 既存の画像か新しい画像を使用
+            'review_image' => $fileName,
         ]);
 
         return redirect()->route('restaurants.detail', ['shop_id' => $restaurant_id]);
@@ -87,11 +82,9 @@ class ReviewController extends Controller
         $userId = Auth::id();
         $review = Review::where('id', $id)
             ->when(!Auth::user()->hasRole('admin'), function ($query) use ($userId) {
-                // 管理者以外の場合は、自分のレビューのみを対象にする
                 return $query->where('user_id', $userId);
             })
             ->firstOrFail();
-
         $review->delete();
 
         return redirect()->back()->with('message','レビューを削除しました');
@@ -102,15 +95,13 @@ class ReviewController extends Controller
     // レビュー一覧ページの表示ーーーーーーーーーー
     public function reviewsAll($restaurant_id)
     {
-        // 該当するレストランを取得
         $restaurant = Restaurant::findOrFail($restaurant_id);
 
-        // 該当するレストランに対する全ての口コミを取得
         $reviews = Review::where('restaurant_id', $restaurant_id)
                         ->orderBy('created_at', 'desc')
                         ->get();
 
-        // ビューにデータを渡して表示
         return view('reviews-all', compact('restaurant', 'reviews'));
     }
+
 }
