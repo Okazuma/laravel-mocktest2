@@ -211,7 +211,7 @@ CSVファイルの記述方法
 <img width="500" src="https://github.com/user-attachments/assets/2a36fee5-23d7-4bf9-aa11-83727a69c67a">
 
 
-# エクセルやスプレッドシートでのCSVファイル作成方法
+## エクセルやスプレッドシートでのCSVファイル作成方法
         - 1行目に各キーをセルごとに入力する
             「name」「description」「area」「genre」「image_path」
         - 2行目以降に飲食店情報の値をセルごとに入力する
@@ -219,7 +219,7 @@ CSVファイルの記述方法
 <img width="500" src="https://github.com/user-attachments/assets/f2b29d60-dab4-4101-84be-281767cd9145">
 
 
-    * テキストエディタでの作成方法——
+### テキストエディタでの作成方法——
         - 1行目に各キーをカンマ区切りで入力する(横向きに入力)
             name,description,area,genre,image_path
         - 2行目以降に飲食店情報の値をカンマ区切りで記述する
