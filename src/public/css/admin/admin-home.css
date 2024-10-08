@@ -68,6 +68,7 @@
     margin: 0 auto;
     border-radius: 3px;
     border: none;
+    border: 1px solid grey;
 }
 
 .logout__button:hover {
