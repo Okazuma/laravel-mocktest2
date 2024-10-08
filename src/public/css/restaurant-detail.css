@@ -10,6 +10,10 @@
     height:80vh;
 }
 
+.restaurant__inner.shortened {
+    height: 72vh;
+}
+
 .restaurant__heading{
     display:flex;
 }
@@ -71,13 +75,15 @@
 
 .review {
     width: 100%;
+    margin-bottom: 80px;
 }
 
 .reviews--all{
     display:flex;
     width: 100%;
     background: rgb(51, 43, 213);
-    font-size: 14px;
+    font-size: 18px;
+    line-height: 1.2;
     text-align: center;
     height:4vh;
     margin-bottom: 16px;
@@ -144,7 +150,7 @@
 }
 
 .star-rating .star.filled {
-    color: gold;
+    color: #007BFF;
 }
 
 .review--comment{
@@ -161,7 +167,7 @@
 
 .reservation__inner{
     padding: 20px;
-    height: 72vh;
+    height: 90%;
 }
 
 .reservation__heading__ttl{
@@ -176,7 +182,7 @@
 }
 
 .form__group{
-    margin-bottom:8px;
+    margin-bottom:10px;
     width: 90%;
 }
 
@@ -203,6 +209,7 @@
     height:24px;
     border-radius: 3px;
     border: none;
+    height: 36px;
     color: black;
 }
 
@@ -220,22 +227,31 @@
     padding: 4px;
 }
 
+.confirm__row:last-child {
+    margin-bottom:80px;
+}
+
 .confirm__title{
     width:20%;
     display: block;
     text-align:left;
+    margin: auto 0;
 }
 
 .confirm__detail{
     display: block;
+    /* height:36px; */
+    margin: auto 0;
 }
 
 .submit__button{
+    font-size:18px;
+    line-height: 1.2;
     width:100%;
     border: none;
     color:#ffffff;
     background: rgb(51, 43, 213);
-    height: 8vh;
+    height: 10%;
 }
 
 
@@ -256,17 +272,19 @@
 
     .restaurant__inner.shortened {
         margin-bottom: 0%;
+        height: auto;
     }
 
     .restaurant__image {
         width: 100%;
-        height: 56%;
+        height: 50%;
         overflow: hidden;
     }
 
     .restaurant__image img {
         width: 100%;
         height: auto;
+        /* aspect-ratio: 1/0.75; */
         object-fit: cover;
     }
 
@@ -286,10 +304,12 @@
     .review {
         width: 100%;
         height: auto;
+        margin-bottom: 16px;
     }
 
     .reviews--all {
         font-size: 20px;
+        height: 6vh;
     }
 
     .review__comment--first {
@@ -320,7 +340,7 @@
     }
 
     .star-rating .star.filled {
-        color: gold;
+        color: #007BFF;
     }
 
     .review--comment {
@@ -376,8 +396,8 @@
     }
 
     .submit__button {
-        font-size: 20px;
-        height: 4vh;
+        font-size: 24px;
+        line-height:2;
     }
 
     .confirm__table {
@@ -390,6 +410,10 @@
         display: flex;
         justify-content: left;
         line-height: 1.5;
+    }
+
+    .confirm__row:last-child {
+        margin-bottom: 40px;
     }
 
     .confirm__title {
@@ -439,5 +463,9 @@
         height: 36px;
         font-size: 14px;
         font-size: 14px;
+    }
+
+    .review{
+        margin-bottom:16px;
     }
 }

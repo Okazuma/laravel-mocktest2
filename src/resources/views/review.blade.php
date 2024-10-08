@@ -100,7 +100,7 @@
     if (selectedRating) {
         const selectedIndex = Array.from(stars).findIndex(star => star.checked);
         labels.forEach((label, i) => {
-            label.style.color = (i <= selectedIndex) ? 'gold' : '#ccc';
+            label.style.color = (i <= selectedIndex) ? '#007BFF' : '#ccc';
         });
     }
 
@@ -109,7 +109,7 @@
         label.addEventListener('mouseover', () => {
             // ホバーした星まで金色にする
             for (let i = 0; i <= index; i++) {
-                labels[i].style.color = 'gold';
+                labels[i].style.color = '#007BFF';
             }
         });
 
@@ -126,7 +126,7 @@
                 // 選択された星まで金色にする
                 const selectedIndex = Array.from(stars).findIndex(star => star.checked);
                 labels.forEach((label, i) => {
-                    label.style.color = (i <= selectedIndex) ? 'gold' : '#ccc';
+                    label.style.color = (i <= selectedIndex) ? '#007BFF' : '#ccc';
                 });
             }
         });
@@ -142,7 +142,7 @@
 
             // すべての星を元の色に戻す
             labels.forEach((label, i) => {
-                label.style.color = (i <= index) ? 'gold' : '#ccc';
+                label.style.color = (i <= index) ? '#007BFF' : '#ccc';
             });
         });
     });
