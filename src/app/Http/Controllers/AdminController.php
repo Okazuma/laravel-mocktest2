@@ -65,28 +65,6 @@ class AdminController extends Controller
 
 
 
-    // 画像アップロードの処理ーーーーーーーーーー
-    public function uploadImages(UploadImagesRequest $request)
-    {
-        // ストレージの設定を取得
-        $disk = config('filesystems.default');
-
-        // アップロードされた画像をストレージに保存
-        foreach($request->file('images')as $file){
-            // 元のファイル名を取得
-            $originalName = $file->getClientOriginalName();
-            // 画像がすでに存在するか確認
-            if (Storage::disk($disk)->exists('images/' . $originalName)) {
-                return redirect()->back()->withErrors(['images' => "$originalName はすでに存在します。ファイル名を変更してください。"]);
-            }
-            // 画像をストレージに保存（元のファイル名を保持）
-            $file->storeAs('images', $originalName,$disk);
-        }
-        return redirect()->back()->with('success','画像がアップロードされました');
-    }
-
-
-
     // CSVインポート処理ーーーーーーーーーー
     public function import(ImportCsvRequest $request)
     {
@@ -99,7 +77,6 @@ class AdminController extends Controller
 
             while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
                 $rowErrors = [];
-
                 // 店舗名バリデーション（50文字以内）
                 if (empty($row[0]) || mb_strlen($row[0]) > 50) {
                     $rowErrors[] = "・店舗名は50文字以内で入力してください。<br>（行: " . implode(", ", $row) . "）";
@@ -120,7 +97,7 @@ class AdminController extends Controller
                 }
                 // 画像パスバリデーション
                 $imagePath = $row[4];
-                $extension = strtolower(pathinfo($imagePath, PATHINFO_EXTENSION)); // 拡張子を取得
+                $extension = strtolower(pathinfo($imagePath, PATHINFO_EXTENSION));
                 if (!in_array($extension, ['jpeg', 'png','jpg'])) {
                     $rowErrors[] = "・image_pathはjpeg,png形式のみアップロード可能です。";
                 }
@@ -134,7 +111,6 @@ class AdminController extends Controller
                     continue;
                 }
 
-                // データベースに保存
                 Restaurant::create([
                     'name' => $row[0],
                     'description' => $row[1],
@@ -143,7 +119,6 @@ class AdminController extends Controller
                     'image_path' => $imagePath,
                 ]);
             }
-
             fclose($handle);
 
             if (count($errors) > 0) {
@@ -151,6 +126,25 @@ class AdminController extends Controller
             }
         }
         return redirect()->route('admin.import-csv')->with('success', '飲食店情報をインポートしました。');
+    }
+
+
+
+    // 画像アップロードの処理ーーーーーーーーーー
+    public function uploadImages(UploadImagesRequest $request)
+    {
+        $disk = config('filesystems.default');
+
+        foreach($request->file('images')as $file){
+            $originalName = $file->getClientOriginalName();
+
+            if (Storage::disk($disk)->exists('images/' . $originalName)) {
+                return redirect()->back()->withErrors(['images' => "$originalName はすでに存在します。ファイル名を変更してください。"]);
+            }
+
+            $file->storeAs('images', $originalName,$disk);
+        }
+        return redirect()->back()->with('success','画像がアップロードされました');
     }
 
 }

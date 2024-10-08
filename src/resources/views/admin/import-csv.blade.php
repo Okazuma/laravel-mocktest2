@@ -13,8 +13,6 @@
 @endif
 <div class="container">
     <p class="admin__title">店舗情報の追加</p>
-    
-
     <form class="admin__form" action="{{ route('restaurants.import') }}" method="POST" enctype="multipart/form-data">
     @csrf
         <p class="admin__form__title">CSVファイルのインポート</p>
@@ -50,8 +48,6 @@
         <button class="submit__button" type="submit">インポート</button>
     </form>
 
-
-
     <form class="admin__form" action="{{ route('images.upload') }}" method="POST" enctype="multipart/form-data">
     @csrf
         <p class="admin__form__title">画像のアップロード</p>
@@ -66,7 +62,6 @@
         <button class="submit__button" type="submit">アップロード</button>
     </form>
 
-
     <div class="back__button">
         <a class="back__button__btn" href="{{route('admin.admin-home')}}">Back</a>
     </div>
@@ -75,7 +70,14 @@
 
 
 <script>
-// ーーーーー画像ファイル表示の処理ーーーーー
+// ーーーーーcsv添付ファイル表示の処理ーーーーー
+    document.getElementById('csv_file').addEventListener('change', function() {
+        var fileName = this.files.length > 0 ? this.files[0].name : '選択されていません';
+        document.querySelector('.file-name').textContent = fileName;
+    });
+
+
+    // ーーーーー画像ファイル表示の処理ーーーーー
     document.addEventListener('DOMContentLoaded', function () {
         const inputFile = document.getElementById('images');
         const imageNameLabel = document.querySelector('.image-name');
@@ -90,15 +92,6 @@
             }
         });
     });
-
-
-
-// ーーーーーcsv添付ファイル表示の処理ーーーーー
-    document.getElementById('csv_file').addEventListener('change', function() {
-        var fileName = this.files.length > 0 ? this.files[0].name : '選択されていません';
-        document.querySelector('.file-name').textContent = fileName;
-    });
-
 
 
 // ーーーーーエラーの開閉処理ーーーーー
