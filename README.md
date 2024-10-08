@@ -166,7 +166,7 @@ http://54.249.16.235/
 
     2 docker-compose up -d --build
 
-    * MysqlはOSによって起動しない場合があるので、それぞれのPCに合わせてdocker-compose.ymlを編集してください。
+    ※ MysqlはOSによって起動しない場合があるので、それぞれのPCに合わせてdocker-compose.ymlを編集してください。
 
 
 
@@ -200,6 +200,7 @@ http://54.249.16.235/
 # CSVファイルの記述方法
 ##### CSVファイルの作成ルール
     ・各項目のルールに沿ってキーと値が入力
+
     ・画像の形式はjpegとpngのみの指定ですが、jpgをjpegに書き変えれば同じファイルとして使用可能
 <img width="500" src="https://github.com/user-attachments/assets/2a36fee5-23d7-4bf9-aa11-83727a69c67a">
 
