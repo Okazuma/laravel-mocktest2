@@ -210,7 +210,7 @@ CSVファイルの記述方法
 
 
     * CSVファイルのフォーマット
-    <img width="500" src="https://github.com/user-attachments/assets/95cb1eb9-3193-4935-9536-25ff383ffef0">
+<img width="500" src="https://github.com/user-attachments/assets/95cb1eb9-3193-4935-9536-25ff383ffef0">
 
 
     * エクセルやスプレッドシートでのCSVファイル作成方法
@@ -220,7 +220,7 @@ CSVファイルの記述方法
          「店舗A」「この店舗は…」「東京」「寿司」「storage/image/….jpeg」
 
     (例)
-    <img width="500" src="https://github.com/user-attachments/assets/94a31769-dd15-472f-95de-84ecbf5f3fad">
+<img width="500" src="https://github.com/user-attachments/assets/94a31769-dd15-472f-95de-84ecbf5f3fad">
 
 
     * テキストエディタでの作成方法——
@@ -230,4 +230,4 @@ CSVファイルの記述方法
          店舗名,店舗概要,地域,ジャンル,画像URL
 
     (例)
-    <img width="500" src="https://github.com/user-attachments/assets/6e616165-f3b1-4047-a5b8-d5d43c2f69e3">
+<img width="500" src="https://github.com/user-attachments/assets/6e616165-f3b1-4047-a5b8-d5d43c2f69e3">
