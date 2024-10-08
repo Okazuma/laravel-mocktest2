@@ -207,8 +207,6 @@ Laravelの環境構築
 
 CSVファイルの記述方法
 =====
-
-
     * CSVファイルのフォーマット
 <img width="500" src="https://github.com/user-attachments/assets/95cb1eb9-3193-4935-9536-25ff383ffef0">
 
@@ -218,9 +216,7 @@ CSVファイルの記述方法
          「name」「description」「area」「genre」「image_path」
         - 2行目以降に店舗情報の値をセルごとに入力する(横向きに入力)
          「店舗A」「この店舗は…」「東京」「寿司」「storage/image/….jpeg」
-
-    (例)
-<img width="500" src="https://github.com/user-attachments/assets/94a31769-dd15-472f-95de-84ecbf5f3fad">
+<img width="500" src="https://github.com/user-attachments/assets/1c1ffa70-a63f-4c13-ba0e-8b852eb8a5e9">
 
 
     * テキストエディタでの作成方法——
@@ -228,6 +224,6 @@ CSVファイルの記述方法
          name , description , area , genre , image_path
         - 2行目以降に追加するデータをカンマ区切りで記述する。
          店舗名,店舗概要,地域,ジャンル,画像URL
+<img width="500" src="https://github.com/user-attachments/assets/13be11a5-9edd-4f0b-a422-4f495071e640">
 
-    (例)
-<img width="500" src="https://github.com/user-attachments/assets/6c331505-7b24-42aa-a72a-6e59dcbc3296">
+
