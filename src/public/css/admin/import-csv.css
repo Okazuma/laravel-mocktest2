@@ -135,7 +135,6 @@ input[type="file"] {
 
 
 
-
 /* タブレット用 */
 @media (max-width:768px) {
     .admin__form {
@@ -161,7 +160,6 @@ input[type="file"] {
 }
 
 
-
 /* スマホ用 */
 @media (max-width:576px) {
     .custom-file-label {
@@ -183,6 +181,5 @@ input[type="file"] {
     .error-message {
         font-size: 12px;
         color: red;
-
     }
 }

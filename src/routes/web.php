@@ -67,10 +67,8 @@ Route::get('/email/verify/{id}/{hash}', function (Request $request, $id, $hash) 
         return view('auth.thanks');
 })->middleware(['signed'])->name('verification.verify');
 
-
 // 認証メール再送信のルート
 Route::post('/email/verify/resend', [AuthController::class, 'resendVerificationEmail'])->name('verification.resend');
-
 
 
 

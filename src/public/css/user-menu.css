@@ -43,7 +43,7 @@
 
 
 
-
+/* タブレット用 */
 @media (max-width: 768px) {
     .home__button,
     .mypage__button,
@@ -58,6 +58,8 @@
     }
 }
 
+
+/* スマホ用 */
 @media (max-width: 576px) {
     .home__button,
     .mypage__button,

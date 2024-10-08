@@ -338,7 +338,6 @@
 }
 
 
-
 /* スマホ用 */
 @media (max-width: 576px) {
     .card {
@@ -361,9 +360,3 @@
         color: black;
     }
 }
-
-
-
-
-
-

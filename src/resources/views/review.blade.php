@@ -90,8 +90,6 @@
     <button class="submit__button" type="submit">口コミを投稿</button>
 </form>
 
-
-
 <script>
 // ーーーーー５段階評価の処理ーーーーー
     const stars = document.querySelectorAll('.star-rating input');

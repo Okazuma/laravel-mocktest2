@@ -12,14 +12,11 @@
     </div>
     @endif
 </div>
-
 <div class="container">
     @if (session('registered'))
     <div class="card">
         <p class="card__text">会員登録ありがとうございます。<br>確認メールを送りましたので、<br>本人確認を行なってください。</p>
-
         <p class="card__text__resend">---確認メールが届いていない方---</p>
-
         <form class="resend__form" method="POST" action="{{ route('verification.resend') }}">
         @csrf
             <div class="form__group">
@@ -36,16 +33,9 @@
                     {{ $errors->first('verify_error') }}
                 </div>
             @endif
-
             <button class="resend__button" type="submit">再送信</button>
         </form>
     </div>
-
-
-
-
-
-
     @elseif (session('resend'))
         <div class="card">
             <p class="card__text">メール認証がされていません。<br>確認メールを再度送信して<br>本人確認を行なってください。</p>
@@ -68,10 +58,6 @@
                 <button class="resend__button" type="submit">再送信</button>
             </form>
         </div>
-
-
-
-
     @else
         <div class="card">
             <p class="card__text">メール認証がされていません。<br>確認メールを再度送信して<br>本人確認を行なってください。</p>
@@ -91,12 +77,9 @@
                     </div>
                 @endif
                 </div>
-
             <button class="resend__button" type="submit">再送信</button>
             </form>
         </div>
     @endif
 </div>
-
-
 @endsection

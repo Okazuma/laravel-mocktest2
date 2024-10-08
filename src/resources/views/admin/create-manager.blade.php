@@ -11,7 +11,6 @@
 {{ session('message') }}
 </div>
 @endif
-
 <div class="container">
     <p class="admin__title">飲食店代表者の作成</p>
     <form class="admin__form" action="{{route('admin.store-manager')}}" method="post">

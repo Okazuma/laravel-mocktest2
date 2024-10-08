@@ -13,7 +13,6 @@
         </div>
         <h2 class="restaurant__name">{{ $restaurant->name }} の口コミ一覧</h2>
     </div>
-
     @if ($reviews->isEmpty())
         <p>この店舗にはまだ口コミがありません。</p>
     @else
@@ -23,13 +22,11 @@
                     <span class="review--user">{{ $review->user->name }}</span>
                     @if(Auth::check())
                         <div class="review__button">
-                            <!-- 編集ボタン: ログインユーザーがレビューを投稿した場合のみ表示 -->
                             @if(Auth::id() == $review->user_id)
                             <div class="review__button--edit">
                                 <a href="{{ route('reviews', ['restaurant_id' => $restaurant->id]) }}" class="review__button--edit-btn">口コミを編集</a>
                                 </div>
                             @endif
-                            <!-- 削除ボタン: ログインユーザーがレビュー投稿者 または 管理者の場合に表示 -->
                             @if(Auth::id() == $review->user_id || Auth::user()->hasRole('admin'))
                             <form class="review__button--delete" action="{{ route('reviews.destroy', $review->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
                                 @csrf
