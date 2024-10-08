@@ -216,7 +216,7 @@ CSVファイルの記述方法
          「name」「description」「area」「genre」「image_path」
         - 2行目以降に店舗情報の値をセルごとに入力する(横向きに入力)
          「店舗A」「この店舗は…」「東京」「寿司」「storage/image/….jpeg」
-<img width="500" src="https://github.com/user-attachments/assets/1c1ffa70-a63f-4c13-ba0e-8b852eb8a5e9">
+<img width="500" src="https://github.com/user-attachments/assets/56b1060c-0035-4bf8-b366-62bf807684d1">
 
 
     * テキストエディタでの作成方法——
@@ -224,6 +224,6 @@ CSVファイルの記述方法
          name , description , area , genre , image_path
         - 2行目以降に追加するデータをカンマ区切りで記述する。
          店舗名,店舗概要,地域,ジャンル,画像URL
-<img width="500" src="https://github.com/user-attachments/assets/13be11a5-9edd-4f0b-a422-4f495071e640">
+<img width="500" src="https://github.com/user-attachments/assets/9b6cefde-1c26-4077-a059-53dbe75d1890">
 
 
