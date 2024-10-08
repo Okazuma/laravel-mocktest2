@@ -224,6 +224,6 @@ CSVファイルの記述方法
          name , description , area , genre , image_path
         - 2行目以降に追加するデータをカンマ区切りで記述する。
          店舗名,店舗概要,地域,ジャンル,画像URL
-<img width="500" src="https://github.com/user-attachments/assets/9b6cefde-1c26-4077-a059-53dbe75d1890">
+<img width="500" src="https://github.com/user-attachments/assets/6d3d665e-cce1-43cb-a798-d274a6260141">
 
 
