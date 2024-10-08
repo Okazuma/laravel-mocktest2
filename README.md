@@ -23,10 +23,13 @@
 
 
 # アプリケーションURL
-    http://54.249.16.235/
+##### ローカル環境
 
-    メール認証機能を設定しているのでホーム画面へアクセスするためには
-    初回アクセス時に会員登録->メール認証->ログインの順でユーザー登録が必要です。
+http://localhost/
+
+##### 本番環境（AWSデプロイ）
+http://54.249.16.235/
+
 
 
 
@@ -195,31 +198,31 @@
 
 
 # CSVファイルの記述方法
-#### CSVファイルの作成ルール
-    各項目のルールに沿ってキーと値が入力できる。
+##### CSVファイルの作成ルール
+    各項目のルールに沿ってキーと値が入力
 <img width="500" src="https://github.com/user-attachments/assets/2a36fee5-23d7-4bf9-aa11-83727a69c67a">
 
 
-#### エクセルやスプレッドシートでのCSVファイル作成方法
-        - 1行目に各キーをセルごとに入力する
-            「name」「description」「area」「genre」「image_path」
-        - 2行目以降に飲食店情報の値をセルごとに入力する
-             「飲食店A」「このお店は…」「東京」「寿司」「storage/images/….jpeg」
+##### エクセルやスプレッドシートでのCSVファイル作成方法
+1行目に各キーをセルごとに入力する
+    「name」「description」「area」「genre」「image_path」
+2行目以降に飲食店情報の値をセルごとに入力する
+    「飲食店A」「このお店は……」「東京都」「寿司」「storage/images/….jpeg」
 <img width="500" src="https://github.com/user-attachments/assets/f2b29d60-dab4-4101-84be-281767cd9145">
 
 
-#### テキストエディタでの作成方法——
-        - 1行目に各キーをカンマ区切りで入力する(横向きに入力)
-            name,description,area,genre,image_path
-        - 2行目以降に飲食店情報の値をカンマ区切りで記述する
-            飲食店A,このお店は…,東京,寿司,storage/images/….jpeg
+##### テキストエディタでの作成方法——
+1行目に各キーをカンマ区切りで入力する(横向きに入力)
+    name,description,area,genre,image_path
+2行目以降に飲食店情報の値をカンマ区切りで記述する
+    飲食店A,このお店は……,東京都,寿司,storage/images/….jpeg
 <img width="500" src="https://github.com/user-attachments/assets/34ab5a1c-eaec-4192-b4ae-6ef7ba3e3a26">
 
 
 
 # CSVファイルによる新規店舗の追加
-    * 新規飲食店を追加する時のイメージ画像について。
-        CSVファイルの「image_path」で画像URLのパスを正しく入力していても、
-        画像自体がstorageに存在していなければ新規飲食店を追加できません。
-        プロジェクト内に画像が存在しない場合は手動でstorageに画像を追加するか、
-        CSVファイルのインポート画面から画像を送信してstorageに追加できます。
+##### 新規飲食店を追加する時のイメージ画像について。
+    CSVファイルの「image_path」で画像URLのパスを正しく入力していても、
+    画像自体がstorageに存在していなければ新規飲食店を追加できません。
+    プロジェクト内に画像が存在しない場合は手動でstorageに画像を追加するか、
+    CSVファイルのインポート画面から画像を送信してstorageに追加できます。
