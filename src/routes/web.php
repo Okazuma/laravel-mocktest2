@@ -160,6 +160,8 @@ Route::middleware(['admin'])->group(function(){
     Route::post('/restaurants/import', [AdminController::class, 'import'])->name('restaurants.import');
 });
 
+Route::post('/upload', [AdminController::class, 'uploadImages'])->name('images.upload');
+
 
 
 // ーーーーーーーーーー店舗代表者関連ーーーーーーーーーー

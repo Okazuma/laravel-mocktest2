@@ -1,10 +1,10 @@
-# アプリケーション名
+## アプリケーション名
     飲食店予約アプリ
 <img width="650" src="https://github.com/user-attachments/assets/eb64bbf4-5ec6-44a9-bc30-557803cb39f3">
 
 
 
-# 概要説明
+## 概要説明
     1 利用者が飲食店一覧から店舗情報を見て予約やお気に入り登録ができる
 
     2 店舗代表者と管理者がそれぞれの管理画面から情報の管理やお知らせメールを送信できる
@@ -13,7 +13,7 @@
 
 
 
-# 作成目的
+## 作成目的
     1 利用者が飲食店を探すときにエリアやジャンル別で検索しスムーズに店舗を決められるように
 
     2 予約や決済、レビューなど全てをネット上で行えるようにして人的コスト削減や業務効率化を図るため
@@ -22,7 +22,7 @@
 
 
 
-# アプリケーションURL
+## アプリケーションURL
 ##### ローカル環境
 
 http://localhost/
@@ -33,7 +33,7 @@ http://54.249.16.235/
 
 
 
-# 機能一覧
+## 機能一覧
     1 会員登録、ログイン機能
 
     2 メール認証
@@ -70,7 +70,7 @@ http://54.249.16.235/
 
 
 
-# 詳細内容
+## 詳細内容
 ##### シーディングで管理者(admin)が初期データで作成される
         管理者(admin)としてアクセスする場合
         email: admin@example.com    password: 00000000
@@ -129,7 +129,7 @@ http://54.249.16.235/
 
 
 
-# 使用技術
+## 使用技術
     Docker 27.1.1
 
     php 8.3.9
@@ -150,28 +150,28 @@ http://54.249.16.235/
 
 
 
-# テーブル設計
+## テーブル設計
 
 <img width="650" src="https://github.com/user-attachments/assets/b8dae6cb-0300-4508-b922-a7a1b4837ef8">
 
 
 
-# ER図
+## ER図
 <img width="650" src="https://github.com/user-attachments/assets/635a3dfe-5f47-4e0c-8465-37d301d472c7">
 
 
 
-# dockerビルド
+## dockerビルド
     1 git clone リンク  https://github.com/Okazuma/laravel-mocktest2.git
 
-    2 docker-compose up -d --build
+    2 docker compose up -d --build
 
     ※ MysqlはOSによって起動しない場合があるので、それぞれのPCに合わせてdocker-compose.ymlを編集してください。
 
 
 
-# Laravelの環境構築
-    1 phpコンテナにログイン        $docker-compose exec php bash
+## Laravelの環境構築
+    1 phpコンテナにログイン        $docker compose exec php bash
 
     2 パッケージのインストール      $composer-install
 
@@ -187,7 +187,7 @@ http://54.249.16.235/
 
 
 
-# メールサーバー設定について
+## メールサーバー設定について
 
     1 使用しているメールサーバーから必要な設定情報を取得
 
@@ -197,34 +197,35 @@ http://54.249.16.235/
 
 
 
-# CSVファイルの記述方法
+## CSVファイルの記述方法
 ##### CSVファイルの作成ルール
     ・各項目のルールに沿ってキーと値が入力
 
-    ・画像の形式はjpegとpngのみの指定ですが、jpgをjpegに書き変えれば同じファイルとして使用可能
+    ・画像の形式はjpegとpngのみの指定ですが、
+    jpgをjpegに書き変えれば同じファイルとして使用可能。
 <img width="500" src="https://github.com/user-attachments/assets/2a36fee5-23d7-4bf9-aa11-83727a69c67a">
 
 
 ##### エクセルやスプレッドシートでのCSVファイル作成方法
     ・1行目に各キーをセルごとに入力する
-    　「name」「description」「area」「genre」「image_path」
+      「name」「description」「area」「genre」「image_path」
 
     ・2行目以降に飲食店情報の値をセルごとに入力する
-    　「飲食店A」「このお店は……」「東京都」「寿司」「storage/images/….jpeg」
+      「飲食店A」「このお店は……」「東京都」「寿司」「storage/images/….jpeg」
 <img width="500" src="https://github.com/user-attachments/assets/f2b29d60-dab4-4101-84be-281767cd9145">
 
 
 ##### テキストエディタでの作成方法
     ・1行目に各キーをカンマ区切りで入力する
-    　name,description,area,genre,image_path
+      name,description,area,genre,image_path
 
     ・2行目以降に飲食店情報の値をカンマ区切りで入力する
-    　飲食店A,このお店は……,東京都,寿司,storage/images/….jpeg
+      飲食店A,このお店は……,東京都,寿司,storage/images/….jpeg
 <img width="500" src="https://github.com/user-attachments/assets/34ab5a1c-eaec-4192-b4ae-6ef7ba3e3a26">
 
 
 
-# CSVファイルによる新規店舗の追加
+## CSVファイルによる新規店舗の追加
 ##### 新規飲食店を追加する時のイメージ画像について。
     CSVファイルの「image_path」で画像URLのパスを正しく入力していても、
     画像自体がstorageに存在していなければ新規飲食店を追加できません。

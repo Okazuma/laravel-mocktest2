@@ -10,6 +10,7 @@ use App\Http\Requests\AdminRequest;
 use Spatie\Permission\Models\Role;
 use Carbon\Carbon;
 use App\Http\Requests\ImportCsvRequest;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -60,6 +61,34 @@ class AdminController extends Controller
     {
         return view('admin.import-csv');
     }
+
+
+    // 画像アップロードの処理ーーーーーーーーーー
+    public function uploadImages(Request $request)
+    {
+        // ストレージの設定を取得
+        $disk = config('filesystems.default');
+
+        // アップロードされた画像をストレージに保存
+        foreach($request->file('images')as $file){
+            // 元のファイル名を取得
+            $originalName = $file->getClientOriginalName();
+            // 画像がすでに存在するか確認
+            if (Storage::disk($disk)->exists('images/' . $originalName)) {
+                return redirect()->back()->withErrors(['images' => "$originalName はすでに存在します。ファイル名を変更してください。"]);
+            }
+            // 画像をストレージに保存（元のファイル名を保持）
+            $file->storeAs('images', $originalName,$disk);
+        }
+        return redirect()->back()->with('success','画像がアップロードされました');
+    }
+
+
+
+
+
+
+
 
 
 

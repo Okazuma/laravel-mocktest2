@@ -63,6 +63,12 @@ input[type="file"] {
     display: none;
 }
 
+.image-name{
+    font-size: 14px;
+    color: #555;
+    margin: 4px auto;
+}
+
 .file-name {
     font-size: 14px;
     color: #555;

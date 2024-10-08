@@ -13,13 +13,28 @@
 @endif
 <div class="container">
     <p class="admin__title">店舗情報の追加</p>
+    <form class="admin__form" action="{{ route('images.upload') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+        <p class="admin__form__title">画像アップロード</p>
+        <div class="custom-file-input">
+            <label for="images" class="custom-file-label">画像を選択 (複数選択可)</label>
+            <input id="images" class="form__input" type="file" name="images[]" accept="image/*" multiple hidden>
+            <span class="image-name">選択されていません</span>
+            @if ($errors->has('images'))
+                <div class="alert alert-danger error-message">{{ $errors->first('images') }}</div>
+            @endif
+        </div>
+        <button class="submit__button" type="submit">アップロード</button>
+    </form>
+
     <form class="admin__form" action="{{ route('restaurants.import') }}" method="POST" enctype="multipart/form-data">
     @csrf
         <p class="admin__form__title">CSVファイルのインポート</p>
         <div class="custom-file-input">
             <label for="csv_file" class="custom-file-label">ファイルを選択</label>
             <input id="csv_file" class="form__input" type="file" name="csv_file" accept=".csv" hidden>
-            <span class="file-name">添付されていません</span>
+
+            <span class="file-name">選択されていません</span>
             @if ($errors->has('csv_file'))
                 <div class="alert alert-danger error-message">{{ $errors->first('csv_file') }}</div>
             @endif
@@ -54,7 +69,25 @@
 
 
 <script>
-// ーーーーー添付ファイル表示の処理ーーーーー
+// ーーーーー画像ファイル表示の処理ーーーーー
+    document.addEventListener('DOMContentLoaded', function () {
+        const inputFile = document.getElementById('images');
+        const imageNameLabel = document.querySelector('.image-name');
+
+        inputFile.addEventListener('change', function () {
+            const files = Array.from(inputFile.files);
+            if (files.length > 0) {
+                const fileNames = files.map(file => file.name).join(', ');
+                imageNameLabel.textContent = fileNames;
+            } else {
+                imageNameLabel.textContent = '添付されていません';
+            }
+        });
+    });
+
+
+
+// ーーーーーcsv添付ファイル表示の処理ーーーーー
     document.getElementById('csv_file').addEventListener('change', function() {
         var fileName = this.files.length > 0 ? this.files[0].name : '選択されていません';
         document.querySelector('.file-name').textContent = fileName;
