@@ -69,10 +69,11 @@ padding: 4px;
     padding: 0;
     border-radius: 3px;
     border: none;
+    cursor: pointer;
 }
 
 .submit__button:hover {
-    background: lightgrey;
+    color: #999999;
 }
 
 .back__button {

@@ -66,39 +66,47 @@ class AdminController extends Controller
     // CSVインポート処理ーーーーーーーーーー
     public function import(ImportCsvRequest $request)
     {
+        if (!auth()->user()->can('import_store')) {
+            return redirect()->back()->withErrors(['permission' => '店舗を追加する権限がありません。']);
+        }
 
-        // ユーザーに 'create_store' 権限があるかチェック
-            if (!auth()->user()->can('import_store')) {
-                return redirect()->back()->withErrors(['permission' => '店舗を追加する権限がありません。']);
-            }
-
-        // CSVファイルを開く
         if (($handle = fopen($request->file('csv_file')->getRealPath(), 'r')) !== FALSE) {
-            // 1行目（ヘッダー）をスキップ
+
             fgetcsv($handle);
 
-            // エラーがあった場合のためにフラグを追加
             $errors = [];
 
-            // ファイルの各行を読み込んで処理
             while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                $imagePath = $row[4]; // 5番目のカラムが画像パスだと仮定
+                // 店舗名バリデーション（50文字以内）
+                if (empty($row[0]) || mb_strlen($row[0]) > 50) {
+                    $errors[] = "・店舗名は50文字以内で入力してください。<br>（行: " . implode(", ", $row) . "）";
+                }
+
+                // 地域バリデーション（「東京都」「大阪府」「福岡県」）
+                $validAreas = ['東京都', '大阪府', '福岡県'];
+                if (empty($row[2]) || !in_array($row[2], $validAreas)) {
+                    $errors[] = "・地域は「東京都」「大阪府」「福岡県」から指定してください。<br>（行: " . implode(", ", $row) . "）";
+                }
+                // ジャンルバリデーション（「寿司」「焼肉」「イタリアン」「居酒屋」「ラーメン」）
+                $validGenres = ['寿司', '焼肉', 'イタリアン', '居酒屋', 'ラーメン'];
+                if (empty($row[3]) || !in_array($row[3], $validGenres)) {
+                    $errors[] = "・ジャンルは「寿司」「焼肉」「イタリアン」「居酒屋」「ラーメン」から指定してください。<br>（行: " . implode(", ", $row) . "）";
+                }
+                // 店舗概要バリデーション（４００文字以内）
+                if (empty($row[1]) || mb_strlen($row[1]) > 400) {
+                    $errors[] = "・店舗概要は400文字以内で入力してください。<br>（行: " . implode(", ", $row) . "）";
+                }
+                // 画像パスバリデーション
+                $imagePath = $row[4];
                 $extension = strtolower(pathinfo($imagePath, PATHINFO_EXTENSION)); // 拡張子を取得
-
-                // JPEGまたはPNGかどうかを確認
-                if (!in_array($extension, ['jpeg', 'png'])) {
-                    $errors[] = "image_pathはjpeg,png形式のみアップロード可能です。";
-                    // "画像 {$imagePath} はjpegまたはpng形式のみアップロード可能です。"
-                    continue; // この行の処理をスキップ
+                if (!in_array($extension, ['jpeg', 'png','jpg'])) {
+                    $errors[] = "・image_pathはjpeg,png形式のみアップロード可能です。";
                 }
-
-                // 画像パスが実際に存在するかも確認する (任意)
+                // 画像パスが実際に存在するかどうか
                 if (!file_exists(public_path($imagePath))) {
-                    $errors[] = "画像 {$imagePath} が見つかりません。";
-                    continue;
+                    $errors[] = "・画像 {$imagePath} が見つかりません。<br>（行: " . implode(", ", $row) . "）";
                 }
-
-                // エラーがなければCSVの各行をデータベースに保存
+                // データベースに保存
                 Restaurant::create([
                     'name' => $row[0],
                     'description' => $row[1],
@@ -110,13 +118,14 @@ class AdminController extends Controller
 
             fclose($handle);
 
-            // エラーがあった場合は、エラーメッセージを表示してリダイレクト
             if (count($errors) > 0) {
-                return redirect()->back()->withErrors(['csv_file' => $errors]);
+                return redirect()->back()->withErrors(['csv_import' => $errors]);
             }
         }
 
         return redirect()->route('admin.import-csv')->with('success', '飲食店情報をインポートしました。');
     }
+
+
 
 }

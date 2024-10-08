@@ -49,7 +49,7 @@
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 10px;
+
 }
 
 .form__input {
@@ -64,13 +64,32 @@ input[type="file"] {
 }
 
 .file-name {
-    font-size: 16px;
+    font-size: 14px;
     color: #555;
+    margin: 4px auto;
+}
+
+
+
+.error-details__button{
+    font-size: 14px;
+    color: red;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    cursor: pointer;
+}
+
+.error-details__button:hover {
+    color: #A80000;
 }
 
 .error-message {
+    font-size: 14px;
     color: red;
     margin: 0 auto;
+    text-align: center;
 }
 
 .submit__button {
@@ -82,10 +101,11 @@ input[type="file"] {
     padding: 0;
     border-radius: 3px;
     border: none;
+    cursor: pointer;
 }
 
 .submit__button:hover {
-    background: lightgrey;
+    color: #999999;
 }
 
 .back__button {
@@ -125,6 +145,17 @@ input[type="file"] {
         border-radius: 3px;
         border: none;
     }
+
+    .error-details__button {
+        font-size: 12px;
+    }
+
+    .error-message {
+        font-size: 12px;
+        color: red;
+        margin: 0 auto;
+        text-align: center;
+    }
 }
 
 
@@ -136,5 +167,16 @@ input[type="file"] {
         width: 100px;
         border-radius: 3px;
         border: none;
+    }
+
+    .error-details__button {
+        font-size: 12px;
+    }
+
+    .error-message {
+        font-size: 12px;
+        color: red;
+        margin: 0 auto;
+        text-align: center;
     }
 }
