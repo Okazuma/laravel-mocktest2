@@ -202,3 +202,32 @@ Laravelの環境構築
     2 メールサーバーの情報を.envファイルに設定
 
     3 .envファイルの変更が反映するようlaravelの設定キャッシュのクリア
+
+
+
+CSVファイルの記述方法
+=====
+
+
+    * CSVファイルのフォーマット
+    <img width="500" src="https://github.com/user-attachments/assets/95cb1eb9-3193-4935-9536-25ff383ffef0">
+
+
+    * エクセルやスプレッドシートでのCSVファイル作成方法
+        - 1行目に各キーをセルごとに入力する(横向きに入力)
+         「name」「description」「area」「genre」「image_path」
+        - 2行目以降に店舗情報の値をセルごとに入力する(横向きに入力)
+         「店舗A」「この店舗は…」「東京」「寿司」「storage/image/….jpeg」
+
+    (例)
+    <img width="500" src="https://github.com/user-attachments/assets/94a31769-dd15-472f-95de-84ecbf5f3fad">
+
+
+    * テキストエディタでの作成方法——
+        - 1行目に項目名をカンマ区切りで入力する
+         name , description , area , genre , image_path
+        - 2行目以降に追加するデータをカンマ区切りで記述する。
+         店舗名,店舗概要,地域,ジャンル,画像URL
+
+    (例)
+    <img width="500" src="https://github.com/user-attachments/assets/6e616165-f3b1-4047-a5b8-d5d43c2f69e3">
