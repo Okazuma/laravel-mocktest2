@@ -230,4 +230,4 @@ CSVファイルの記述方法
          店舗名,店舗概要,地域,ジャンル,画像URL
 
     (例)
-<img width="500" src="https://github.com/user-attachments/assets/6e616165-f3b1-4047-a5b8-d5d43c2f69e3">
+<img width="500" src="https://github.com/user-attachments/assets/6c331505-7b24-42aa-a72a-6e59dcbc3296">
