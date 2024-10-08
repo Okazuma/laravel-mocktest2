@@ -39,17 +39,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 4%;
+    margin-top: 2%;
     margin-bottom: 4%;
 }
 
 .custom-file-label {
+    font-size: 16px;
     background-color: #ffffff;
     color: black;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-
 }
 
 .form__input {
@@ -74,8 +74,6 @@ input[type="file"] {
     color: #555;
     margin: 4px auto;
 }
-
-
 
 .error-details__button{
     font-size: 14px;
@@ -103,7 +101,7 @@ input[type="file"] {
     line-height: 1.5;
     width: 100px;
     display: block;
-    margin: 8px auto 24px;
+    margin: 1% auto 2%;
     padding: 0;
     border-radius: 3px;
     border: none;
@@ -165,8 +163,13 @@ input[type="file"] {
 }
 
 
+
 /* スマホ用 */
 @media (max-width:576px) {
+    .custom-file-label {
+        font-size: 16px;
+    }
+
     .submit__button {
         font-size: 16px;
         line-height: 1.5;

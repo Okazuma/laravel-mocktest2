@@ -27,7 +27,7 @@ class ReviewRequest extends FormRequest
             'restaurant_id' => ['required'],
             'rating' => ['required'],
             'comment' => ['required','string','max:400',],
-            'review_image' => ['file', 'mimes:jpeg,png', 'max:5120'],
+            'review_image' => ['image', 'mimes:jpeg,png', 'max:5120'],
         ];
     }
 
@@ -41,7 +41,7 @@ class ReviewRequest extends FormRequest
             'comment.required' => 'コメントを入力してください',
             'comment.string' => '文字列で入力してください',
             'comment.max' => '400文字以内で入力してください',
-            'review_image.file' =>'画像ファイルを選択してください',
+            'review_image.image' =>'画像ファイルを選択してください',
             'review_image.mimes' => 'jpeg, png を選択してください',
             'review_image.max' => '画像サイスは5MBまでです',
         ];

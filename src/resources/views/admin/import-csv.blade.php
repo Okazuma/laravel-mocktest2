@@ -13,19 +13,7 @@
 @endif
 <div class="container">
     <p class="admin__title">店舗情報の追加</p>
-    <form class="admin__form" action="{{ route('images.upload') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-        <p class="admin__form__title">画像アップロード</p>
-        <div class="custom-file-input">
-            <label for="images" class="custom-file-label">画像を選択 (複数選択可)</label>
-            <input id="images" class="form__input" type="file" name="images[]" accept="image/*" multiple hidden>
-            <span class="image-name">選択されていません</span>
-            @if ($errors->has('images'))
-                <div class="alert alert-danger error-message">{{ $errors->first('images') }}</div>
-            @endif
-        </div>
-        <button class="submit__button" type="submit">アップロード</button>
-    </form>
+    
 
     <form class="admin__form" action="{{ route('restaurants.import') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -61,6 +49,24 @@
         </div>
         <button class="submit__button" type="submit">インポート</button>
     </form>
+
+
+
+    <form class="admin__form" action="{{ route('images.upload') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+        <p class="admin__form__title">画像のアップロード</p>
+        <div class="custom-file-input">
+            <label for="images" class="custom-file-label">画像を選択 (複数選択可)</label>
+            <input id="images" class="form__input" type="file" name="images[]" accept="image/*" multiple hidden>
+            <span class="image-name">選択されていません</span>
+            @if ($errors->has('images'))
+                <div class="alert alert-danger error-message">{{ $errors->first('images') }}</div>
+            @endif
+        </div>
+        <button class="submit__button" type="submit">アップロード</button>
+    </form>
+
+
     <div class="back__button">
         <a class="back__button__btn" href="{{route('admin.admin-home')}}">Back</a>
     </div>

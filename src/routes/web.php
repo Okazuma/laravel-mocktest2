@@ -156,11 +156,13 @@ Route::middleware(['admin'])->group(function(){
     // インポートページ表示のルート
     Route::get('/admin/import-csv',[AdminController::class,'showAdminImport'])->name('admin.import-csv');
 
+    // 画像ファイルをアップロードするルート
+    Route::post('/upload', [AdminController::class, 'uploadImages'])->name('images.upload');
+
     // CSVをインポートするルート
     Route::post('/restaurants/import', [AdminController::class, 'import'])->name('restaurants.import');
 });
 
-Route::post('/upload', [AdminController::class, 'uploadImages'])->name('images.upload');
 
 
 

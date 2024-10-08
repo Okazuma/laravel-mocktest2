@@ -9,6 +9,7 @@ use App\Models\Restaurant;
 use App\Http\Requests\AdminRequest;
 use Spatie\Permission\Models\Role;
 use Carbon\Carbon;
+use App\Http\Requests\UploadImagesRequest;
 use App\Http\Requests\ImportCsvRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -63,8 +64,9 @@ class AdminController extends Controller
     }
 
 
+
     // 画像アップロードの処理ーーーーーーーーーー
-    public function uploadImages(Request $request)
+    public function uploadImages(UploadImagesRequest $request)
     {
         // ストレージの設定を取得
         $disk = config('filesystems.default');
@@ -85,23 +87,14 @@ class AdminController extends Controller
 
 
 
-
-
-
-
-
-
-
     // CSVインポート処理ーーーーーーーーーー
     public function import(ImportCsvRequest $request)
     {
         if (!auth()->user()->can('import_store')) {
             return redirect()->back()->withErrors(['permission' => '店舗を追加する権限がありません。']);
         }
-
         if (($handle = fopen($request->file('csv_file')->getRealPath(), 'r')) !== FALSE) {
             fgetcsv($handle);
-
             $errors = [];
 
             while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -115,7 +108,6 @@ class AdminController extends Controller
                 if (empty($row[1]) || mb_strlen($row[1]) > 400) {
                     $rowErrors[] = "・店舗概要は400文字以内で入力してください。<br>（行: " . implode(", ", $row) . "）";
                 }
-
                 // 地域バリデーション（「東京都」「大阪府」「福岡県」）
                 $validAreas = ['東京都', '大阪府', '福岡県'];
                 if (empty($row[2]) || !in_array($row[2], $validAreas)) {
@@ -136,11 +128,10 @@ class AdminController extends Controller
                 if (!file_exists(public_path($imagePath))) {
                     $rowErrors[] = "・画像 {$imagePath} が見つかりません。<br>（行: " . implode(", ", $row) . "）";
                 }
-
                 // エラーがある場合、その行の保存をスキップ
                 if (count($rowErrors) > 0) {
                     $errors = array_merge($errors, $rowErrors);
-                    continue; // この行のデータ保存をスキップ
+                    continue;
                 }
 
                 // データベースに保存
@@ -159,7 +150,6 @@ class AdminController extends Controller
                 return redirect()->back()->withErrors(['csv_import' => $errors]);
             }
         }
-
         return redirect()->route('admin.import-csv')->with('success', '飲食店情報をインポートしました。');
     }
 
