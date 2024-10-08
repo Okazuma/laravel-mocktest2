@@ -204,9 +204,9 @@ Laravelの環境構築
 
 
 
-CSVファイルの記述方法
-=====
-    * CSVファイルの作成ルール
+# CSVファイルの記述方法
+
+#### CSVファイルの作成ルール
     各項目のルールに沿ってキーと値が入力できる。
 <img width="500" src="https://github.com/user-attachments/assets/2a36fee5-23d7-4bf9-aa11-83727a69c67a">
 
