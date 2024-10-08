@@ -200,21 +200,24 @@ http://54.249.16.235/
 # CSVファイルの記述方法
 ##### CSVファイルの作成ルール
     各項目のルールに沿ってキーと値が入力
+    画像の形式はjpegとpngのみの指定ですが、jpgをjpegに書き変えれば同じファイルとして使用可能
 <img width="500" src="https://github.com/user-attachments/assets/2a36fee5-23d7-4bf9-aa11-83727a69c67a">
 
 
 ##### エクセルやスプレッドシートでのCSVファイル作成方法
     1行目に各キーをセルごとに入力する
         「name」「description」「area」「genre」「image_path」
+
     2行目以降に飲食店情報の値をセルごとに入力する
         「飲食店A」「このお店は……」「東京都」「寿司」「storage/images/….jpeg」
 <img width="500" src="https://github.com/user-attachments/assets/f2b29d60-dab4-4101-84be-281767cd9145">
 
 
-##### テキストエディタでの作成方法——
-    1行目に各キーをカンマ区切りで入力する(横向きに入力)
+##### テキストエディタでの作成方法
+    1行目に各キーをカンマ区切りで入力する
         name,description,area,genre,image_path
-    2行目以降に飲食店情報の値をカンマ区切りで記述する
+
+    2行目以降に飲食店情報の値をカンマ区切りで入力する
         飲食店A,このお店は……,東京都,寿司,storage/images/….jpeg
 <img width="500" src="https://github.com/user-attachments/assets/34ab5a1c-eaec-4192-b4ae-6ef7ba3e3a26">
 
