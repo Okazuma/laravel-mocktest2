@@ -26,7 +26,7 @@ WORKDIR /var/www
 
 
 # Cron のインストール
-RUN apt-get update && apt-get install -y cron
+RUN apt-get update && apt-get install -y cron rsyslog nano
 
 # スケジュール設定ファイルを追加
 COPY crontab /etc/cron.d/cronjob
@@ -40,3 +40,5 @@ RUN chmod +x /usr/local/bin/cron-start.sh
 
 # エントリーポイントの設定
 CMD ["/usr/local/bin/cron-start.sh"]
+
+RUN apt-get update && apt-get install -y cron rsyslog nano
