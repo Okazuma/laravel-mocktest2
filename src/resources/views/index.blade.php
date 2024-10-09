@@ -52,7 +52,7 @@
                 @if (config('filesystems.default') === 's3')
                     <img src="{{ Storage::url($restaurant->image_path) }}" alt="Restaurant Image">
                 @else
-                    <img src="{{ asset($restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
+                    <img src="{{ asset('storage/' . $restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
                 @endif
             </div>
             <div class="card__content">
