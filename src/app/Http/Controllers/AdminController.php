@@ -136,7 +136,6 @@ class AdminController extends Controller
     {
         // デフォルトのストレージドライバを取得
         $disk = config('filesystems.default');
-
         if ($request->hasFile('images')) {
             try {
                 foreach ($request->file('images') as $file) {
