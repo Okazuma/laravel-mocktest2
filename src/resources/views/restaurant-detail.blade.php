@@ -60,7 +60,7 @@
                         </div>
                     </div>
                 @else
-                    @if(!Auth::user()->hasRole('store_manager'))
+                    @if(!Auth::user()->hasRole('admin') && !Auth::user()->hasRole('store_manager'))
                         <a class="review__comment--first" href="{{ route('reviews', ['restaurant_id' => $restaurant->id]) }}">口コミを投稿する</a>
                     @endif
                 @endif

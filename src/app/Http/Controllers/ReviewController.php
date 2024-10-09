@@ -32,6 +32,10 @@ class ReviewController extends Controller
         $userId = Auth::id();
         $user = Auth::user();
 
+        if ($user->hasRole('admin') || $user->hasRole('store_manager')) {
+            return redirect()->back()->with('error', 'あなたは口コミを投稿することができません。');
+        }
+
         $fileName = null;
 
         $existingReview = Review::where('user_id', $userId)
