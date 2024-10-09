@@ -10,7 +10,7 @@
         <h1 class="checkout__title">Check out</h1>
         <p class="checkout__amount">お支払い金額を入力してください</p>
         <input class="checkout-input" type="number" id="amount" placeholder="Amount in JPY" min="1" required>
-        <button class="submit__button" type="submit" id="checkout-button">決済へ</button>
+        <button class="submit__button" type="submit" id="checkout-button">決済</button>
     </form>
 </div>
 

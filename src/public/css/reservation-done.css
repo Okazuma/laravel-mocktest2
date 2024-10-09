@@ -8,9 +8,9 @@
     flex-direction: column;
 }
 
-.card{
+.card {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-    width: 400px;
+    width: 40%;
     height: 240px;
     background: #ffffff;
     margin: 0 auto;
@@ -19,21 +19,57 @@
     align-items: center;
     flex-direction: column;
     border-radius: 3px;
+    padding: 2%;
 }
 
 .done__text{
-    margin-bottom:24px;
-    font-size:18px;
+    font-size:16px;
+    margin-bottom: 24px;
 }
 
 .back__button {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    background: blue;
+    font-size: 16px;
+    line-height: 1.5;
+    width: 100px;
+    background: #007BFF;
+    margin: 0 auto 16px;
     border-radius: 3px;
-    width: 48px;
-    font-size: 12px;
+    border: none;
+}
+
+.back__button-btn {
+    width: 100%;
+    text-align: center;
+    display: block;
+    text-decoration: none;
     color: white;
-    padding: 4px;
+}
+
+.back__button-btn:hover {
+    background: blue;
+}
+
+
+
+/* フォーム崩れ防止 */
+@media (max-width: 950px) {
+    .card {
+        width: 50%;
+    }
+}
+
+
+/* タブレット用 */
+@media (max-width: 768px) {
+    .card {
+        width: 60%;
+    }
+}
+
+
+/* スマホ用 */
+@media (max-width: 576px) {
+    .card {
+        width: 70%;
+    }
 }

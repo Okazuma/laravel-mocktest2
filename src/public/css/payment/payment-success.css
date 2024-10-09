@@ -1,15 +1,15 @@
 .container {
     width: 90%;
     margin: 0 auto;
-    padding: 24px;
+    padding: 2%;
 }
 
 .inner{
-width: 60%;
-margin: 0 auto;
-background: lightgrey;
-border-radius: 3px;
-overflow: hidden;
+    width: 60%;
+    margin: 2% auto;
+    background: lightgrey;
+    border-radius: 3px;
+    overflow: hidden;
 }
 
 .success__title{
@@ -24,45 +24,47 @@ overflow: hidden;
 
 .success__text{
     text-align: center;
-    margin-top: 8px;
+    margin: 4% auto 4%;
 }
 
 .success__items{
-    display: flex;
-    justify-content: space-between;
-    width: 40%;
     margin: 24px auto;
 }
 
-.review__button{
-    text-decoration: none;
-    color: #ffffff;
+.back__button {
+    font-size: 16px;
+    line-height: 1.5;
     width: 100px;
     background: #007BFF;
-    margin: auto 0;
+    margin: 0 auto 16px;
     border-radius: 3px;
+    border: none;
+}
+
+.back__button-btn {
+    width: 100%;
     text-align: center;
-    font-size:14px;
-}
-
-.back__button{
+    display: block;
     text-decoration: none;
-    color: #ffffff;
-    width: 100px;
-    background: #007BFF;
-    margin: auto 0;
-    border-radius: 3px;
-    text-align:center;
-    font-size: 14px;
+    color: white;
+}
+
+.back__button-btn:hover {
+    background: blue;
 }
 
 
-@media (max-width:768px) {
+
+/* フォーム崩れ防止 */
+@media (max-width: 950px) {
     .inner {
         width: 100%;
     }
+}
 
-    .success__items {
-        width: 60%;
+/* タブレット用 */
+@media (max-width:768px) {
+    .inner {
+        width: 100%;
     }
 }

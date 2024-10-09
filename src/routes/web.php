@@ -202,7 +202,7 @@ Route::get('/qr-code/open', [QRCodeController::class, 'openQrCode'])->name('qr-c
 // ーーーーーーーーーーレビュー画面ーーーーーーーーーー
 
 // レビューページを表示するルート
-Route::get('/reviews/{restaurant_id}',[ReviewController::class,'reviews'])->middleware('check.store_manager')->name('reviews');
+Route::get('/reviews/{restaurant_id}',[ReviewController::class,'reviews'])->middleware('check.store_manager')->middleware(['auth','VerifyEmail'])->name('reviews');
 
 // レビューを記録するルート
 Route::post('/reviews/{restaurant_id}',[ReviewController::class,'storeReview'])->name('reviews.store');
@@ -211,7 +211,7 @@ Route::post('/reviews/{restaurant_id}',[ReviewController::class,'storeReview'])-
 Route::delete('/reviews/{id}', [ReviewController::class, 'deleteReview'])->name('reviews.destroy');
 
 // レビュー一覧を表示するルートするルート
-Route::get('/reviews-all/{restaurant_id}',[ReviewController::class,'reviewsAll'])->name('reviews.all');
+Route::get('/reviews-all/{restaurant_id}',[ReviewController::class,'reviewsAll'])->middleware(['auth','VerifyEmail'])->name('reviews.all');
 
 
 

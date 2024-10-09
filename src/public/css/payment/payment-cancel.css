@@ -1,12 +1,12 @@
 .container {
     width: 90%;
     margin: 0 auto;
-    padding: 24px;
+    padding: 2%;
 }
 
 .inner {
     width: 60%;
-    margin: 0 auto;
+    margin: 2% auto;
     background: lightgrey;
     border-radius: 3px;
     overflow: hidden;
@@ -55,6 +55,51 @@
     text-align: center;
     font-size: 14px;
 }
+
+.cancel__text {
+    text-align: center;
+    margin: 4% auto 4%;
+}
+
+.cancel__items {
+    margin: 24px auto;
+}
+
+.back__button {
+    font-size: 16px;
+    line-height: 1.5;
+    width: 100px;
+    background: #007BFF;
+    margin: 0 auto 16px;
+    border-radius: 3px;
+    border: none;
+}
+
+.checkout__button,
+.back__button {
+    font-size: 16px;
+    line-height: 1.5;
+    width: 100px;
+    background: #007BFF;
+    margin: 0 auto 16px;
+    border-radius: 3px;
+    border: none;
+}
+
+.checkout__button,
+.back__button-btn {
+    width: 100%;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.checkout__button:hover,
+.back__button-btn:hover {
+    background: blue;
+}
+
 
 
 @media (max-width:768px){

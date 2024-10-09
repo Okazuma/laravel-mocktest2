@@ -10,9 +10,8 @@
         <h1 class="success__title">Payment Successful!</h1>
         <p class="success__text">決済が完了しました。<br>ありがとうございます！</p>
     </div>
-    <div class="success__items">
-        <a class="review__button" href="/reviews">レビューへ</a>
-        <a class="back__button" href="{{ url('/') }}">Home</a>
-    </div>
+    <div class="back__button">
+            <a class="back__button-btn" href="{{route('restaurants.index')}}">Home</a>
+        </div>
 </div>
 @endsection

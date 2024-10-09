@@ -8,7 +8,13 @@
 <div class="container">
     <div class="card">
         <p class="done__text">ご予約ありがとうございます</p>
-        <a class="back__button" href="/">戻る</a>
+        <div class="back__button">
+            <a class="back__button-btn" href="{{route('restaurants.index')}}">Login</a>
+        </div>
     </div>
 </div>
 @endsection
+
+
+
+
