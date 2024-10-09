@@ -130,29 +130,68 @@ class AdminController extends Controller
 
 
 
+
     // 画像アップロードの処理ーーーーーーーーーー
+    // public function uploadImages(UploadImagesRequest $request)
+    // {
+    //     $disk = config('filesystems.default');
+
+    //     if ($request->hasFile('images')) {
+    //         try {
+    //             foreach ($request->file('images') as $file) {
+    //                 $originalName = $file->getClientOriginalName();
+
+    //                 if (Storage::disk($disk)->exists('images/' . $originalName)) {
+    //                     return redirect()->back()->withErrors(['images' => "$originalName はすでに存在します。\nファイル名を変更してください。"]);
+    //                 }
+    //                 $file->storeAs('images', $originalName, $disk);
+    //             }
+
+    //             return redirect()->back()->with('success', '画像がアップロードされました');
+    //         } catch (\Exception $e) {
+    //             return redirect()->back()->withErrors(['images' => '画像のアップロード中にエラーが発生しました。もう一度お試しください。']);
+    //         }
+    //     } else {
+    //         return redirect()->back()->withErrors(['images' => '画像を選択してください。']);
+    //     }
+    // }
+
+
+
+
     public function uploadImages(UploadImagesRequest $request)
-    {
-        $disk = config('filesystems.default');
+{
+    // デフォルトのストレージ設定を取得
+    $disk = config('filesystems.default');
 
-        if ($request->hasFile('images')) {
-            try {
-                foreach ($request->file('images') as $file) {
-                    $originalName = $file->getClientOriginalName();
+    if ($request->hasFile('images')) {
+        try {
+            foreach ($request->file('images') as $file) {
+                $originalName = $file->getClientOriginalName();
 
-                    if (Storage::disk($disk)->exists('images/' . $originalName)) {
-                        return redirect()->back()->withErrors(['images' => "$originalName はすでに存在します。\nファイル名を変更してください。"]);
-                    }
-                    $file->storeAs('images', $originalName, $disk);
+                // 同名ファイルが存在するか確認
+                if (Storage::disk($disk)->exists('images/' . $originalName)) {
+                    return redirect()->back()->withErrors(['images' => "$originalName はすでに存在します。\nファイル名を変更してください。"]);
                 }
 
-                return redirect()->back()->with('success', '画像がアップロードされました');
-            } catch (\Exception $e) {
-                return redirect()->back()->withErrors(['images' => '画像のアップロード中にエラーが発生しました。もう一度お試しください。']);
+                // ここで条件分岐を行う
+                if ($disk === 's3') {
+                    // S3に保存
+                    $file->storeAs('images', $originalName, 's3');
+                } else {
+                    // ローカルに保存
+                    $file->storeAs('images', $originalName, $disk);
+                }
             }
-        } else {
-            return redirect()->back()->withErrors(['images' => '画像を選択してください。']);
+
+            return redirect()->back()->with('success', '画像がアップロードされました');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['images' => '画像のアップロード中にエラーが発生しました。もう一度お試しください。']);
         }
+    } else {
+        return redirect()->back()->withErrors(['images' => '画像を選択してください。']);
     }
+}
+
 
 }

@@ -70,4 +70,8 @@
     .card {
         width: 70%;
     }
+    .thanks__text {
+        font-size: 12px;
+        margin-bottom: 24px;
+    }
 }
