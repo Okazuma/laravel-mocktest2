@@ -14,8 +14,8 @@
             <h2 class="restaurant__name">{{ $restaurant->name }}</h2>
         </div>
         <div class="restaurant__image">
-            @if (config('filesystems.default') === 's3')
-                <img src="{{ Storage::url($restaurant->image_path) }}" alt="Restaurant Image">
+            @if (Str::startsWith($restaurant->image_path, 'http'))
+                <img src="{{ $restaurant->image_path }}" alt="Restaurant Image">
             @else
                 <img src="{{ asset('storage/' . $restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
             @endif
