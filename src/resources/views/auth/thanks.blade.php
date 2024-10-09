@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
     <div class="card">
-        <p class="thanks__text">メールアドレスの確認ができました。<br>ご登録ありがとうございます</p>
+        <p class="thanks__text">メール認証を完了しました。<br>ご登録ありがとうございます！</p>
         <div class="login__button">
             <a class="login__button-btn" href="{{route('login')}}">Login</a>
         </div>

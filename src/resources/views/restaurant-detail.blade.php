@@ -75,7 +75,7 @@
             <div class="reservation__content">
                 <div class="form__group">
                     <div class="input__date">
-                        <input type="date" class="form__control" id="date" name="date" >
+                        <input type="date" class="form-control" id="date" name="date" placeholder="年月日">
                         <div class="form__error">
                         @error('date')
                         {{ $message }}
@@ -148,6 +148,13 @@
 
 
 <script>
+// ーーーーー現在の日付を取得ーーーーー
+    const today = new Date().toISOString().split('T')[0];
+    // 日付入力フィールドに今日の日付を設定
+    document.getElementById('date').value = today;
+
+
+// ーーーーー予約内容のミラーリングーーーーー
     document.addEventListener('DOMContentLoaded', function () {
         const dateInput = document.getElementById('date');
         const timeInput = document.getElementById('time');

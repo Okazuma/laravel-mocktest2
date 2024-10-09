@@ -76,7 +76,7 @@
 }
 
 .error-message {
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     color: red;
 }
@@ -97,7 +97,6 @@
 
     .form__label {
         font-size: 14px;
-        display: block;
     }
 
     .error-message {
@@ -123,6 +122,11 @@
 
     .error-message {
         font-size: 14px;
+    }
+
+    .error-message {
+        font-size: 12px;
+        color: red;
     }
 }
 
