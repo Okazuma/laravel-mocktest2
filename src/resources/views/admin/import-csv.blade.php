@@ -39,6 +39,7 @@
                                 @endif
                             @endforeach
                         </div>
+     
                         <button id="toggle-error-details" class="error-details__button" onclick="toggleErrorDetails()">他のエラーを表示</button>
                     @endif
                 </div>
