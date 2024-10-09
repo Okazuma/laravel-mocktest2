@@ -5,6 +5,7 @@ docker/mysql/data/
 /storage/*.key
 /storage/*.log
 /storage/*.cache
+/storage/*   # これを追加
 
 # Node.js の依存関係
 /node_modules/
