@@ -55,7 +55,7 @@
                     @if ($review->review_image)
                     <div class="review__image">
                         @if (config('filesystems.default') === 's3')
-                            <img src="{{ $review->review_image }}" alt="Restaurant Image">
+                            <img src="{{ Storage::disk('s3')->url($review->review_image) }}" alt="Restaurant Image">
                         @else
                             <img src="{{ asset('storage/' . $review->review_image) }}" alt="口コミ画像">
                         @endif
