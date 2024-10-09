@@ -46,7 +46,6 @@
 
 @section('content')
 <div class="container">
-    @dd($restaurants)
     @foreach($restaurants as $restaurant)
         <div class="card">
             <div class="card__image">
