@@ -39,7 +39,6 @@
                                 @endif
                             @endforeach
                         </div>
-     
                         <button id="toggle-error-details" class="error-details__button" onclick="toggleErrorDetails()">他のエラーを表示</button>
                     @endif
                 </div>
@@ -64,6 +63,9 @@
     <div class="back__button">
         <a class="back__button__btn" href="{{route('admin.admin-home')}}">Back</a>
     </div>
+
+    <img src="https://laravel-mocktest-bucket2.s3.amazonaws.com/images/white.jpeg" alt="White Image" />
+
 </div>
 
 <script>
