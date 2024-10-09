@@ -61,6 +61,7 @@
         </div>
         <button class="submit__button" type="submit">アップロード</button>
     </form>
+
     <div class="back__button">
         <a class="back__button__btn" href="{{route('admin.admin-home')}}">Back</a>
     </div>
