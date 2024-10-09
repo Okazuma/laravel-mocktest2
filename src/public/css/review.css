@@ -10,12 +10,15 @@
 
 .container{
     width: 90%;
+    height: 72vh;
     margin: 0 auto;
     display: flex;
+    align-items: stretch;
 }
 
 .restaurant{
-    width: 40%;
+    flex: 3.8;
+    padding:4% 10% 4%;
 }
 
 .restaurant__title{
@@ -47,11 +50,7 @@
 .card__content {
     height: 50%;
     height: auto;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding: 2rem;
+    padding: 6%;
     display: flex;
     flex-direction: column;
 }
@@ -88,11 +87,13 @@
     text-decoration: none;
     width: 40%;
     min-width: 120px;
+    max-width:140px;
     text-align: center;
     font-size: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding:2% 0 ;
 }
 
 .details__button:hover {
@@ -115,7 +116,22 @@
     color: #ff0000;
 }
 
-.form__title{
+.center-line{
+    width: 2px;
+    background-color: lightgrey;
+    height: 88%;
+    margin: auto 0;
+}
+
+.review__form{
+    flex: 6.2;
+    padding: 4% 8% 4%;
+    margin: 0px auto;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.form__title {
     background-color: #007BFF;
     color: #ffffff;
     width: 100%;
@@ -123,13 +139,6 @@
     margin: 0 auto;
     font-size: 24px;
     padding: 8px;
-}
-
-.review__form{
-    width: 50%;
-    margin: 10px auto;
-    border-radius: 3px;
-    overflow: hidden;
 }
 
 .form__group{
@@ -215,7 +224,7 @@
 .submit__button {
     width: 40%;
     display: block;
-    margin: 0 auto;
+    margin: 16px auto 16px;
     height:6vh;
     border-radius:24px;
     border: none;
@@ -229,27 +238,106 @@
 }
 
 
+@media (max-width: 950px) {
+    .container{
+        width: 90%;
+        height: 100%;
+    }
+
+    .restaurant__title {
+        font-size: 20px;
+    }
+
+    .form__group__title {
+        font-size: 20px;
+        margin: 0px;
+        padding: 4px;
+    }
+
+
+}
+/* タブレット用 */
+@media (max-width: 950px) {
+    .container {
+        width: 90%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: stretch;
+        height: 88%;
+    }
+
+    .restaurant {
+        flex: 3.8;
+        padding: 4% 10% 4%;
+        height: 60%;
+    }
+
+    .card__actions{
+        margin: auto 0;
+        padding-bottom: 2%;
+    }
+
+    .center-line {
+        width: 2px;
+        background-color: lightgrey;
+        height: 400px;
+        margin: auto 0;
+    }
+
+    .form__group {
+        width: 80%;
+        padding: 12px;
+    }
+
+    .form__group input{
+        width: 100%;
+        padding: 12px;
+    }
+
+    .review__form {
+        width: 90%;
+        padding: 2% 10% 2%;
+        margin: 0px auto;
+        border-radius: 3px;
+        overflow: hidden;
+        height: 60%;
+    }
+}
+
+
 
 /* タブレット用 */
 @media (max-width: 768px){
     .container {
         display: flex;
         flex-direction: column;
+        height: 100%;;
     }
 
     .restaurant {
         width: 100%;
         margin: 0 auto;
-        height: auto;
+        height: 60%;
     }
 
     .card {
-        width: 70%;
+        width: 100%;
         margin: 0 auto;
     }
 
+    .restaurant__title {
+        font-size: 24px;
+        padding: 4px;
+    }
+
+    .form__group__title {
+        font-size: 20px;
+        padding: 4px;
+    }
+
     .card__content {
-        padding: 20px;
+        padding: 2% 4% 2%;
     }
 
     .restaurant__name {
@@ -276,28 +364,47 @@
         font-size: 2rem;
     }
 
+    .restaurant {
+        flex: 4;
+        padding: 4% 10% 4%;
+        height: 60%;
+    }
+
+    .center-line {
+        width: 2px;
+        background-color: lightgrey;
+        height: 50%;
+        margin: auto 0;
+    }
+
+    .review__form {
+        width:100%;
+        padding: 2% 10% 2%;
+        margin: 0px auto;
+        border-radius: 3px;
+        overflow: hidden;
+        height: 80%;
+    }
+
+    .center-line {
+        width: 2px;
+        background-color: lightgrey;
+        height: 50%;
+        margin: auto 0;
+    }
+
     .review__form {
         width: 100%;
-        margin: 0 auto;
+        padding: 4% 10% 4%;
+        margin: 0px auto;
+        border-radius: 3px;
+        overflow: hidden;
+        height: 60%;
     }
 
     .form__group__title {
         margin-top: 36px;
         text-align: center;
-    }
-
-    .star-rating {
-        justify-content:center;
-        padding: 8px;
-        margin: 0px;
-        gap: 12px;
-    }
-
-    .star {
-        font-size: 48px;
-        color: #ccc;
-        cursor: pointer;
-        transition: color 0.2s;
     }
 
     .form__group {
@@ -315,7 +422,7 @@
         width: 100%;
         height: 16vh;
         padding: 0;
-        font-size:20px;
+        font-size:18px;
     }
 
     .drop-area__text {
@@ -328,7 +435,7 @@
 
     .submit__button {
         width: 50%;
-        margin: 24px auto;
+        margin: 24px auto 24px;
         height: 6vh;
         border-radius: 50px;
         font-size: 20px;

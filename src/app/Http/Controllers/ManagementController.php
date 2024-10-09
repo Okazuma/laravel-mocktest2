@@ -38,12 +38,11 @@ class ManagementController extends Controller
     {
         $data = $request->only(['name', 'description', 'area', 'genre']);
             if ($request->hasFile('image_path')) {
-                // 画像を S3 に保存
                 $imagePath = $request->file('image_path')->store('images', config('filesystems.default'));
                 if (config('filesystems.default') === 's3') {
-            $data['image_path'] = Storage::disk('s3')->url($imagePath);  // S3のURL
+            $data['image_path'] = Storage::disk('s3')->url($imagePath);
         } else {
-            $data['image_path'] = 'storage/' . $imagePath;  // ローカルの場合
+            $data['image_path'] = 'storage/' . $imagePath;
         }
             }
         $restaurant = Restaurant::create($data);
@@ -117,5 +116,4 @@ class ManagementController extends Controller
             }
         return redirect()->route('management.email.form')->with('message', 'お知らせメールを送信しました');
     }
-
 }

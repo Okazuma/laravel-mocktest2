@@ -12,7 +12,6 @@
     </div>
     @endif
 </div>
-
 <form action="{{ route('reviews.store', $restaurant->id) }}" method="post" enctype="multipart/form-data">
             @csrf
     <div class="container">
@@ -44,8 +43,7 @@
                 </div>
             </div>
         </div>
-
-
+        <div class="center-line"></div>
         <div class="review__form">
             <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
             <div class="form__group__rating">
@@ -62,7 +60,6 @@
                     @enderror
                 </div>
             </div>
-
             <div class="form__group">
                 <p class="form__group__sub">口コミを投稿</p>
                 <textarea class="form__text" name="comment" placeholder="カジュアルな夜のお出かけにおすすめのスポット">{{ $userReview->comment ?? old('comment') }}</textarea>
@@ -73,7 +70,6 @@
                     @enderror
                 </div>
             </div>
-
             <div class="form__group">
                 <div id="drop-area" class="drop-area">
                 <input id="file-upload" type="file" name="review_image" value="" accept="image/*" hidden >
@@ -90,12 +86,11 @@
     <button class="submit__button" type="submit">口コミを投稿</button>
 </form>
 
+
 <script>
 // ーーーーー５段階評価の処理ーーーーー
     const stars = document.querySelectorAll('.star-rating input');
     const labels = document.querySelectorAll('.star-rating label');
-
-    // ページ読み込み時に選択された星の色を設定
     const selectedRating = document.querySelector('.star-rating input:checked');
     if (selectedRating) {
         const selectedIndex = Array.from(stars).findIndex(star => star.checked);
@@ -105,22 +100,18 @@
     }
 
     labels.forEach((label, index) => {
-        // ホバー時の色変更
         label.addEventListener('mouseover', () => {
             // ホバーした星まで金色にする
             for (let i = 0; i <= index; i++) {
                 labels[i].style.color = '#007BFF';
             }
         });
-
-        // ホバーから外れたときの処理
         label.addEventListener('mouseout', () => {
             // 選択された星の評価を保持
             const selectedRating = document.querySelector('.star-rating input:checked');
-            // 選択されていない場合は全ての星を元の色に戻す
             if (!selectedRating) {
                 labels.forEach((label) => {
-                    label.style.color = '#ccc'; // 元の色
+                    label.style.color = '#ccc';
                 });
             } else {
                 // 選択された星まで金色にする
@@ -130,17 +121,12 @@
                 });
             }
         });
-
-        // クリックされたときの処理
         label.addEventListener('click', () => {
-            // 選択した星まで金色に変更
             stars.forEach((star, i) => {
                 if (i <= index) {
-                    star.checked = true; // ラジオボタンを選択
+                    star.checked = true;
                 }
             });
-
-            // すべての星を元の色に戻す
             labels.forEach((label, i) => {
                 label.style.color = (i <= index) ? '#007BFF' : '#ccc';
             });
@@ -148,62 +134,48 @@
     });
 
 
-
 // ーーーーードラッグ&ドロップで画像添付の処理ーーーーー
     document.addEventListener('DOMContentLoaded', function() {
     const dropArea = document.getElementById('drop-area');
     const fileInput = document.getElementById('file-upload');
 
-        // ドラッグオーバー時のハイライト処理
         dropArea.addEventListener('dragover', (event) => {
             event.preventDefault();
             dropArea.classList.add('highlight');
         });
-
-        // ドラッグ終了時のハイライト解除
         dropArea.addEventListener('dragleave', () => {
             dropArea.classList.remove('highlight');
         });
-
-        // ドロップ処理
         dropArea.addEventListener('drop', (event) => {
             event.preventDefault();
             dropArea.classList.remove('highlight');
-
         const files = event.dataTransfer.files;
         if (files.length > 0) {
             fileInput.files = files; // inputにファイルを設定
-            dropArea.querySelector('p').textContent = files[0].name; // 選択したファイル名を表示
+            dropArea.querySelector('p').textContent = files[0].name;
             }
         });
-
-        // クリックしてファイル選択
         dropArea.addEventListener('click', () => {
-            fileInput.click(); // inputをクリック
+            fileInput.click();
         });
-
-        // ファイル選択時の処理
         fileInput.addEventListener('change', (event) => {
             const files = event.target.files;
             if (files.length > 0) {
-                dropArea.querySelector('p').textContent = files[0].name; // 選択したファイル名を表示
+                dropArea.querySelector('p').textContent = files[0].name;
             }
         });
-
-        // 画像を貼り付けるための処理 (クリップボードから)
         dropArea.addEventListener('paste', (event) => {
             const items = (event.clipboardData || window.clipboardData).items;
             for (let index in items) {
                 const item = items[index];
                 if (item.kind === 'file') {
                     const file = item.getAsFile();
-                    fileInput.files = [file]; // inputにファイルを設定
-                    dropArea.querySelector('p').textContent = file.name; // 選択したファイル名を表示
+                    fileInput.files = [file];
+                    dropArea.querySelector('p').textContent = file.name;
                 }
             }
         });
     });
-
 
 
 // ーーーーーいいね機能の処理ーーーーー
@@ -213,12 +185,10 @@
         likeButtons.forEach(button => {
             button.addEventListener('click', function (event) {
                 event.preventDefault();
-
                 @guest
                     alert('いいねを押すにはログインが必要です。');
                     return;
                 @endguest
-
                 const icon = this.querySelector('.fa-heart');
                 const restaurantId = this.dataset.restaurantId;
 

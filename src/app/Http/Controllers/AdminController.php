@@ -134,20 +134,18 @@ class AdminController extends Controller
     // 画像アップロードの処理ーーーーーーーーーー
         public function uploadImages(UploadImagesRequest $request)
     {
-        // デフォルトのストレージドライバを取得
         $disk = config('filesystems.default');
         if ($request->hasFile('images')) {
             try {
                 foreach ($request->file('images') as $file) {
                     $originalName = $file->getClientOriginalName();
 
-                    // アップロード先のストレージを決定
                     if ($disk === 's3') {
                         if (Storage::disk($disk)->exists('images/' . $originalName)) {
                             return redirect()->back()->withErrors(['images' => "$originalName はすでに存在します。\nファイル名を変更してください。"]);
                         }
                         $file->storeAs('images', $originalName, $disk);
-                    } else { // local または他のドライバ
+                    } else {
                         $localPath = 'images/' . $originalName;
                         if (Storage::disk($disk)->exists($localPath)) {
                             return redirect()->back()->withErrors(['images' => "$originalName はすでに存在します。\nファイル名を変更してください。"]);

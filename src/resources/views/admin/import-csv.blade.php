@@ -39,7 +39,6 @@
                                 @endif
                             @endforeach
                         </div>
-     
                         <button id="toggle-error-details" class="error-details__button" onclick="toggleErrorDetails()">他のエラーを表示</button>
                     @endif
                 </div>
@@ -61,14 +60,11 @@
         </div>
         <button class="submit__button" type="submit">アップロード</button>
     </form>
-
     <div class="back__button">
         <a class="back__button__btn" href="{{route('admin.admin-home')}}">Back</a>
     </div>
-
-    <img src="https://laravel-mocktest-bucket2.s3.amazonaws.com/images/white.jpeg" alt="White Image" />
-
 </div>
+
 
 <script>
 // ーーーーーcsv添付ファイル表示の処理ーーーーー
@@ -76,6 +72,7 @@
         var fileName = this.files.length > 0 ? this.files[0].name : '選択されていません';
         document.querySelector('.file-name').textContent = fileName;
     });
+
 
     // ーーーーー画像ファイル表示の処理ーーーーー
     document.addEventListener('DOMContentLoaded', function () {
@@ -92,6 +89,7 @@
             }
         });
     });
+
 
 // ーーーーーエラーの開閉処理ーーーーー
     document.addEventListener('DOMContentLoaded', function() {
