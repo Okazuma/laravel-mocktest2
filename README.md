@@ -215,7 +215,7 @@ http://54.249.16.235/
       「name」「description」「area」「genre」「image_path」
 
     - 2行目以降に飲食店情報の値をセルごとに入力する
-      「飲食店A」「このお店は……」「東京都」「寿司」「storage/images/….jpeg」
+      「飲食店A」「このお店は……」「東京都」「寿司」「images/….jpeg」
 <img width="500" src="https://github.com/user-attachments/assets/f2b29d60-dab4-4101-84be-281767cd9145">
 
 
