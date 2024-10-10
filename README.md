@@ -205,9 +205,9 @@ http://54.249.16.235/
 ## CSVファイルの記述方法
 ##### CSVファイルの作成ルール
     - 各項目のルールに沿ってキーと値を入力
-    - 実際の画像はCSVファイルに含めることができないので別で追加
+    - image_pathは画像ファイルの前に images/ と追記する。
       (画像については最後に記載)
-<img width="500" src="https://github.com/user-attachments/assets/2a36fee5-23d7-4bf9-aa11-83727a69c67a">
+<img width="500" src="https://github.com/user-attachments/assets/cc78ab07-7da8-420e-a057-9e6778950fb8">
 
 
 ##### エクセルやスプレッドシートでのCSVファイル作成方法
@@ -216,7 +216,7 @@ http://54.249.16.235/
 
     - 2行目以降に飲食店情報の値をセルごとに入力する
       「飲食店A」「このお店は……」「東京都」「寿司」「images/….jpeg」
-<img width="500" src="https://github.com/user-attachments/assets/f2b29d60-dab4-4101-84be-281767cd9145">
+<img width="500" src="https://github.com/user-attachments/assets/b40d76b3-9cf1-4529-b071-d5f7f2ac5913">
 
 
 ##### テキストエディタでの作成方法
@@ -224,17 +224,18 @@ http://54.249.16.235/
       name,description,area,genre,image_path
 
     - 2行目以降に飲食店情報の値をカンマ区切りで入力する
-      飲食店A,このお店は……,東京都,寿司,storage/images/….jpeg
-<img width="500" src="https://github.com/user-attachments/assets/34ab5a1c-eaec-4192-b4ae-6ef7ba3e3a26">
+      飲食店A,このお店は……,東京都,寿司,images/….jpeg
+<img width="500" src="https://github.com/user-attachments/assets/15d59474-bec4-460c-9dfd-92e368fc2344">
 
 
 
-<!-- ## CSVファイルによる新規店舗の追加 -->
 ##### 新規飲食店を追加する時のイメージ画像について。
     CSVファイルの「image_path」で画像URLのパスを正しく入力していても、
     画像自体がstorageに存在していなければ新規飲食店を追加できません。
-    プロジェクト内に画像が存在しない場合は手動でstorageに画像を追加するか、
-    CSVファイルのインポート画面から送信してstorageに追加できます。
+    (画像がなければCSVファイルのインポートもできない)
+    storage内に存在しないファイル名をimage_pathに入力する場合
+    CSVファイルをインポートする前に手動でstorageに画像を追加するか、
+    インポート画面のフォームから画像をアップロードしてstorageに追加できます。
 
     - 画像の形式はjpegとpngのみアップロード可能ですが
       jpgもjpegと同じ種類のデータなので形式をjpgからjpegに書き変えれば
