@@ -102,7 +102,7 @@ class AdminController extends Controller
                     $rowErrors[] = "・image_pathはjpeg,png形式のみアップロード可能です。";
                 }
                 // 画像パスが実際に存在するかどうか
-                if (!file_exists(public_path($imagePath))) {
+                if (!file_exists(public_path('storage/' .$imagePath))) {
                     $rowErrors[] = "・画像 {$imagePath} が見つかりません。<br>（行: " . implode(", ", $row) . "）";
                 }
                 // エラーがある場合、その行の保存をスキップ
