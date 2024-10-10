@@ -207,7 +207,8 @@ http://54.249.16.235/
     - 各項目のルールに沿ってキーと値を入力
     - image_pathは画像ファイルの前に images/ と追記する。
       (画像については最後に記載)
-<img width="500" src="https://github.com/user-attachments/assets/cc78ab07-7da8-420e-a057-9e6778950fb8">
+<img width="500" src="https://github.com/user-attachments/assets/b97781fb-a236-4888-864a-e417fa39478d">
+
 
 
 ##### エクセルやスプレッドシートでのCSVファイル作成方法
@@ -216,7 +217,7 @@ http://54.249.16.235/
 
     - 2行目以降に飲食店情報の値をセルごとに入力する
       「飲食店A」「このお店は……」「東京都」「寿司」「images/….jpeg」
-<img width="500" src="https://github.com/user-attachments/assets/b40d76b3-9cf1-4529-b071-d5f7f2ac5913">
+<img width="500"  src="https://github.com/user-attachments/assets/32213e50-bbf7-4607-8ec2-1986d0629164">
 
 
 ##### テキストエディタでの作成方法
@@ -225,7 +226,7 @@ http://54.249.16.235/
 
     - 2行目以降に飲食店情報の値をカンマ区切りで入力する
       飲食店A,このお店は……,東京都,寿司,images/….jpeg
-<img width="500" src="https://github.com/user-attachments/assets/15d59474-bec4-460c-9dfd-92e368fc2344">
+<img width="500" src="https://github.com/user-attachments/assets/f9e28b85-8e91-4866-9b3c-dfc92f2b1c11">
 
 
 
