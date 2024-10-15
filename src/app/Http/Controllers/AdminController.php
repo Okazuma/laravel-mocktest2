@@ -98,7 +98,7 @@ class AdminController extends Controller
                 // 画像パスバリデーション
                 $imagePath = $row[4];
                 $extension = strtolower(pathinfo($imagePath, PATHINFO_EXTENSION));
-                if (!in_array($extension, ['jpeg', 'png','jpg'])) {
+                if (!in_array($extension, ['jpeg', 'png'])) {
                     $rowErrors[] = "・image_pathはjpeg,png形式のみアップロード可能です。";
                 }
                 // 画像パスが実際に存在するかどうか

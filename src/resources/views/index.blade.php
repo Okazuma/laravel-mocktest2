@@ -165,8 +165,8 @@
         }
 
         let debounceTimeoutArea;
-    let debounceTimeoutGenre;
-    let debounceTimeoutKeyword;
+        let debounceTimeoutGenre;
+        let debounceTimeoutKeyword;
 
     function debounceSubmitArea() {
         clearTimeout(debounceTimeoutArea);
