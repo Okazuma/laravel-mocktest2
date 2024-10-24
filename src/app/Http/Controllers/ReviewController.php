@@ -17,7 +17,6 @@ class ReviewController extends Controller
     {
         $userId = Auth::id();
         $restaurant = Restaurant::with('reviews')->findOrFail($restaurant_id);
-
         $userReview = Review::where('user_id', $userId)
                         ->where('restaurant_id', $restaurant_id)
                         ->first();
@@ -32,17 +31,14 @@ class ReviewController extends Controller
     {
         $userId = Auth::id();
         $user = Auth::user();
-
-        if ($user->hasRole('admin') || $user->hasRole('store_manager')) {
-            return redirect()->back()->with('error', 'あなたは口コミを投稿することができません。');
-        }
+            if ($user->hasRole('admin') || $user->hasRole('store_manager')) {
+                return redirect()->back()->with('error', 'あなたは口コミを投稿することができません。');
+            }
 
         $fileName = null;
-
         $existingReview = Review::where('user_id', $userId)
                                 ->where('restaurant_id', $restaurant_id)
                                 ->first();
-
             if ($existingReview) {
                 // 画像が送信されている場合、新しい画像を保存
                 if ($request->hasFile('review_image')) {
@@ -101,7 +97,6 @@ class ReviewController extends Controller
     public function reviewsAll($restaurant_id)
     {
         $restaurant = Restaurant::findOrFail($restaurant_id);
-
         $reviews = Review::where('restaurant_id', $restaurant_id)
                         ->orderBy('created_at', 'desc')
                         ->get();
