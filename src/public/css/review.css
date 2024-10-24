@@ -161,6 +161,7 @@
     padding: 12px;
 }
 
+/* ---------- */
 .star {
     font-size: 30px;
     color: #ccc;
@@ -386,6 +387,10 @@
         height: 80%;
     }
 
+    .star-rating {
+        margin: 0 auto;
+    }
+
     .center-line {
         width: 2px;
         background-color: lightgrey;
@@ -461,6 +466,10 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+
+    .star-rating {
+        margin: 0 auto;
     }
 
     .submit__button {
