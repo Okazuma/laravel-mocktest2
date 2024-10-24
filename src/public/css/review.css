@@ -50,7 +50,7 @@
 .card__content {
     height: 50%;
     height: auto;
-    padding: 6%;
+    padding: 4%;
     display: flex;
     flex-direction: column;
 }
@@ -87,7 +87,7 @@
     text-decoration: none;
     width: 40%;
     min-width: 120px;
-    max-width:140px;
+    max-width:200px;
     text-align: center;
     font-size: 14px;
     display: flex;
@@ -161,7 +161,6 @@
     padding: 12px;
 }
 
-/* ---------- */
 .star {
     font-size: 30px;
     color: #ccc;
@@ -255,6 +254,10 @@
         padding: 4px;
     }
 
+    .details__button {
+        width: 300px;
+    }
+
 
 }
 /* タブレット用 */
@@ -266,6 +269,10 @@
         display: flex;
         align-items: stretch;
         height: 88%;
+    }
+
+    .card__content {
+        height: 200px;
     }
 
     .restaurant {
@@ -304,6 +311,7 @@
         overflow: hidden;
         height: 60%;
     }
+
 }
 
 
@@ -325,6 +333,10 @@
     .card {
         width: 100%;
         margin: 0 auto;
+    }
+
+    .card__content {
+        height: 240px;
     }
 
     .restaurant__title {
@@ -356,8 +368,9 @@
     }
 
     .details__button {
-        min-width: 120px;
-        font-size: 20px;
+        width:500px;
+        /* min-width: 120px; */
+        font-size: 18px;
         padding:8px;
     }
 
@@ -468,11 +481,25 @@
         object-fit: cover;
     }
 
+    .card__content {
+        height: 160px;
+    }
+
     .star-rating {
         margin: 0 auto;
     }
 
+    .form__text{
+        font-size: 16px;
+    }
+
+    .drop-area__text {
+        font-size: 12px;
+        display: block;
+    }
+
     .submit__button {
         color: black;
+        font-size:14px;
     }
 }
