@@ -95,17 +95,26 @@ class AdminController extends Controller
                 if (empty($row[3]) || !in_array($row[3], $validGenres)) {
                     $rowErrors[] = "・ジャンルは「寿司」「焼肉」「イタリアン」「居酒屋」「ラーメン」から指定してください。<br>（行: " . implode(", ", $row) . "）";
                 }
+
                 // 画像パスバリデーション
                 $imagePath = $row[4];
                 $extension = strtolower(pathinfo($imagePath, PATHINFO_EXTENSION));
                 if (!in_array($extension, ['jpeg', 'png'])) {
                     $rowErrors[] = "・image_pathはjpeg,png形式のみアップロード可能です。";
                 }
-                // 画像パスが実際に存在するかどうか
-                if (!file_exists(public_path('storage/' .$imagePath))) {
-                    $rowErrors[] = "・画像 {$imagePath} が見つかりません。<br>（行: " . implode(", ", $row) . "）";
-                }
-                // エラーがある場合、その行の保存をスキップ
+
+                    // 画像パスが実際に存在するかどうか
+                    if (config('filesystems.default') === 's3') {
+                        if (!Storage::disk('s3')->exists($imagePath)) {
+                            $rowErrors[] = "・画像 {$imagePath} が見つかりません。<br>（行: " . implode(", ", $row) . "）";
+                        }
+                    } else {
+                        $localImagePath = 'public/' . $imagePath;
+                        if (!Storage::disk('local')->exists($localImagePath)) {
+                            $rowErrors[] = "・画像 {$imagePath} が見つかりません。<br>（行: " . implode(", ", $row) . "）";
+                        }
+                    }
+
                 if (count($rowErrors) > 0) {
                     $errors = array_merge($errors, $rowErrors);
                     continue;
@@ -125,9 +134,9 @@ class AdminController extends Controller
                 return redirect()->back()->withErrors(['csv_import' => $errors]);
             }
         }
+
         return redirect()->route('admin.import-csv')->with('success', '飲食店情報をインポートしました。');
     }
-
 
 
 
@@ -146,11 +155,11 @@ class AdminController extends Controller
                         }
                         $file->storeAs('images', $originalName, $disk);
                     } else {
-                        $localPath = 'images/' . $originalName;
+                        $localPath = 'public/images/' . $originalName;
                         if (Storage::disk($disk)->exists($localPath)) {
                             return redirect()->back()->withErrors(['images' => "$originalName はすでに存在します。\nファイル名を変更してください。"]);
                         }
-                        $file->storeAs('images', $originalName, $disk);
+                        $file->storeAs('public/images', $originalName, 'local');
                     }
                 }
                 return redirect()->back()->with('success', '画像がアップロードされました');
@@ -161,5 +170,4 @@ class AdminController extends Controller
             return redirect()->back()->withErrors(['images' => '画像を選択してください。']);
         }
     }
-
 }

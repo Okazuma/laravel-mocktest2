@@ -38,13 +38,15 @@ class ManagementController extends Controller
     {
         $data = $request->only(['name', 'description', 'area', 'genre']);
             if ($request->hasFile('image_path')) {
-                $imagePath = $request->file('image_path')->store('images', config('filesystems.default'));
                 if (config('filesystems.default') === 's3') {
-            $data['image_path'] = Storage::disk('s3')->url($imagePath);
-        } else {
-            $data['image_path'] = 'storage/' . $imagePath;
-        }
+                    $imagePath = $request->file('image_path')->store('images', 's3');
+                    $data['image_path'] = Storage::disk('s3')->url($imagePath);
+                } else {
+                    $imagePath = $request->file('image_path')->store('public/images', 'local');
+                    $data['image_path'] = 'images/' . basename($imagePath);
+                }
             }
+
         $restaurant = Restaurant::create($data);
 
         return redirect()->route('management-edit')->with('message', '店舗情報を追加しました');
@@ -63,17 +65,32 @@ class ManagementController extends Controller
 
 
     // 飲食店の編集の処理ーーーーーーーーーー
-    public function updateRestaurant(ManagementRequest $request, $id)
+    public function updateRestaurant(Request $request, $id)
     {
         $restaurant = Restaurant::findOrFail($id);
         $data = $request->only(['name', 'description', 'area', 'genre']);
-            if ($request->hasFile('image')) {
-                if ($restaurant->image_path) {
+        $disk = config('filesystems.default');
+
+        if ($request->hasFile('image')) {
+            // 既存の画像を削除
+            if ($restaurant->image_path) {
+                if ($disk === 's3') {
+                    // S3の場合
                     Storage::disk('s3')->delete(str_replace('https://s3.amazonaws.com/laravel-mocktest-bucket2/', '', $restaurant->image_path));
+                } else {
+                    // localの場合
+                    Storage::disk('local')->delete('public/' . str_replace('images/', '', $restaurant->image_path));
                 }
+            }
+
+            if ($disk === 's3') {
                 $imagePath = $request->file('image')->store('images', 's3');
                 $data['image_path'] = Storage::disk('s3')->url($imagePath);
+            } else {
+                $imagePath = $request->file('image')->store('public/images', 'local');
+                $data['image_path'] = 'images/' . basename($imagePath);
             }
+        }
         $restaurant->update($data);
 
         return redirect()->route('management.update', ['id' => $id])

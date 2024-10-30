@@ -31,38 +31,19 @@ class ReviewController extends Controller
     {
         $userId = Auth::id();
         $user = Auth::user();
-            if ($user->hasRole('admin') || $user->hasRole('store_manager')) {
-                return redirect()->back()->with('error', 'あなたは口コミを投稿することができません。');
-            }
 
-        $fileName = null;
+        if ($user->hasRole('admin') || $user->hasRole('store_manager')) {
+            return redirect()->back()->with('error', '口コミを投稿することができません。');
+        }
+
         $existingReview = Review::where('user_id', $userId)
                                 ->where('restaurant_id', $restaurant_id)
                                 ->first();
-            if ($existingReview) {
-                // 画像が送信されている場合、新しい画像を保存
-                if ($request->hasFile('review_image')) {
-                    $filePath = $request->file('review_image')->store('review_images', config('filesystems.default'));
-                    if (config('filesystems.default') === 's3') {
-                        $fileName = Storage::disk('s3')->url($filePath);
-                    } else {
-                        $fileName = $filePath;
-                    }
-                } else {
-                    // 画像が送信されていない場合、既存の画像を保持
-                    $fileName = $existingReview->review_image;
-                }
-                $existingReview->delete();
-            } else {
-                if ($request->hasFile('review_image')) {
-                    $filePath = $request->file('review_image')->store('review_images', config('filesystems.default'));
-                    if (config('filesystems.default') === 's3') {
-                        $fileName = Storage::disk('s3')->url($filePath);
-                    } else {
-                        $fileName = $filePath;
-                    }
-                }
-            }
+        $fileName = $this->handleImageUpload($request, $existingReview);
+
+        if ($existingReview) {
+            $existingReview->delete();
+        }
 
         $review = Review::create([
             'user_id' => $userId,
@@ -73,6 +54,33 @@ class ReviewController extends Controller
         ]);
 
         return redirect()->route('restaurants.detail', ['shop_id' => $restaurant_id]);
+    }
+
+
+
+    // レビュー画像アップロードの処理ーーーーーーーーーー
+    private function handleImageUpload($request, $existingReview)
+    {
+        $fileName = null;
+
+        if ($request->hasFile('review_image')) {
+            if (config('filesystems.default') === 's3') {
+                // S3に保存
+                $filePath = $request->file('review_image')->store('review_images', 's3');
+                $fileName = Storage::disk('s3')->url($filePath);
+            } elseif (config('filesystems.default') === 'local') {
+                // ローカルに保存
+                $filePath = $request->file('review_image')->store('public/review_images');
+                $fileName = 'storage/' . $filePath;
+            } else {
+                throw new \Exception('Unsupported filesystem configuration');
+            }
+        } else {
+            // 画像が送信されていなければ既存の画像を保持
+            $fileName = $existingReview ? $existingReview->review_image : null;
+        }
+
+        return $fileName;
     }
 
 
