@@ -71,15 +71,16 @@
                 </div>
             </div>
             <div class="form__group">
+                <p class="form__group__sub">画像の追加</p>
                 <div id="drop-area" class="drop-area">
                 <input id="file-upload" type="file" name="review_image" value="" accept="image/*" hidden >
                 <span class="drop-area__text">クリックして写真を追加<br>またはドラッグアンドドロップ</span>
                 </div>
-                @error('review_image')
-                    <div class="error-message">
-                        {{ $message }}
-                    </div>
-                @enderror
+                <div class="form__error">
+                    @error('review_image')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
         </div>
     </div>

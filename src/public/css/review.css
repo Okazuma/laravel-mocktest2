@@ -11,6 +11,7 @@
 .container{
     width: 90%;
     height: 72vh;
+    height: auto;
     margin: 0 auto;
     display: flex;
     align-items: stretch;
@@ -31,8 +32,8 @@
     border-radius: 3px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
     overflow: hidden;
-    width: 98%;
-    height: 72%;
+    width: 240px;
+    height: 280px;
 }
 
 .card__image {
@@ -48,7 +49,6 @@
 }
 
 .card__content {
-    height: 50%;
     height: auto;
     padding: 4%;
     display: flex;
@@ -58,6 +58,7 @@
 .restaurant__name {
     font-size: 16px;
     margin-top: 0;
+    margin-bottom:4px;
     flex: 1;
 }
 
@@ -86,8 +87,6 @@
     cursor: pointer;
     text-decoration: none;
     width: 40%;
-    min-width: 120px;
-    max-width:200px;
     text-align: center;
     font-size: 14px;
     display: flex;
@@ -119,16 +118,17 @@
 .center-line{
     width: 2px;
     background-color: lightgrey;
-    height: 88%;
+    height: 60vh;
     margin: auto 0;
 }
 
 .review__form{
     flex: 6.2;
-    padding: 4% 8% 4%;
+    padding: 0% 8% 0%;
     margin: 0px auto;
     border-radius: 3px;
     overflow: hidden;
+    height: auto;
 }
 
 .form__title {
@@ -142,7 +142,7 @@
 }
 
 .form__group{
-    padding: 12px;
+    padding: 8px;
 }
 
 .form__group__title{
@@ -158,7 +158,7 @@
 
 .star-rating {
     display: flex;
-    padding: 12px;
+    padding: 0 12px;
 }
 
 .star {
@@ -186,7 +186,7 @@
     display: block;
     margin: 0 auto;
     width: 100%;
-    height: 16vh;
+    height: 120px;
     outline: none;
 }
 
@@ -203,7 +203,7 @@
 
 .drop-area{
     width: 100%;
-    height: 16vh;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -238,14 +238,50 @@
 }
 
 
+
+
+/* レイアウト崩れ防止 */
 @media (max-width: 950px) {
     .container{
         width: 90%;
         height: 100%;
+        height: 72%;
+    }
+
+    .card {
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+        overflow: hidden;
+        width: 98%;
+        height: 280px;
+    }
+
+    .card__content {
+        height: 54%;
+        padding: 4%;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .card__actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+        flex: 2;
     }
 
     .restaurant__title {
         font-size: 20px;
+    }
+
+    .restaurant__name {
+        font-size: 16px;
+        margin-top: 8px;
+        margin-bottom: 4px;
+        flex: 1;
     }
 
     .form__group__title {
@@ -255,65 +291,10 @@
     }
 
     .details__button {
-        width: 300px;
+        width: 240px;
+        width: 50%;
     }
-
-
 }
-/* タブレット用 */
-@media (max-width: 950px) {
-    .container {
-        width: 90%;
-        height: 100%;
-        margin: 0 auto;
-        display: flex;
-        align-items: stretch;
-        height: 88%;
-    }
-
-    .card__content {
-        height: 200px;
-    }
-
-    .restaurant {
-        flex: 3.8;
-        padding: 4% 10% 4%;
-        height: 60%;
-    }
-
-    .card__actions{
-        margin: auto 0;
-        padding-bottom: 2%;
-    }
-
-    .center-line {
-        width: 2px;
-        background-color: lightgrey;
-        height: 400px;
-        margin: auto 0;
-    }
-
-    .form__group {
-        width: 80%;
-        padding: 12px;
-    }
-
-    .form__group input{
-        width: 100%;
-        padding: 12px;
-    }
-
-    .review__form {
-        width: 90%;
-        padding: 2% 10% 2%;
-        margin: 0px auto;
-        border-radius: 3px;
-        overflow: hidden;
-        height: 60%;
-    }
-
-}
-
 
 
 /* タブレット用 */
@@ -333,6 +314,7 @@
     .card {
         width: 100%;
         margin: 0 auto;
+        height: auto;
     }
 
     .card__content {
@@ -368,8 +350,7 @@
     }
 
     .details__button {
-        width:500px;
-        /* min-width: 120px; */
+        width:300px;
         font-size: 18px;
         padding:8px;
     }
@@ -483,6 +464,12 @@
 
     .card__content {
         height: 160px;
+    }
+
+    .details__button {
+        min-width: 120px;
+        font-size: 16px;
+        padding: 8px;
     }
 
     .star-rating {

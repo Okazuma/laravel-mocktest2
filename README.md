@@ -217,7 +217,8 @@ http://54.249.16.235/
 
     - 2行目以降に飲食店情報の値をセルごとに入力する
       「飲食店A」「このお店は……」「東京都」「寿司」「images/….jpeg」
-<img width="500"  src="https://github.com/user-attachments/assets/32213e50-bbf7-4607-8ec2-1986d0629164">
+<img width="500" src="https://github.com/user-attachments/assets/db1fbdf1-6f2b-4167-b928-7c3b2735ec6c">
+
 
 
 ##### テキストエディタでの作成方法
@@ -225,8 +226,9 @@ http://54.249.16.235/
       name,description,area,genre,image_path
 
     - 2行目以降に飲食店情報の値をカンマ区切りで入力する
-      飲食店A,このお店は……,東京都,寿司,images/….jpeg
-<img width="500" src="https://github.com/user-attachments/assets/f9e28b85-8e91-4866-9b3c-dfc92f2b1c11">
+      飲食店A,"このお店は……",東京都,寿司,images/….jpeg
+<img width="500" src="https://github.com/user-attachments/assets/9fe600ef-dc56-438f-8746-b8ccba4ad980">
+
 
 
 
