@@ -46,37 +46,38 @@
 
 @section('content')
 <div class="container">
-    @foreach($restaurants as $restaurant)
-        <div class="card">
-            <div class="card__image">
-                @if (Str::startsWith($restaurant->image_path, 'http'))
-                    {{-- S3画像 --}}
-                    <img src="{{ $restaurant->image_path }}" alt="Restaurant Image">
-                @else
-                    {{-- ローカル画像 --}}
-                    <img src="{{ asset('storage/' . $restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
-                @endif
-            </div>
-            <div class="card__content">
-                <p class="restaurant__name">{{ $restaurant->name }}</p>
-                <span class="restaurant__area__genre">#{{ $restaurant->area }}  #{{ $restaurant->genre }}</span>
-                <div class="card__actions">
-                    <a  class="details__button" href="{{ route('restaurants.detail', $restaurant->id) }}" class="details__button">詳しく見る</a>
-                    @auth
-                        <button class="like__button" data-restaurant-id="{{ $restaurant->id }}">
-                            <i class="fas fa-heart {{ Auth::user() && Auth::user()->likedRestaurants->contains($restaurant->id) ? 'liked' : '' }}"></i>
-                        </button>
+    <div class="inner">
+        @foreach($restaurants as $restaurant)
+            <div class="card">
+                <div class="card__image">
+                    @if (Str::startsWith($restaurant->image_path, 'http'))
+                        {{-- S3画像 --}}
+                        <img src="{{ $restaurant->image_path }}" alt="Restaurant Image">
                     @else
-                        <button class="like__button">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    @endauth
+                        {{-- ローカル画像 --}}
+                        <img src="{{ asset('storage/' . $restaurant->image_path) }}" alt="{{ $restaurant->name }}のイメージ">
+                    @endif
+                </div>
+                <div class="card__content">
+                    <p class="restaurant__name">{{ $restaurant->name }}</p>
+                    <span class="restaurant__area__genre">#{{ $restaurant->area }}  #{{ $restaurant->genre }}</span>
+                    <div class="card__actions">
+                        <a  class="details__button" href="{{ route('restaurants.detail', $restaurant->id) }}" class="details__button">詳しく見る</a>
+                        @auth
+                            <button class="like__button" data-restaurant-id="{{ $restaurant->id }}">
+                                <i class="fas fa-heart {{ Auth::user() && Auth::user()->likedRestaurants->contains($restaurant->id) ? 'liked' : '' }}"></i>
+                            </button>
+                        @else
+                            <button class="like__button">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        @endauth
+                    </div>
                 </div>
             </div>
-        </div>
-    @endforeach
+        @endforeach
+    </div>
 </div>
-
 
 
 <script>
